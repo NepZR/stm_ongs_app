@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin-top: 10vh;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.title {
+    color: #676BC4;
+    font-family: Nunito;
+    font-size: 3em;
+    width: 7em;
+}
+
+.description {
+    font-weight: bold;
+    color: #676BC4;
+    font-family: Nunito;
+    font-size: 1em;
+    max-width: 13rem;
+    text-align: left;
+}
+
+.arrow-link {
+    background-color: #676BC4;
+    width: 4em;
+    height: 4em;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
