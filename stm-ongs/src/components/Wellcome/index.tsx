@@ -1,7 +1,6 @@
 import React from "react";
 import GirlSitting from './../../images/girl-sitting.svg';
 import ArrowLeft from './../../images/arrow-left.svg'
-import Login from "../Login";
 import './../../global.css';
 import './styles.css';
 import { Link } from 'react-router-dom'
