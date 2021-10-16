@@ -1,9 +1,9 @@
 import React from 'react';
-import InitialScreen from './components/Wellcome';
+import Routes from './Routes';
 
 function App() {
   return (
-    <InitialScreen/>
+    <Routes></Routes>
   );
 }
 

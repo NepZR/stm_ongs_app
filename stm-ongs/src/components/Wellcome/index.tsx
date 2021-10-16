@@ -1,8 +1,10 @@
 import React from "react";
 import GirlSitting from './../../images/girl-sitting.svg';
 import ArrowLeft from './../../images/arrow-left.svg'
+import Login from "../Login";
 import './../../global.css';
 import './styles.css';
+import { Link } from 'react-router-dom'
 
 export default function Wellcome() {
     return (
@@ -13,9 +15,9 @@ export default function Wellcome() {
                     <p className="description">
                         Ajude a pessoas e instituições sem fins lucrativos contribuindo através de campanhas de arrecadação.
                     </p>
-                    <a href="" className="arrow-link">
+                    <Link className="arrow-link" to="/login">
                         <img className="arrow" src={ArrowLeft} alt="Seta para a direita" />
-                    </a>
+                    </Link>
                 </article>
                 <img className="girl-image" src={GirlSitting} alt="Pessoa Sentada em uma poltrona" />
             </div>
