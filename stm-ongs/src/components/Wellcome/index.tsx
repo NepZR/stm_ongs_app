@@ -11,13 +11,13 @@ export default function Wellcome() {
                 <article>
                     <h1 className="title">Plataforma STM ONG's</h1>
                     <p className="description">
-                        Ajude a pessoas e instituições sem fins lucrativos contribuindo através de campanhas de arrecadação de insumos.
+                        Ajude a pessoas e instituições sem fins lucrativos contribuindo através de campanhas de arrecadação.
                     </p>
                     <a href="" className="arrow-link">
-                        <img src={ArrowLeft} alt="Seta para a direita" />
+                        <img className="arrow" src={ArrowLeft} alt="Seta para a direita" />
                     </a>
                 </article>
-                <img src={GirlSitting} alt="Pessoa Sentada em uma poltrona" />
+                <img className="girl-image" src={GirlSitting} alt="Pessoa Sentada em uma poltrona" />
             </div>
         </>
     );
