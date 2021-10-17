@@ -7,13 +7,13 @@
     margin-top: 5vh;
     flex: 1;
     display: flex;
-    flex-direction: row;
+    flex-direction: row;    
 }
 
 article {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .title {
@@ -127,5 +127,11 @@ article {
 
     .arrow {
         width: 1em;
+    }
+}
+
+@media only screen and (max-width: 1920px) {
+    .girl-image {
+        margin-left: 10vw;
     }
 }
