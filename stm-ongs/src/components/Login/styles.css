@@ -1,33 +1,119 @@
 .login-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
     height: 100vh;
-
+    width: 100vw; 
 }
+
+.title-login-page {
+    position: relative;
+    font-weight: 800;
+    color: #5E65EB;
+    max-width: 2em;
+    font-size: 4em;
+    line-break: loose;
+    font-family: Nunito;
+    padding: 1em;
+    text-shadow: 2px 2px 5px #b3b5e2;
+}
+
+.girl-login {
+    max-width: 50rem;
+}
+
 .form-container {
-    margin-left: 1rem;
-    
-    justify-self: right;
+    padding: 5%;
     font-family: Nunito, 'sans-serif';
-    display: block;
-    box-sizing: border-box;
-    padding: 1rem;
-    background-color: #fff;
-    width: 100%;
-    align-self: auto;
+    background-color: #fff; 
+    width: 25em;
+    /* max-width: 100%; */
+    box-shadow: #b3b5e2 0px 8px 20px;
+}
+.title-form {
+    font-weight: 800;
+    font-size: 3rem;
+    color: #5E65EB;
+    text-shadow: 2px 2px 5px #b3b5e2;
+}
+
+.label-login {
+    color: #5E65EB;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.form-login {
+    display: flex;
+    flex-direction: column;
 }
 
 .input-login, .button-login {
     width: 100%;
     height: 4rem;
-
     border-radius: 10px;
-    margin-top: 1rem;
 }
 
 .input-login {
     border: 3px solid #B9BCF4;
+    background-color: #F1F4F9;
+    font-family: Nunito;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+    color: #5E65EB;
 }
+
+.input-pass-login {
+    width: 100%;
+    height: 4rem;
+    border-radius: 10px;
+    border: 3px solid #B9BCF4;
+    background-color: #F1F4F9;
+    font-family: Nunito;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+    color: #5E65EB;
+    display: flex;
+    justify-content: space-between;
+}
+
+.password {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    /* width: 90%; */
+}
+
+.icon {
+    border-radius: 10px;
+    border: 3px solid #B9BCF4;
+    background-color: #F1F4F9;
+    width: 20%;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+.icon:hover {
+    background-color: #d0d9e7;
+}
+
+
+.input-pass-login input {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    font-family: Nunito;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+    color: #5E65EB;
+}
+
+.input-pass-login input:focus {
+    border: outset;
+}
+
 
 .input-login:focus{
     outline: none;
@@ -42,8 +128,93 @@
     border: 3px solid #5E65EB;
 }
 
+.button-login:hover {
+    background-color: #B9BCF4;
+    border: 3px solid #B9BCF4;
+}
+
+.links-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4vh;
+    text-decoration: none;
+}
+
+.link {
+    text-decoration: none;
+    font-weight: bold;
+    color: #5E65EB;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.link:hover {
+    background-color: #F1F4F9;
+}
+
+input::placeholder {
+    color: #B9BCF4;
+  }
+
 /* Inicio media queries*/
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 360px) {
+
+    .title-login-page {
+        font-size: 2em;
+        text-align: center;
+        max-width: 100vw;
+        text-align: left;
+    }
+    .girl-login {
+        max-width: 15rem;
+        max-height: 15rem;
+    }
 
 }
+
+@media only screen and (max-width: 700px) {
+    /* .girl-login {
+        width: 10rem;
+    } */
+}
+
+@media only screen and (max-width: 1024px) {
+    /* .girl-login {
+        width: 40rem;
+    } */
+}
+
+
+
+@media only screen and (max-width: 1230px) {
+    
+    .login-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .form-container {
+        width: 95%;
+        margin:0;
+        /* background-color: #F1F4F9; */
+    }
+    
+    .girl-login {
+        max-width: 50em;
+    }
+
+}
+@media only screen and (max-width: 1440px) {
+    .girl-login {
+        width: 55rem;
+        margin: 1rem;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .girl-login {
+        max-width: 70em;
+        margin: 1rem;
+    }
+    
+} 
