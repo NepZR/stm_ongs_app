@@ -1,7 +1,7 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
-}
+} */
 
 .container {
     margin-top: 5vh;
@@ -132,6 +132,6 @@ article {
 
 @media only screen and (max-width: 1920px) {
     .girl-image {
-        margin-left: 10vw;
+        /* margin-left: 10vw; */
     }
 }

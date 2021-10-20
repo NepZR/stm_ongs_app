@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import Wellcome from './components/Wellcome';
-import Login from './components/Login';
+import Wellcome from './components/Pages/Wellcome';
+import Login from './components/Pages/Login';
+import Cadastro from './components/Pages/Cadastro';
 
 export default function Routes() {
     return (
@@ -11,6 +12,7 @@ export default function Routes() {
                 <Switch>
                     <Route path="/" component={Wellcome} exact/>
                     <Route path="/login" component={Login}/>
+                    <Route path="/sing-up" component={Cadastro}/>
                 </Switch>
             </BrowserRouter>
         </>

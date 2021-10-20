@@ -1,8 +1,8 @@
 import React from "react";
 import './styles.css';
-import GirlSitting from './../../images/girl-sitting.svg';
-import EyeOp from './../../../src/images/eye.svg'
-import EyeCl from './../../../src/images/eye-closed.svg'
+import GirlSitting from './../../../images/girl-sitting.svg';
+import EyeOp from './../../../images/eye.svg'
+import EyeCl from './../../../images/eye-closed.svg'
 import { Link } from 'react-router-dom'
 
 import { useState } from 'react';
@@ -57,7 +57,7 @@ export default function Login() {
                     </form>
                     <div className="links-container">
                         <Link className="link" to="/password-recovery" >Esqueci a senha?</Link>
-                        <Link className="link" to="/sign-up" >Já possuo cadastro?</Link>
+                        <Link className="link" to="/sing-up" >Não tenho cadastro?</Link>
                     </div>
                 </section>
             </div>

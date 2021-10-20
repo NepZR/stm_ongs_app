@@ -1,0 +1,10 @@
+.cadastro-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-singup {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
