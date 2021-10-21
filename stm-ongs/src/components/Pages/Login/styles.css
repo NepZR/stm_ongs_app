@@ -1,33 +1,46 @@
 .login-container {
     display: flex;
     justify-content: space-between; 
-    height: 100vh;
-    width: 100vw; 
+    align-items: center;
+    /* height: 100vh;
+    width: 100vw;  */
 }
 
 .title-login-page {
+    margin-left: 5vh;
     position: relative;
     font-weight: 800;
     color: #5E65EB;
-    max-width: 2em;
-    font-size: 4em;
+    /* max-width: 2em; */
+    font-size: 7vh;
     line-break: loose;
     font-family: Nunito;
-    padding: 1em;
+    /* padding: 1em; */
     text-shadow: 2px 2px 5px #b3b5e2;
 }
 
 .girl-login {
-    max-width: 50rem;
+    /* max-width: 50rem; */
+    max-width: 80vw;
+    max-height: 80vh;
+    margin-left: 5vw;
 }
 
-.form-container {
-    padding: 5%;
-    font-family: Nunito, 'sans-serif';
-    background-color: #fff; 
-    width: 25em;
+.form-login-container {
+    display: flex;
+    flex-direction: column;
+    
     /* max-width: 100%; */
-    box-shadow: #b3b5e2 0px 8px 20px;
+    max-width: 35em;
+    width: 100%; 
+    padding: 5%; 
+    height: 100vh;
+    box-shadow: #b3b5e2 0px 8px 20px; 
+    /* background-color: aqua; */
+
+    background-color: #fff;
+    /* padding: 5em; */
+
 }
 .title-form {
     font-weight: 800;
@@ -43,15 +56,17 @@
 }
 
 .form-login {
+    /* background-color: aqua; */
     display: flex;
     flex-direction: column;
 }
 
-.input-login, .button-login {
+.input-login {
     width: 100%;
     height: 4rem;
     border-radius: 10px;
 }
+
 
 .input-login {
     border: 3px solid #B9BCF4;
@@ -123,10 +138,21 @@
 .button-login {
     cursor: pointer;
     color: #fff;
+    text-align: center;
     font-weight: bold;
     background-color: #5E65EB;
     border: 3px solid #5E65EB;
 }
+/* button {
+    width: 100%;
+    height: 4rem;
+    font-weight: 900;
+    color: var(--white);
+    background-color: var(--purple);
+    border-radius: 10px;
+    border: solid 2px var(--purple);
+    font-family: 'Nunito';
+} */
 
 .button-login:hover {
     background-color: #B9BCF4;
@@ -158,63 +184,23 @@ input::placeholder {
 
 /* Inicio media queries*/
 
-@media only screen and (max-width: 360px) {
 
-    .title-login-page {
-        font-size: 2em;
-        text-align: center;
-        max-width: 100vw;
-        text-align: left;
-    }
-    .girl-login {
-        max-width: 15rem;
-        max-height: 15rem;
-    }
-
-}
-
-@media only screen and (max-width: 700px) {
-    /* .girl-login {
-        width: 10rem;
-    } */
-}
-
-@media only screen and (max-width: 1024px) {
-    /* .girl-login {
-        width: 40rem;
-    } */
-}
-
-
-
-@media only screen and (max-width: 1230px) {
-    
+@media only screen and (max-width: 900px) {
     .login-container {
         flex-direction: column;
-        align-items: center;
     }
+
+    .title-login-page {
+        text-align: center;
+        margin: 0;
+    }
+
     .form-container {
-        width: 95%;
-        margin:0;
-        /* background-color: #F1F4F9; */
+        padding: 5em;
     }
-    
     .girl-login {
-        max-width: 50em;
+        margin: 0;
     }
 
 }
-@media only screen and (max-width: 1440px) {
-    .girl-login {
-        width: 55rem;
-        margin: 1rem;
-    }
-}
 
-@media only screen and (min-width: 1440px) {
-    .girl-login {
-        max-width: 40em;
-        margin: 1rem;
-    }
-    
-} 

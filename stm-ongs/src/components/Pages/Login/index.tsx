@@ -4,6 +4,7 @@ import GirlSitting from './../../../images/girl-sitting.svg';
 import EyeOp from './../../../images/eye.svg'
 import EyeCl from './../../../images/eye-closed.svg'
 import { Link } from 'react-router-dom'
+import Button from "../../Button";
 
 import { useState } from 'react';
 
@@ -21,8 +22,8 @@ export default function Login() {
 
     const [iconPassword, setIconPassword] = useState(EyeCl)
 
-    function changeIcon(){
-        if(iconPassword === EyeCl) {
+    function changeIcon() {
+        if (iconPassword === EyeCl) {
             hidePass()
             setIconPassword(EyeOp)
         } else {
@@ -34,9 +35,11 @@ export default function Login() {
     return (
         <>
             <div className="login-container">
-                <h1 className="title-login-page" >Plataforma STM ONG's</h1>
-                <img className="girl-login" src={GirlSitting} alt="" />
-                <section className="form-container">
+                <section>
+                    <h1 className="title-login-page" >Plataforma <br /> STM ONG's</h1>
+                    <img className="girl-login" src={GirlSitting} alt="" />
+                </section>
+                <section className="form-login-container">
                     <h2 className="title-form">Login</h2>
                     <form className="form-login" action="" method="post">
                         <label className="label-login" htmlFor="email">
@@ -52,8 +55,7 @@ export default function Login() {
                                 </button>
                             </div>
                         </label>
-
-                        <button className="button-login" type="submit">Entrar</button>
+                        <Button typeBtn="submit">Entrar</Button>
                     </form>
                     <div className="links-container">
                         <Link className="link" to="/password-recovery" >Esqueci a senha?</Link>

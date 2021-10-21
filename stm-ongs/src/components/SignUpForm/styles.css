@@ -8,3 +8,29 @@
     flex-direction: column;
     width: 100%;
 }
+
+.type-form-container {
+    /* max-width: 80%;
+    margin: auto;
+     */
+    margin-top: 2em;
+    margin-bottom: 1em;
+    display: flex;
+    justify-content: space-between;
+} 
+
+.type-form-item {
+    display: flex;
+    align-items: center;
+    font-family: 'Nunito';
+    font-weight: bold;
+    color: var(--purple);
+}
+
+input[type=checkbox] {
+    height: 2rem;
+    width: 2rem;
+    border-style: solid;
+    border-radius: 10px;
+    margin-right: 1rem;
+}
