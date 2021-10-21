@@ -7,16 +7,23 @@
 }
 
 .title-login-page {
-    margin-left: 5vh;
+    font-size: 3rem;
+    font-weight: 900;
+    margin-left: 5vw;
+    color: #5E65EB;
+    text-shadow: 2px 2px 5px #b3b5e2;
+    font-size: 7vh;
+
+    /* margin-left: 5vh;
     position: relative;
     font-weight: 800;
     color: #5E65EB;
-    /* max-width: 2em; */
     font-size: 7vh;
     line-break: loose;
     font-family: Nunito;
+    text-shadow: 2px 2px 5px #b3b5e2; */
     /* padding: 1em; */
-    text-shadow: 2px 2px 5px #b3b5e2;
+    /* max-width: 2em; */
 }
 
 .girl-login {

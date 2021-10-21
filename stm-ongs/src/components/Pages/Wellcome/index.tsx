@@ -1,7 +1,7 @@
 import React from "react";
 import GirlSitting from './../../../images/girl-sitting.svg';
 import ArrowLeft from './../../../images/arrow-left.svg'
-// import '../../styles/global.css'
+import './../../../styles/global.css';
 import './styles.css';
 import { Link } from 'react-router-dom'
 
@@ -10,7 +10,7 @@ export default function Wellcome() {
         <>
             <div className="container">
                 <article>
-                    <h1 className="title">Plataforma STM ONG's</h1>
+                    <h1 className="title">Plataforma <br /> STM ONG's</h1>
                     <p className="description">
                         Ajude a pessoas e instituições sem fins lucrativos contribuindo através de campanhas de arrecadação.
                     </p>
