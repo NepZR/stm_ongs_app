@@ -1,0 +1,79 @@
+.container-pass-recovery {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.card-pass-recovery {
+    background-color: var(--white);
+    border-radius: 15px;
+    padding: 2rem;
+    max-height: 70vh;
+    max-width: 25rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    box-shadow: #b3b5e2 0px 8px 20px; 
+}
+
+.card-pass-title {
+    color: var(--purple);
+    margin-bottom: 2rem;
+}
+
+.card-pass-text {
+    font-size: 1rem;
+    color: var(--purple);
+}
+
+label {
+    color: var(--purple);
+    font-weight: bold;
+    margin-top: 2rem;
+}
+
+.img-title-container {
+    margin-left: 5vw;
+}
+
+.girl {
+    max-width: 80vw;
+    max-height: 80vh;
+}
+
+@media screen  and (max-width: 720px){
+    .container-pass-recovery {
+        flex-direction: column-reverse;
+    }
+
+    .card-pass-recovery {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        max-width: 80vw;
+    }
+
+    .card-pass-title {
+        font-size: 2vh ;
+    }
+
+    .img-title-container {
+        margin-left: 0;
+    }
+}
+
+@media screen  and (max-width: 1265px){
+    .container-pass-recovery {
+        flex-direction: column-reverse;
+    }
+
+    .card-pass-recovery {
+        margin-top: 2rem;
+        margin-bottom: 2rem; 
+        max-width: 40rem;
+    }
+
+    .img-title-container {
+        margin-left: 0;
+    }
+    
+}

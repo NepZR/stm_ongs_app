@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Wellcome from './components/Pages/Wellcome';
 import Login from './components/Pages/Login';
 import Cadastro from './components/Pages/Cadastro';
+import PassRecovery from './components/Pages/PassRecovery';
 
 export default function Routes() {
     return (
@@ -13,6 +14,7 @@ export default function Routes() {
                     <Route path="/" component={Wellcome} exact/>
                     <Route path="/login" component={Login}/>
                     <Route path="/sing-up" component={Cadastro}/>
+                    <Route path="/password-recovery" component={PassRecovery} />
                 </Switch>
             </BrowserRouter>
         </>
