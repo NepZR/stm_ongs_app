@@ -3,16 +3,18 @@ import { Link } from "react-router-dom";
 import Girl from './../../../images/girl-sitting.svg';
 import SignUpForm from "../../SignUpForm";
 import './styles.css'
+import TitleGirl from "../../TiitleGirl";
 
 export default function CadastroFisica() {
 
     return (
         <>
             <div className="cadastro-container">
-                <section>
+                {/* <section>
                     <h1 className="title-singup-page">Plataforma <br/> STM ONG's</h1>
                     <img src={Girl} className="girl-cad" alt="Mulher sentada em poltrona" />
-                </section>
+                </section> */}
+                <TitleGirl/>
                 <section className="form-sing-container">
                     <h1 className="title-singup">Cadastro</h1>
                     {/* <div className="type-form-container">
@@ -26,7 +28,7 @@ export default function CadastroFisica() {
                         </label>
                     </div> */}
                     <SignUpForm />
-                    <Link style={{textAlign: "center"}} to="/login"> Já possuo cadastro?</Link> 
+                    <Link className="link" style={{textAlign: "center", marginTop:'1rem'}} to="/login"> Já possuo cadastro?</Link> 
                 </section>
             </div>
         </>

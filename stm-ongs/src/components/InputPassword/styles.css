@@ -9,3 +9,11 @@
     text-align: left;
     padding-left: 2rem;
 }
+
+.input-login:hover {
+    box-shadow: #b3b5e2 0px 1px 5px; 
+}
+
+.icon:hover {
+    box-shadow: #b3b5e2 0px 1px 5px; 
+}

@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import Button from "../../Button";
 
 import { useState } from 'react';
+import TitleGirl from "../../TiitleGirl";
 
 function hidePass() {
     let inputPassword = document.getElementById('password')
@@ -35,10 +36,11 @@ export default function Login() {
     return (
         <>
             <div className="login-container">
-                <section>
+                {/* <section>
                     <h1 className="title-login-page" >Plataforma <br /> STM ONG's</h1>
                     <img className="girl-login" src={GirlSitting} alt="" />
-                </section>
+                </section> */}
+                <TitleGirl/>
                 <section className="form-login-container">
                     <h2 className="title-form">Login</h2>
                     <form className="form-login" action="" method="post">

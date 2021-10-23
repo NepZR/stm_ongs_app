@@ -17,4 +17,9 @@
 .input:focus{
     outline: none;
     border: 3px solid #5E65EB;
+    box-shadow: #b3b5e2 0px 1px 5px; 
+}
+
+.input:hover {
+    box-shadow: #b3b5e2 0px 1px 5px; 
 }

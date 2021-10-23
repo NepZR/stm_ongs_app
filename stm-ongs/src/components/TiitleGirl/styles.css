@@ -1,7 +1,9 @@
 .title-girl-container {
     display: flex;
     flex-direction: column;
-    margin-top: 4rem;
+    align-items: center;
+    margin-top: 2rem;
+    margin-left: 5vw;
 }
 
 .title-girl {
@@ -26,6 +28,7 @@
     }
     .title-girl-container {
         margin-top: 2rem;
+        margin-left: 0;
     }
 }
 
