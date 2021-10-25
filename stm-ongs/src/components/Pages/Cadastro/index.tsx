@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Girl from './../../../images/girl-sitting.svg';
 import SignUpForm from "../../SignUpForm";
 import './styles.css'
 import TitleGirl from "../../TiitleGirl";
