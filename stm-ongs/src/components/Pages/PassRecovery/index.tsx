@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Button from "../../Button";
 import Input from "../../Input";
 import TitleGirl from "../../TiitleGirl";
-import Girl from './../../../images/girl-sitting.svg';
 import './styles.css'
 
 // adicionar no componente input a prop label

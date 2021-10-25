@@ -3,7 +3,7 @@ import GirlSitting from './../../../images/girl-sitting.svg';
 import ArrowLeft from './../../../images/arrow-left.svg'
 import './../../../styles/global.css';
 import './styles.css';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 export default function Wellcome() {
     return (

@@ -1,6 +1,5 @@
 import React from "react";
 import './styles.css';
-import GirlSitting from './../../../images/girl-sitting.svg';
 import EyeOp from './../../../images/eye.svg'
 import EyeCl from './../../../images/eye-closed.svg'
 import { Link } from 'react-router-dom'
