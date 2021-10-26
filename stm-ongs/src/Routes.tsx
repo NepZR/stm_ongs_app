@@ -12,8 +12,8 @@ export default function Routes() {
             <BrowserRouter>
                 <Switch>
                     <Route path="/" component={Wellcome} exact/>
-                    <Route path="/login" component={Login}/>
-                    <Route path="/sing-up" component={Cadastro}/>
+                    <Route path="/sign-in" component={Login}/>
+                    <Route path="/sign-up" component={Cadastro}/>
                     <Route path="/password-recovery" component={PassRecovery} />
                 </Switch>
             </BrowserRouter>

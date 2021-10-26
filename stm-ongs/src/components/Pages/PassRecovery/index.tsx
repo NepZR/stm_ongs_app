@@ -22,7 +22,7 @@ export default function PassRecovery() {
                         <Input type="email" name="email" placeholder="usermail@gmail.com" />
                     </label>
                     <Button typeBtn="submit" children="Enviar" />
-                    <Link style={{textAlign: 'center',marginTop:'1rem'}} className="link" to="/login">Realizar login</Link>
+                    <Link style={{textAlign: 'center',marginTop:'1rem'}} className="link" to="/sign-in">Realizar login</Link>
                 </section>
                 {/* <section className="img-title-container">
                     <h1 className="title">Plataforma <br /> STM ONG's</h1>

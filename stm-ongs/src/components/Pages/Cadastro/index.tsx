@@ -27,7 +27,7 @@ export default function CadastroFisica() {
                         </label>
                     </div> */}
                     <SignUpForm />
-                    <Link className="link" style={{textAlign: "center", marginTop:'1rem'}} to="/login"> Já possuo cadastro?</Link> 
+                    <Link className="link" style={{textAlign: "center", marginTop:'1rem'}} to="/sign-in"> Já possuo cadastro?</Link> 
                 </section>
             </div>
         </>

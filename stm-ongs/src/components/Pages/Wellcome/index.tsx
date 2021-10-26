@@ -14,7 +14,7 @@ export default function Wellcome() {
                     <p className="description">
                         Ajude a pessoas e instituições sem fins lucrativos contribuindo através de campanhas de arrecadação.
                     </p>
-                    <Link className="arrow-link" to="/login">
+                    <Link className="arrow-link" to="/sign-in">
                         <img className="arrow" src={ArrowLeft} alt="Seta para a direita" />
                     </Link>
                 </article>

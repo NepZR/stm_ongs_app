@@ -60,7 +60,7 @@ export default function Login() {
                     </form>
                     <div className="links-container">
                         <Link className="link" to="/password-recovery" >Esqueci a senha?</Link>
-                        <Link className="link" to="/sing-up" >Não tenho cadastro?</Link>
+                        <Link className="link" to="/sign-up" >Não tenho cadastro?</Link>
                     </div>
                 </section>
             </div>
