@@ -22,19 +22,6 @@ export default function PassRecovery() {
                     <Button typeBtn="submit" children="Enviar" />
                     <Link style={{ textAlign: 'center', marginTop: '1rem' }} className="link" to="/sign-in">Voltar ao login</Link>
                 </Card>
-                {/* <section className="card-pass-recovery">
-                    <h2 className="card-pass-title">Redefinição de senha</h2>
-                    <p className="card-pass-text">
-                        <strong>Esqueceu a senha ?</strong> Sem problema. Informe o e-mail <strong>cadastrado</strong> no sistema
-                        e receba o link para redefinir sua senha.
-                    </p>
-                    <label htmlFor="">
-                        E-mail
-                        <Input type="email" name="email" placeholder="usermail@gmail.com" />
-                    </label>
-                    <Button typeBtn="submit" children="Enviar" />
-                    <Link style={{textAlign: 'center',marginTop:'1rem'}} className="link" to="/sign-in">Realizar login</Link>
-                </section> */}
                 <TitleGirl />
             </div>
 

@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    margin-top: 2rem;
 }
 
 .card-pass-recovery {
@@ -24,6 +25,7 @@
 .card-pass-text {
     font-size: 1rem;
     color: var(--purple);
+    margin-bottom: 1rem;
 }
 
 label {

@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
     margin-left: 5vw;
 }
 
@@ -23,6 +23,7 @@
 
 @media screen and (max-width: 720px){
     .title-girl {
+        font-size: 2rem;
         margin-left: 0;
         text-align: center;
     }
@@ -36,5 +37,9 @@
     .title-girl {
         margin-left: 0;
         text-align: center;
+    }
+    .title-girl-container {
+        margin-top: 2rem;
+        margin-left: 0;
     }
 }
