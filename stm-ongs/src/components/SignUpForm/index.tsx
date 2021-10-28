@@ -17,9 +17,9 @@ export default function SignUpForm() {
 
     const [type, setType] = useState(form.FISIC);
 
-    function setFormType() {
-        type === form.FISIC ? setType(form.JURIDIC) : setType(form.FISIC)
-    }
+    // function setFormType() {
+    //     type === form.FISIC ? setType(form.JURIDIC) : setType(form.FISIC)
+    // }
 
     return (
         <>
