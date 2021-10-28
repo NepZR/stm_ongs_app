@@ -15,8 +15,9 @@ const form = {
 
 export default function SignUpForm() {
 
-    const [type, setType] = useState(form.FISIC);
-
+    // const [type, setType] = useState(form.FISIC);
+    //Apenas para fins de teste de deploy
+    const type = 'cpf'
     // function setFormType() {
     //     type === form.FISIC ? setType(form.JURIDIC) : setType(form.FISIC)
     // }
