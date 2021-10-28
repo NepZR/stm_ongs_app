@@ -3,6 +3,13 @@
     flex-direction: column;
 }
 
+.title-singup {
+    font-weight: 800;
+    font-size: 3rem;
+    color: #5E65EB;
+    text-shadow: 2px 2px 5px #b3b5e2;
+}
+
 .form-singup {
     display: flex;
     flex-direction: column;

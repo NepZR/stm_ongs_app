@@ -8,6 +8,7 @@ import Card from "../../Card";
 
 import { useState } from 'react';
 import TitleGirl from "../../TiitleGirl";
+import Input from "../../Input";
 
 function hidePass() {
     let inputPassword = document.getElementById('password')
@@ -38,12 +39,9 @@ export default function Login() {
             <div className="login-container">
                 <TitleGirl />
                 <Card>
-                    <h2 className="title-form">Login</h2>
+                    <h2 className="title-form">Sign-in</h2>
                     <form className="form-login" action="" method="post">
-                        <label className="label-login" htmlFor="email">
-                            E-mail
-                            <input placeholder="Insira o e-mail" className="input-login" type="email" name="email" required />
-                        </label>
+                        <Input label="E-mail" type="email" placeholder="Insira o e-mail"  name="email" />
                         <label className="label-login" htmlFor="password">
                             Password
                             <div className="password">
