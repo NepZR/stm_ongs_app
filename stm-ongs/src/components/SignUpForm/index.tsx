@@ -4,7 +4,7 @@ import Input from "../Input";
 import './styles.css';
 import Button from "../Button";
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Card from "../Card";
 // import CheckBox from "../Checkbox";
 
