@@ -5,6 +5,7 @@ import Wellcome from './components/Pages/Wellcome';
 import Login from './components/Pages/Login';
 import Cadastro from './components/Pages/Cadastro';
 import PassRecovery from './components/Pages/PassRecovery';
+import Home from './components/Pages/Home';
 
 export default function Routes() {
     return (
@@ -15,6 +16,7 @@ export default function Routes() {
                     <Route path="/sign-in" component={Login}/>
                     <Route path="/sign-up" component={Cadastro}/>
                     <Route path="/password-recovery" component={PassRecovery} />
+                    <Route path="/home" component={Home} />
                 </Switch>
             </BrowserRouter>
         </>

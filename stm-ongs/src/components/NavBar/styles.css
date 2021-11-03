@@ -1,0 +1,22 @@
+.nav-bar {
+    background-color: var(--purple);
+    padding: 1rem;
+}
+
+.nav-bar-container {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo-nav-bar {
+    max-width: 50px;
+}
+
+.title-nav-bar {
+    margin-left: 1rem;
+    color: white;
+    font-weight: bold;
+}
