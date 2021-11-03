@@ -34,11 +34,11 @@ export default function SignUpForm() {
                 <h1 className="title-singup">Sign-up</h1>
                 <section className="options-container">
                     <label htmlFor="type-user-1">
-                        <input onClick={setFormType} className="input-radio" type="radio" name="type-user" id="cpf" defaultChecked/>
+                        <input onChange={setFormType} className="input-radio" type="radio" name="type-user" id="cpf" defaultChecked/>
                         Doador
                     </label>
                     <label htmlFor="type-user-2">
-                        <input style={{backgroundColor: "black"}} onClick={setFormType} className="input-radio" type="radio" name="type-user" id="cnpj" />
+                        <input style={{backgroundColor: "black"}} onChange={setFormType} className="input-radio" type="radio" name="type-user" id="cnpj" />
                         ONG
                     </label>
                 </section>
