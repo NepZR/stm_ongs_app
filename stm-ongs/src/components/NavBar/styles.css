@@ -1,6 +1,10 @@
 .nav-bar {
     background-color: var(--purple);
     padding: 1rem;
+    position: fixed;
+    height: 80px;
+    width: 100%;
+    
 }
 
 .nav-bar-container {
