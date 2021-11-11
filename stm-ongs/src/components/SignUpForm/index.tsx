@@ -43,9 +43,9 @@ export default function SignUpForm() {
                     </label>
                 </section>
                 <form className="form-singup" action="" method="post">
-                    <Input label="Nome" type="text" placeholder="Nome" name="name" />
-                    <Input label={type.toUpperCase()} type="text" placeholder={type.toUpperCase()} name={type} />
-                    <Input label="E-mail" type="email" placeholder="E-mail" name="email" />
+                    <Input id="name" label="Nome" type="text" placeholder="Nome" name="name" />
+                    <Input id="type" label={type.toUpperCase()} type="text" placeholder={type.toUpperCase()} name={type} />
+                    <Input id="email" label="E-mail" type="email" placeholder="E-mail" name="email" />
                     <InputPassword name="senha" placeholder="Senha" id="senha" />
                     <InputPassword name="conf_senha" placeholder="Confirmar" id="conf_senha" />
                     <Button typeBtn="submit" children="Cadastrar" />

@@ -34,6 +34,30 @@ export default function Login() {
         }
     }
 
+    /***/
+    function submetLogin() {
+        /**Utilizar o Axios para enviar uma requisição post para a api, verificar os dados retornados e 
+         * redirecionar para a página home
+         * const daddos
+         * axios.post('url-da-api/login',dadosFormulario).then((data)=> {
+         *      if(data.email && data.senha == dadosFormulario){
+         *          redirecionar para home
+         *      } else {
+         *          continuar no login
+         *      }
+         * })
+         * )
+         */
+
+        const pass = document.getElementById('password')
+        const email = document.getElementById('email')
+        console.log( email)
+        console.log( pass)
+    }
+
+    submetLogin()
+     
+
     return (
         <>
             <div className="login-container">
@@ -41,7 +65,7 @@ export default function Login() {
                 <Card>
                     <h2 className="title-form">Sign-in</h2>
                     <form className="form-login" action="" method="post">
-                        <Input label="E-mail" type="email" placeholder="Insira o e-mail"  name="email" />
+                        <Input id="email" label="E-mail" type="email" placeholder="Insira o e-mail"  name="email" />
                         <label className="label-login" htmlFor="password">
                             Password
                             <div className="password">
@@ -52,6 +76,7 @@ export default function Login() {
                             </div>
                         </label>
                         <Button typeBtn="submit">Entrar</Button>
+                        <Link to="/home">Entrar</Link>
                     </form>
                     <div className="links-container">
                         <Link className="link" to="/password-recovery" >Esqueci a senha?</Link>

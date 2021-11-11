@@ -10,11 +10,11 @@ export default function Menu() {
                 <ul className="menu">
                     <li className="menu-item"> 
                         <FiEdit3 className="icon-menu" color="white" size={30}/>
-                        Criar Campanha
+                        Criar
                     </li>
                     <li className="menu-item">
                         <FiAlignLeft className="icon-menu" color="white" size={30}/>
-                        Minhas Campanhas
+                        Campanhas
                     </li>
                     <li className="menu-item">
                         <FiHome className="icon-menu" color="white" size={30}/>

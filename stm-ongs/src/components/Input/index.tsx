@@ -5,7 +5,8 @@ interface InputProps {
     label: string,
     type: string,
     placeholder: string,
-    name: string
+    name: string,
+    id:string
 }
 
 export default function Input(props: InputProps) {
@@ -17,7 +18,8 @@ export default function Input(props: InputProps) {
                 <input 
                     placeholder={props.placeholder} 
                     className="input" 
-                    type={props.type} 
+                    type={props.type}
+                    id={props.id} 
                     name={props.name} 
                     required 
                 />

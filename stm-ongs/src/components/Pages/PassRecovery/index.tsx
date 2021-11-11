@@ -18,7 +18,7 @@ export default function PassRecovery() {
                         <strong>Esqueceu a senha ?</strong> Sem problema. Informe o e-mail <strong>cadastrado</strong> no sistema
                         e receba o link para redefinir sua senha.
                     </p>
-                        <Input label="E-mail" type="email" name="email" placeholder="usermail@gmail.com" />
+                        <Input id="email" label="E-mail" type="email" name="email" placeholder="usermail@gmail.com" />
                     <Button typeBtn="submit" children="Enviar" />
                     <Link style={{ textAlign: 'center', marginTop: '1rem' }} className="link" to="/sign-in">Voltar ao login</Link>
                 </Card>

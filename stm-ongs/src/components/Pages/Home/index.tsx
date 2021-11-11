@@ -7,17 +7,16 @@ export default function Home() {
     return (
         <>
             <NavBar/>
-            <Menu/>
+            <Menu />
             {/**Componentizar essa div para umma lista de campanhas, recebe um
              * array como prop e lista em um container
              */}
             <div style={{
-                padding: '2rem 2rem',
+                // padding: '2rem 2rem',
                 borderRadius:'10px',
-                marginTop: '3rem',
                 justifyContent: 'center',
                 backgroundColor:'#fff',
-                maxWidth: '90rem',
+                maxWidth: '80rem',
                 margin: 'auto',
                 display:"flex", 
                 flexWrap: 'wrap'
@@ -30,6 +29,7 @@ export default function Home() {
                 <Campaing/>
                 <Campaing/>
             </div>
+            
         </>
     )
 }
