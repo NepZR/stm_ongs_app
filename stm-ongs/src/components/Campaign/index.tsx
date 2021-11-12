@@ -2,21 +2,28 @@ import React from "react";
 import './styles.css'
 import Img from './../../images/campaing/cats.png'
 
-export default function Campaing() {
+interface CampaignProps {
+    img: string;
+    title: string;
+    ongName: string;
+    value: number;
+}
+
+export default function Campaing(props: CampaignProps) {
     return (
         <>
             <div className="card-campaing">
                 <img className="img-campaing" src={Img} alt="" />
                 <section className="campaing-description">
                     <header className="title-campaing">
-                        Arrecadação ração para gatos (filhote)
+                        {props.title}
                     </header>
                     <article className="description-text">
                         <p className="ong-name">
-                            ONG União Animal
+                            {props.ongName}
                         </p>
                         <div className="campaing-value">
-                            R$ 300,00
+                            R$ {props.value}
                         </div>
                     </article>
                 </section>

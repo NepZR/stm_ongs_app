@@ -1,0 +1,9 @@
+.list-campaing-container {
+    border-radius: 10px;
+    justify-content: center;
+    background-color: #fff;
+    max-width: 80rem;
+    margin: auto;
+    display: flex; 
+    flex-wrap: wrap ;
+}
