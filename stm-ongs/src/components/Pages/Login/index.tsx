@@ -9,81 +9,119 @@ import Card from "../../Card";
 import { useState } from 'react';
 import TitleGirl from "../../TiitleGirl";
 import Input from "../../Input";
+import { ReqLogin } from "../../../utils/types/types";
+import axios  from "axios";
+import Home from "../Home";
+import { Redirect } from "react-router";
+import InputPassword from "../../InputPassword";
 
-function hidePass() {
-    let inputPassword = document.getElementById('password')
-
-    if (inputPassword?.getAttribute('type') === 'password') {
-        inputPassword?.setAttribute('type', 'text')
-    } else {
-        inputPassword?.setAttribute('type', 'password')
-    }
-}
 
 export default function Login() {
 
     const [iconPassword, setIconPassword] = useState(EyeCl)
+    const [isLogged, setIsLogged] = useState(false)
+    const [reqLogin, setReqLogin ] = useState<ReqLogin>({
+        email: '',
+        password: '',
+        typeUser: ''
+    })
+    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('')
 
-    function changeIcon() {
-        if (iconPassword === EyeCl) {
-            hidePass()
-            setIconPassword(EyeOp)
-        } else {
-            hidePass()
-            setIconPassword(EyeCl)
-        }
-    }
-
-    /***/
     function submetLogin() {
-        /**Utilizar o Axios para enviar uma requisição post para a api, verificar os dados retornados e 
-         * redirecionar para a página home
-         * const daddos
-         * axios.post('url-da-api/login',dadosFormulario).then((data)=> {
-         *      if(data.email && data.senha == dadosFormulario){
-         *          redirecionar para home
-         *      } else {
-         *          continuar no login
-         *      }
-         * })
-         * )
-         */
+        const pass = document.getElementById('password') as HTMLInputElement
+        const email = document.getElementById('email') as HTMLInputElement
 
-        const pass = document.getElementById('password')
-        const email = document.getElementById('email')
-        console.log( email)
-        console.log( pass)
+        setReqLogin({
+            email: 'octa.oca44@gmail.com',
+            password: 'octabebe',
+            typeUser: 'ong'
+        })
+        console.log('dados de entrada')
+        console.log(reqLogin)
+        
+        axios.post('http://localhost:3333/login',reqLogin)
+            .then((data)=> {
+                console.log('resposta do server')
+                console.log(data.data)
+                if(data.data.token != undefined || ''){
+                    console.log(data.data.token) 
+                    localStorage.setItem('token',data.data.token) 
+                    setIsLogged(true)
+                } else {
+                    setIsLogged(false)
+                }
+        })
     }
 
-    submetLogin()
-     
+    if(localStorage.getItem('token')) {
+        return (
+            <Redirect to={{
+                    pathname:"/home"
+                }}
+            />
+        )
+    } else {
 
-    return (
-        <>
-            <div className="login-container">
-                <TitleGirl />
-                <Card>
-                    <h2 className="title-form">Sign-in</h2>
-                    <form className="form-login" action="" method="post">
-                        <Input id="email" label="E-mail" type="email" placeholder="Insira o e-mail"  name="email" />
-                        <label className="label-login" htmlFor="password">
-                            Password
-                            <div className="password">
-                                <input placeholder="Insira a senha" className="input-login" type="password" name="password" id="password" required />
-                                <button className="icon" type="button" onClick={changeIcon}>
-                                    <img className="icon-svg" src={iconPassword} alt="Icone senha" />
-                                </button>
-                            </div>
-                        </label>
-                        <Button typeBtn="submit">Entrar</Button>
-                        <Link to="/home">Entrar</Link>
-                    </form>
-                    <div className="links-container">
-                        <Link className="link" to="/password-recovery" >Esqueci a senha?</Link>
-                        <Link className="link" to="/sign-up" >Não tenho cadastro?</Link>
-                    </div>
-                </Card>
-            </div>
-        </>
-    )
+        return (
+            <>
+                <div className="login-container">
+                    <TitleGirl />
+                    <Card>
+                        <h2 className="title-form">Sign-in</h2>
+                        <form className="form-login" onSubmit={submetLogin} action="" method="post">
+                            <Input id="email" label="E-mail" type="email" placeholder="Insira o e-mail"  name="email" />
+                            <InputPassword label="Password" placeholder="Insira a senha" name="password" id="password"/>
+                            {/* <button onClick={submetLogin}>Entrar</button> */}
+                            <Button typeBtn="submit">Entrar</Button>
+                        </form>
+                        <div className="links-container">
+                            <Link className="link" to="/password-recovery" >Esqueci a senha?</Link>
+                            <Link className="link" to="/sign-up" >Não tenho cadastro?</Link>
+                        </div>
+                    </Card>
+                </div>
+            </>
+        )
+
+    }
+
+    // if(isLogged === true) {
+    //     return (
+    //         <Redirect to={{
+    //                 pathname:"/home",
+    //                 state:{
+    //                     type: `${reqLogin.typeUser}`
+    //                 }
+    //             }}
+    //         />
+    //     )
+    // } else {
+
+    //     return (
+    //         <>
+    //             <div className="login-container">
+    //                 <TitleGirl />
+    //                 <Card>
+    //                     <h2 className="title-form">Sign-in</h2>
+    //                     <form className="form-login" onSubmit={submetLogin} action="" method="post">
+    //                         <Input id="email" label="E-mail" type="email" placeholder="Insira o e-mail"  name="email" />
+    //                         <InputPassword label="Password" placeholder="Insira a senha" name="password" id="password"/>
+    //                         {/* <button onClick={submetLogin}>Entrar</button> */}
+    //                         <Button typeBtn="submit">Entrar</Button>
+    //                     </form>
+    //                     <div className="links-container">
+    //                         <Link className="link" to="/password-recovery" >Esqueci a senha?</Link>
+    //                         <Link className="link" to="/sign-up" >Não tenho cadastro?</Link>
+    //                     </div>
+    //                 </Card>
+    //             </div>
+    //         </>
+    //     )
+
+    // }
+
 }
+
+
+  

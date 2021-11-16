@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-// import Campaing from "../../Campaign";
 import Menu from "../../Menu";
 import NavBar from "../../NavBar";
 import ListCampaings from "../../ListCampaings";
 import  { ItemList } from "../../../utils/types/types";
+import { Redirect } from "react-router";
 
-export default function Home() {
+interface HomeProps {
+    typeUser: string
+}
+
+export default function Home(props: HomeProps) {
 
     const [listItens, setListItens] = useState<Array<ItemList>>([
         {
@@ -61,11 +65,20 @@ export default function Home() {
     //     },
     // ]
 
-    return (
-        <>
-            <NavBar/>
-            <Menu />
-            <ListCampaings listCamp={listItens}/>
-        </>
-    )
+    if(localStorage.getItem('token')){
+        return (
+            <>
+                <NavBar/>
+                <Menu />
+                {/* <p>{`tIPO DO USUSRIO ${props.typeUser}`}</p> */}
+                <ListCampaings listCamp={listItens}/>
+            </>
+        )
+    } else {
+        return (
+            <Redirect to='/sign-in'/>
+        )
+
+    }
+
 }

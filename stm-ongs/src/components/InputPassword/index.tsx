@@ -6,9 +6,10 @@ import EyeCl from './../../images/eye-closed.svg';
 import { useState } from 'react';
 
 interface InputPasswordProps {
-    placeholder: string,
-    name: string,
-    id: string
+    label: string;
+    placeholder: string;
+    name: string;
+    id:string;
 }
 
 export default function InputPassword(props: InputPasswordProps) {
@@ -16,7 +17,7 @@ export default function InputPassword(props: InputPasswordProps) {
     const [iconPassword, setIconPassword] = useState(EyeCl)
 
     function hidePass(id: string) {
-        let inputPassword = document.getElementById(id)
+        let inputPassword = document.getElementById(id) as HTMLInputElement
     
         if (inputPassword?.getAttribute('type') === 'password') {
             inputPassword?.setAttribute('type', 'text')
@@ -37,12 +38,15 @@ export default function InputPassword(props: InputPasswordProps) {
 
     return (
         <>
-            <div className="password">
-                <input placeholder={props.placeholder} className="input-login" type="password" name={props.name} id={props.id} required />
-                <button className="icon" type="button" onClick={changeIcon} >
-                    <img className="icon-svg" alt="Icone senha" src={iconPassword}/>
-                </button>
-            </div>
+            <label className="label" htmlFor={props.id}>
+                {props.label}
+                <div className="password">
+                    <input placeholder={props.placeholder} className="input-login" type="password" name={props.name} id={props.id} required />
+                    <button className="icon" type="button" onClick={changeIcon} >
+                        <img className="icon-svg" alt="Icone senha" src={iconPassword}/>
+                    </button>
+                </div>
+            </label>
         </>
     )
 }

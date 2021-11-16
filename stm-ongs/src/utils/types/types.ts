@@ -4,3 +4,9 @@ export type ItemList = {
     valor: number;
     ongName: string;
 }
+
+export type ReqLogin = {
+    email: string;
+    password: string;
+    typeUser: string;
+}
