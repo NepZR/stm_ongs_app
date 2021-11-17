@@ -9,7 +9,7 @@ interface HomeProps {
     typeUser: string
 }
 
-export default function Home(props: HomeProps) {
+export default function Home() {
 
     const [listItens, setListItens] = useState<Array<ItemList>>([
         {
