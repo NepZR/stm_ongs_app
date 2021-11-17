@@ -3,7 +3,6 @@ import Menu from "../../Menu";
 import NavBar from "../../NavBar";
 import ListCampaings from "../../ListCampaings";
 import  { ItemList } from "../../../utils/types/types";
-import { Redirect } from "react-router";
 
 interface HomeProps {
     typeUser: string
@@ -64,21 +63,13 @@ export default function Home() {
     //         ongName: 'Lar do Amor'
     //     },
     // ]
-
-    if(localStorage.getItem('token')){
         return (
             <>
                 <NavBar/>
                 <Menu />
-                {/* <p>{`tIPO DO USUSRIO ${props.typeUser}`}</p> */}
                 <ListCampaings listCamp={listItens}/>
             </>
         )
-    } else {
-        return (
-            <Redirect to='/sign-in'/>
-        )
 
-    }
 
 }
