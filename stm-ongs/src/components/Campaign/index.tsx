@@ -7,12 +7,13 @@ interface CampaignProps {
     title: string;
     ongName: string;
     value: number;
+    key: string
 }
 
 export default function Campaing(props: CampaignProps) {
     return (
         <>
-            <div className="card-campaing">
+            <div key={props.key} className="card-campaing">
                 <img className="img-campaing" src={Img} alt="" />
                 <section className="campaing-description">
                     <header className="title-campaing">

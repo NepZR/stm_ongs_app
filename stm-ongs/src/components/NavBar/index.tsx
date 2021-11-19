@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import './styles.css'
 import Logo from '../../images/logo.png';
 
-function logout() {
-    localStorage.clear()
-}
+import { Context } from '../../Context/AuthContext'
+
+
 
 export default function NavBar() {
+    
+    const { handleLogout } = useContext(Context)
+
+
+    function logout() {
+        handleLogout()
+    }
+    
     return (
         <>
             <div className="nav-bar">

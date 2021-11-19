@@ -17,8 +17,8 @@ export default function ListCampaings(props: ListCampaingsProps) {
     return (
         <>
             <section className="list-campaing-container">
-                {props.listCamp.map((item) => {
-                    return <Campaing img={item.img} title={item.title} ongName={item.ongName} value={item.valor}/>
+                {props.listCamp.map((item,index) => {
+                    return <Campaing key={`key-${index}`} img={item.img} title={item.title} ongName={item.ongName} value={item.valor}/>
                 })}
             </section>
         </>

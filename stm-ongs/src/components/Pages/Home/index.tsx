@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Menu from "../../Menu";
 import NavBar from "../../NavBar";
 import ListCampaings from "../../ListCampaings";
 import  { ItemList } from "../../../utils/types/types";
+import { Context } from  './../../../Context/AuthContext'
+import { Redirect } from "react-router-dom";
 
 interface HomeProps {
     typeUser: string
 }
 
 export default function Home() {
-
+    const { authenticated, user } = useContext(Context)
     const [listItens, setListItens] = useState<Array<ItemList>>([
         {
             img: '',
@@ -30,6 +32,36 @@ export default function Home() {
             ongName: 'Lar do Amor'
         },
     ])
+
+    console.log(authenticated)
+
+    if(authenticated) {
+        return (
+            <>
+                <NavBar/>
+                <Menu />
+                {`${user.type}`}
+                <ListCampaings listCamp={listItens}/>
+            </>
+        )
+    }else {
+        return (
+            <Redirect to="/sign-in"/>
+        )
+    }
+
+    
+
+        
+
+
+}
+
+
+
+
+
+
 
     /**useEffect(()=>{
      * 
@@ -63,13 +95,3 @@ export default function Home() {
     //         ongName: 'Lar do Amor'
     //     },
     // ]
-        return (
-            <>
-                <NavBar/>
-                <Menu />
-                <ListCampaings listCamp={listItens}/>
-            </>
-        )
-
-
-}
