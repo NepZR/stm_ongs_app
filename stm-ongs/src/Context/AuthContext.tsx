@@ -2,6 +2,7 @@ import React, {createContext, SetStateAction, useEffect, useState} from "react";
 import { authUser } from "../auth/auth";
 import { Redirect } from "react-router";
 import history from './../history/history'
+import api from "../auth/api";
 
 interface ContexProps {
     authenticated: boolean;
@@ -25,7 +26,6 @@ export const Context = createContext({} as ContexProps);
 
 export function AuthProvider({children}: any) {
 
-    //const mockUser = { email: "octa.oca44@gmail.com", password: "octabebe"}
     const [user, setUser] = useState<User>({name: '',email: '', type:''})
     
     //const authenticated = !!user;
@@ -34,8 +34,9 @@ export function AuthProvider({children}: any) {
     useEffect(() => {
         const token = localStorage.getItem('stmongs-token')
 
-        if(token) {
+        if(token != undefined && token != '') {
             setAuthenticated(true)
+            //api.defaults.headers. = `Bearer ${JSON.parse(token)}`
         }
     },[])
 
@@ -50,11 +51,13 @@ export function AuthProvider({children}: any) {
             email,
             password
         })
-        //console.log('Token: ',token)
-        //console.log('Data User: ',user)
-        setUser(user)
-        localStorage.setItem('stmongs-token',token)
-        setAuthenticated(true) 
+        console.log('Token: ',token)
+        console.log('Data User: ',user)
+        if (token != undefined && token != '' && token != 'undefined') {
+            localStorage.setItem('stmongs-token',token)
+            setUser(user)
+            setAuthenticated(true)
+        } 
     }
 
 

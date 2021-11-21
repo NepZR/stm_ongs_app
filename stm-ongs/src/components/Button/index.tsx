@@ -1,15 +1,16 @@
-import React, { HTMLInputTypeAttribute } from "react";
+import React, { HTMLAttributes } from "react";
 import './styles.css'
 
-interface ButtonProps {
-    typeBtn?: HTMLInputTypeAttribute;
+ interface ButtonProps {
+    typeBtn?: string;
     children: string;
+    onclick?: (data:any) => Promise<void>;
 }
 
-export default function Button(props: ButtonProps) {
+export default function Button({typeBtn, children, onclick}: ButtonProps) {
     return (
         <>
-            <button type='submit' className="button"> {props.children} </button>
+            <button onClick={onclick} type='button' className="button"> {children} </button>
         </>
     )
 }

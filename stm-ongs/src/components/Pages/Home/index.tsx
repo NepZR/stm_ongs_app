@@ -6,9 +6,6 @@ import  { ItemList } from "../../../utils/types/types";
 import { Context } from  './../../../Context/AuthContext'
 import { Redirect } from "react-router-dom";
 
-interface HomeProps {
-    typeUser: string
-}
 
 export default function Home() {
     const { authenticated, user } = useContext(Context)
@@ -33,14 +30,14 @@ export default function Home() {
         },
     ])
 
-    console.log(authenticated)
+    console.log('Home: '+authenticated)
 
     if(authenticated) {
         return (
             <>
                 <NavBar/>
                 <Menu />
-                {`${user.type}`}
+                {/* {`${user.type}`} */}
                 <ListCampaings listCamp={listItens}/>
             </>
         )

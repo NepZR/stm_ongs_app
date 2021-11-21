@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Card from "../../Card";
 import TitleGirl from "../../TiitleGirl";
 import Input from "../../Input";
+import Button from "../../Button";
 import InputPassword from "../../InputPassword";
 import { Context } from "../../../Context/AuthContext";
 import { Redirect } from 'react-router-dom'
@@ -12,16 +13,22 @@ import { Redirect } from 'react-router-dom'
 export default function Login() {
 
     const { handleLogin, authenticated } = useContext(Context)
+    
+    interface IloginData { email: string; password: string; }
 
     async function submetLogin(data: any) {
-        const mockUser = { email: "octa.oca44@gmail.com", password: "octabebe"}
         data.preventDefault();
-
+        //const mockUser: IloginData = { email: "octa.oca44@gmail.com", password: "octabebe"}
+        const email = document.getElementById('email') as HTMLInputElement
+        const password = document.getElementById('password') as HTMLInputElement
         console.log('Dados submetidos')
-        //console.log(data)
-        console.log(mockUser)
+        console.log()
+        const formData = {
+            email: email.value, 
+            password: password.value
+        }
 
-        await handleLogin(mockUser)
+        await handleLogin(formData)
     }
 
     if(authenticated) {
@@ -37,11 +44,10 @@ export default function Login() {
                     <Card>
                         <h2 className="title-form">Sign-in</h2>
                         <form className="form-login" >
-                            <Input id="email" label="E-mail" type="email" placeholder="Insira o e-mail"  name="email" />
-                            <InputPassword label="Password" placeholder="Insira a senha" name="password" id="password"/>
-                            <button onClick={submetLogin}>Entrar</button> 
-                            <Link to="/home">Entrar</Link>
-                            {/* <Button typeBtn="button">Entrar</Button> */}
+                            <Input id="email" name="email" label="E-mail" type="email" placeholder="Insira o e-mail"   />
+                            <InputPassword id="password" name="password" label="Password" placeholder="Insira a senha"  />
+                            {/* <button onClick={submetLogin}>Entrar</button>  */}
+                            <Button onclick={submetLogin} >Entrar</Button>
                         </form>
                         <div className="links-container">
                             <Link className="link" to="/password-recovery" >Esqueci a senha?</Link>
