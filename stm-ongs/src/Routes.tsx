@@ -6,6 +6,7 @@ import Login from './components/Pages/Login';
 import Cadastro from './components/Pages/Cadastro';
 import PassRecovery from './components/Pages/PassRecovery';
 import Home from './components/Pages/Home';
+import NovaCampanha from './components/Pages/NovaCampanha';
 
 export default function Routes() {
     return (
@@ -17,6 +18,7 @@ export default function Routes() {
                     <Route path="/sign-up" component={Cadastro}/>
                     <Route path="/password-recovery" component={PassRecovery} />
                     <Route path="/home" component={Home} />
+                    <Route path="/campaings" component={NovaCampanha} />
                 </Switch>
             </BrowserRouter>
         </>

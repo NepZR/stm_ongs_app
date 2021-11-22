@@ -3,6 +3,7 @@ import './styles.css'
 import { FiAlignLeft, FiHome, FiUser, FiEdit3, FiSearch } from 'react-icons/fi';
 import { Context } from "../../Context/AuthContext";
 import  { typeUser }  from './../../utils/types/types'
+import { Link } from "react-router-dom";
 
 export default function Menu() {
     //Pega apenas o atributo type do objeto user
@@ -14,14 +15,14 @@ export default function Menu() {
             <>
                 <div className="menu-container">
                     <ul className="menu">
-                        <li className="menu-item"> 
+                        <Link to="/campaings" className="menu-item"> 
                             <FiEdit3 className="icon-menu" color="white" size={30}/>
                             Criar
-                        </li>
-                        <li className="menu-item">
+                        </Link>
+                        <Link to="/home" className="menu-item">
                             <FiHome className="icon-menu" color="white" size={30}/>
                             Home
-                        </li>
+                        </Link>
                         <li className="menu-item">
                             <FiSearch className="icon-menu" color="white" size={30}/>
                             Busca
@@ -42,13 +43,13 @@ export default function Menu() {
                 <div className="menu-container">
                     <ul className="menu">
                         <li className="menu-item">
-                            <FiHome className="icon-menu" color="white" size={30}/>
-                            Home
-                        </li>
-                        <li className="menu-item">
                             <FiSearch className="icon-menu" color="white" size={30}/>
                             Busca
                         </li>
+                        <Link to="/home" className="menu-item">
+                            <FiHome className="icon-menu" color="white" size={30}/>
+                            Home
+                        </Link>
                         <li className="menu-item">
                             <FiUser className="icon-menu" color="white" size={30}/>
                             Perfil
