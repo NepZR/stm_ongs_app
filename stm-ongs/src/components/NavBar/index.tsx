@@ -21,7 +21,7 @@ export default function NavBar() {
                 <div className="nav-bar-container">
                     <img className="logo-nav-bar" src={Logo} alt="Logo STM ONGs" />
                     <p className="title-nav-bar"> STM ONGs </p>
-                    <button onClick={logout}>Logout</button>
+                    <button className="button-logout" onClick={logout}>Logout</button>
                 </div>
             </div>
         </>
