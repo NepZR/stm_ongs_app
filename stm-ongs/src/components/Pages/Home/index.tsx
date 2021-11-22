@@ -37,7 +37,7 @@ export default function Home() {
             <>
                 <NavBar/>
                 <Menu />
-                {/* {`${user.type}`} */}
+                {/* {`${user.name} ${user.email} ${user.type}`} */}
                 <ListCampaings listCamp={listItens}/>
             </>
         )

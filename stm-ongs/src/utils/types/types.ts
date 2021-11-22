@@ -10,3 +10,8 @@ export type ReqLogin = {
     password: string;
     typeUser: string;
 }
+
+export const tipeUser = {
+    FISIC: 'FISIC',
+    ONG: 'ONG'
+}

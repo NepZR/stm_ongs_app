@@ -46,7 +46,6 @@ export default function Login() {
                         <form className="form-login" >
                             <Input id="email" name="email" label="E-mail" type="email" placeholder="Insira o e-mail"   />
                             <InputPassword id="password" name="password" label="Password" placeholder="Insira a senha"  />
-                            {/* <button onClick={submetLogin}>Entrar</button>  */}
                             <Button onclick={submetLogin} >Entrar</Button>
                         </form>
                         <div className="links-container">
