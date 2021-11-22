@@ -11,7 +11,7 @@ export type ReqLogin = {
     typeUser: string;
 }
 
-export const tipeUser = {
+export const typeUser = {
     FISIC: 'FISIC',
     ONG: 'ONG'
 }

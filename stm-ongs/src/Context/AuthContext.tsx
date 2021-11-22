@@ -3,6 +3,7 @@ import { authUser } from "../auth/auth";
 import { Redirect } from "react-router";
 import history from './../history/history'
 import api from "../auth/api";
+import { typeUser } from './../utils/types/types'
 
 interface ContexProps {
     authenticated: boolean;
@@ -26,7 +27,7 @@ export const Context = createContext({} as ContexProps);
 
 export function AuthProvider({children}: any) {
 
-    const [user, setUser] = useState<User>({name: '',email: '', type:''})
+    const [user, setUser] = useState<User>({name: '',email: '', type:typeUser.ONG})
     
     //const authenticated = !!user;
     const [authenticated, setAuthenticated] = useState(false)
