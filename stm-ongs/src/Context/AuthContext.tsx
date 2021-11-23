@@ -35,7 +35,7 @@ export function AuthProvider({children}: any) {
     useEffect(() => {
         const token = localStorage.getItem('stmongs-token')
 
-        if(token != undefined && token != '') {
+        if(token !== undefined && token !== '') {
             setAuthenticated(true)
             //api.defaults.headers. = `Bearer ${JSON.parse(token)}`
         }
@@ -54,7 +54,7 @@ export function AuthProvider({children}: any) {
         })
         console.log('Token: ',token)
         console.log('Data User: ',user)
-        if (token != undefined && token != '' && token != 'undefined') {
+        if (token !== undefined && token !== '' && token !== 'undefined') {
             localStorage.setItem('stmongs-token',token)
             setUser(user)
             setAuthenticated(true)
