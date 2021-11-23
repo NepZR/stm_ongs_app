@@ -17,9 +17,11 @@
     font-weight: bold;
     font-size: 15px;
     color: #5E65EB;
+    transition: .5s;
 }
 
 .input:focus{
+    transition: .5s;
     outline: none;
     border: 3px solid #5E65EB;
     box-shadow: #b3b5e2 0px 1px 5px; 
