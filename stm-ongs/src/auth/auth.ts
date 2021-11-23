@@ -16,7 +16,7 @@ async function authUser(userData: IFormData){
     await api.post('/login',userData)
     .then((data)=> {
 
-        if(data.data.token != undefined) {
+        if(data.data.token !== undefined) {
             console.log('Axios dentro: ',data.data.token)
             tk.token = data.data.token
             tk.user = data.data.user
