@@ -27,7 +27,7 @@ export const Context = createContext({} as ContexProps);
 
 export function AuthProvider({children}: any) {
 
-    const [user, setUser] = useState<User>({name: '',email: '', type:typeUser.ONG})
+    const [user, setUser] = useState<User>({name: '',email: '', type:''})
     
     //const authenticated = !!user;
     const [authenticated, setAuthenticated] = useState(false)
