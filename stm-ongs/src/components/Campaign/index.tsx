@@ -16,10 +16,10 @@ export default function Campaing({ id, img, value, key, ongName, title }: Campai
 
     if (value) {
         return (
-            <Link to={`campaings/${id}`}>
-                <div key={key} className="card-campaing">
-                    <img className="img-campaing" src={Img} alt="" />
-                    <section className="campaing-description">
+            <div key={key} className="card-campaing">
+                <img className="img-campaing" src={Img} alt="" />
+                <section className="campaing-description">
+                    <Link style={{ textDecoration: 'none', color: '#5A5757' }} to={`campaings/${id}`}>
                         <header className="title-campaing">
                             {title}
                         </header>
@@ -31,16 +31,16 @@ export default function Campaing({ id, img, value, key, ongName, title }: Campai
                                 R$ {value}
                             </div>
                         </article>
-                    </section>
-                </div>
-            </Link>
+                    </Link>
+                </section>
+            </div>
         )
     } else {
         return (
             <div key={key} className="card-campaing">
                 <img className="img-campaing" src={Img} alt="" />
                 <section className="campaing-description">
-                    <Link to={`campaings/${id}`}>
+                    <Link style={{ textDecoration: 'none', color: '#5A5757' }} to={`campaings/${id}`}>
                         <header className="title-campaing">
                             {title}
                         </header>
