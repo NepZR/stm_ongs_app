@@ -1,7 +1,68 @@
 .campaing-container {
-    background-color: var(--white);
-    max-width: 50rem;
-    padding: 5rem;
-    border-radius: 10px;
-    box-shadow: #b3b5e2 0px 8px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card-campaing-details {
+  background-color: var(--white);
+  width: 50rem;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: #b3b5e2 0px 8px 20px;
+}
+
+.campaing-photo {
+  width: 100%;
+}
+
+.description-container {
+  margin: 1rem 5% 2rem 5%;
+}
+
+.type-campaing {
+  font-weight: bold;
+  color: var(--purple);
+}
+
+.title-share {
+  display: flex;
+  align-items: center;
+}
+
+.title-campaing {
+  padding: 0;
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--purple);
+}
+
+.value-date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.value-campaing {
+  color: var(--title-grey);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.final-date {
+  color: var(--purple);
+  font-weight: bold;
+}
+
+.description-campaing {
+  background-color: var(--background-input);
+  border: 3px solid var(--border-input);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: var(--purple);
+  font-weight: bold;
 }
