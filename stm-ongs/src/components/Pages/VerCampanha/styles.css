@@ -1,0 +1,7 @@
+.campaing-container {
+    background-color: var(--white);
+    max-width: 50rem;
+    padding: 5rem;
+    border-radius: 10px;
+    box-shadow: #b3b5e2 0px 8px 20px;
+}

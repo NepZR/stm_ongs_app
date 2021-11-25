@@ -1,8 +1,10 @@
-export type ItemList = {
-    img: string;
-    title: string;
-    valor: number;
-    ongName: string;
+export type CampaingItemHome = {
+    id: number;
+    name: string;
+    campaing_type: number;
+    value?: number;
+    image: string;
+    ong_name: string
 }
 
 export type ReqLogin = {

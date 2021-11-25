@@ -7,18 +7,20 @@ import Cadastro from './components/Pages/Cadastro';
 import PassRecovery from './components/Pages/PassRecovery';
 import Home from './components/Pages/Home';
 import NovaCampanha from './components/Pages/NovaCampanha';
+import VerCampanha from './components/Pages/VerCampanha';
 
 export default function Routes() {
     return (
         <>
             <BrowserRouter>
                 <Switch>
-                    <Route path="/" component={Wellcome} exact/>
-                    <Route path="/sign-in" component={Login}/>
-                    <Route path="/sign-up" component={Cadastro}/>
+                    <Route path="/" component={Wellcome} exact />
+                    <Route path="/sign-in" component={Login} />
+                    <Route path="/sign-up" component={Cadastro} />
                     <Route path="/password-recovery" component={PassRecovery} />
                     <Route path="/home" component={Home} />
-                    <Route path="/campaings" component={NovaCampanha} />
+                    <Route path="/campaings" exact component={NovaCampanha} />
+                    <Route path="/campaings/:id" component={VerCampanha} />
                 </Switch>
             </BrowserRouter>
         </>
