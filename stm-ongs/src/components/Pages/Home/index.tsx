@@ -1,35 +1,22 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Menu from "../../Menu";
 import NavBar from "../../NavBar";
 import ListCampaings from "../../ListCampaings";
-import { CampaingItemHome } from "../../../utils/types/types";
 import { Context } from "./../../../Context/AuthContext";
 import { Redirect } from "react-router-dom";
+import api from "../../../auth/api";
 
-import { campaingsHome } from "../../../dataTest/campaingsHome";
+//import { campaingsHome } from "../../../dataTest/campaingsHome";
 
 export default function Home() {
     const { authenticated, user } = useContext(Context);
-    // const [listItens, setListItens] = useState<Array<CampaingItemHome>>([
-    //     {
-    //         image: "",
-    //         name: "Arrecadação de ração para gatos filhotes",
-    //         value: 250,
-    //         ongName: "União Animal",
-    //     },
-    //     {
-    //         image: "",
-    //         name: "Ração para Gatos",
-    //         value: 320,
-    //         ongName: "Lar do Amor",
-    //     },
-    //     {
-    //         img: "",
-    //         title: "Ração para Gatos2",
-    //         valor: 320,
-    //         ongName: "Lar do Amor",
-    //     },
-    // ]);
+    const [campaingsHome, setCampaingsHome] = useState([])
+
+    useEffect(() => {
+        api.get('/campaings').then((response) => {
+            setCampaingsHome(response.data)
+        })
+    }, [])
 
     console.log("Home: " + authenticated);
 
@@ -38,7 +25,6 @@ export default function Home() {
             <>
                 <NavBar />
                 <Menu />
-                {/* {`${user.name} ${user.email} ${user.type}`} */}
                 <ListCampaings listCamp={campaingsHome} />
             </>
         );
@@ -46,36 +32,3 @@ export default function Home() {
         return <Redirect to="/sign-in" />;
     }
 }
-
-/**useEffect(()=>{
- *
- * axios.get('url').then((data) => {
- *  setListItens(data)
- * }).catch(err){
- *
- * },[listItens])
- *
- *
- * }
- */
-
-// const l: Array<ItemList> = [
-//     {
-//         img: '',
-//         title: 'Arrecadação de ração para gatos filhotes',
-//         valor: 250,
-//         ongName: 'União Animal'
-//     },
-//     {
-//         img: '',
-//         title: 'Ração para Gatos',
-//         valor: 320,
-//         ongName: 'Lar do Amor'
-//     },
-//     {
-//         img: '',
-//         title: 'Ração para Gatos2',
-//         valor: 320,
-//         ongName: 'Lar do Amor'
-//     },
-// ]

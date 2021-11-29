@@ -27,37 +27,21 @@ export const campaingsHome: CampaingItemHome[] = [
         ong_name: 'Creche SEARA'
     },
     {
-        id: 3,
-        name: "Arrecadação de alimentos para montagem de cestas básicas",
-        campaing_type: 2,
-        //value: undefined,
-        image: require('./../images/campaing/cats.png'),
-        ong_name: 'Creche SEARA'
-    },
-    {
-        id: 3,
-        name: "Arrecadação de alimentos para montagem de cestas básicas",
-        campaing_type: 2,
-        //value: undefined,
-        image: require('./../images/campaing/cats.png'),
-        ong_name: 'Creche SEARA'
-    },
-    {
-        id: 3,
-        name: "Arrecadação de alimentos para montagem de cestas básicas",
-        campaing_type: 2,
-        //value: undefined,
-        image: require('./../images/campaing/cats.png'),
-        ong_name: 'Creche SEARA'
-    },
-    {
         id: 4,
-        name: "Arrecadação de Brinquedos (Dia das crianças)",
+        name: "Arrecadação de alimentos para montagem de cestas básicas",
         campaing_type: 2,
         //value: undefined,
         image: require('./../images/campaing/cats.png'),
-        ong_name: 'APAE'
+        ong_name: 'Creche SEARA'
     },
+    {
+        id: 5,
+        name: "Arrecadação de alimentos para montagem de cestas básicas",
+        campaing_type: 2,
+        //value: undefined,
+        image: require('./../images/campaing/cats.png'),
+        ong_name: 'Creche SEARA'
+    }
 ];
 
 export const campaingDetails = [

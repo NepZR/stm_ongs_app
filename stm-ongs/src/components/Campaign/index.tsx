@@ -20,7 +20,7 @@ export default function Campaing({ id, img, value, key, ongName, title }: Campai
                 <img className="img-campaing" src={Img} alt="" />
                 <section className="campaing-description">
                     <Link style={{ textDecoration: 'none', color: '#5A5757' }} to={`campaings/${id}`}>
-                        <header className="title-campaing">
+                        <header className="campaing-title">
                             {title}
                         </header>
                         <article className="description-text">
@@ -41,7 +41,7 @@ export default function Campaing({ id, img, value, key, ongName, title }: Campai
                 <img className="img-campaing" src={Img} alt="" />
                 <section className="campaing-description">
                     <Link style={{ textDecoration: 'none', color: '#5A5757' }} to={`campaings/${id}`}>
-                        <header className="title-campaing">
+                        <header className="campaing-title">
                             {title}
                         </header>
                         <article className="description-text">
