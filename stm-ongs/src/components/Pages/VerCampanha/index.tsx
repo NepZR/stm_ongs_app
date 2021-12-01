@@ -26,7 +26,7 @@ interface ICampaing {
 
 export default function VerCampanha() {
 
-    const { id }: any = useParams()
+    //const { id }: any = useParams()
     const [campaing, setCampaing] = useState<ICampaing>({
         id_campaing: 12,
         name: '',
@@ -54,6 +54,8 @@ export default function VerCampanha() {
 
 
     useEffect(() => {
+
+        const { id }: any = useParams()
 
         async function getInfoCamp(idCamp: any) {
             await api.get(`/campaings/${idCamp}`)
