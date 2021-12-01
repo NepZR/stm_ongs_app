@@ -12,7 +12,7 @@ import Campaing from "../../Campaign";
 import { FiShare } from 'react-icons/fi';
 import api from "../../../auth/api";
 
-interface Campaing {
+interface ICampaing {
     id_campaing: number,
     name: string,
     description: string,
@@ -27,7 +27,7 @@ interface Campaing {
 export default function VerCampanha() {
 
     const { id }: any = useParams()
-    const [campaing, setCampaing] = useState<Campaing>({
+    const [campaing, setCampaing] = useState<ICampaing>({
         id_campaing: 12,
         name: '',
         description: '',
@@ -62,7 +62,7 @@ export default function VerCampanha() {
 
     useEffect(() => {
         getInfoCamp()
-        console.log(campaing)
+        //console.log(campaing)
     }, [])
 
 
