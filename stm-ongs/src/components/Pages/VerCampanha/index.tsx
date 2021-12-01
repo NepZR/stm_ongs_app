@@ -51,16 +51,19 @@ export default function VerCampanha() {
      * 
      */
 
-    async function getInfoCamp() {
-        await api.get(`/campaings/${id}`)
-            .then((response) => {
-                setCampaing(response.data)
-            }).catch((err) => {
-                console.log(err)
-            })
-    }
+
 
     useEffect(() => {
+
+        async function getInfoCamp() {
+            await api.get(`/campaings/${id}`)
+                .then((response) => {
+                    setCampaing(response.data)
+                }).catch((err) => {
+                    console.log(err)
+                })
+        }
+
         getInfoCamp()
         //console.log(campaing)
     }, [])
