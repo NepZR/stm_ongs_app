@@ -8,6 +8,7 @@ import PassRecovery from './components/Pages/PassRecovery';
 import Home from './components/Pages/Home';
 import NovaCampanha from './components/Pages/NovaCampanha';
 import VerCampanha from './components/Pages/VerCampanha';
+import EditCampaing from './components/Pages/EditCampaing';
 
 export default function Routes() {
     return (
@@ -21,6 +22,7 @@ export default function Routes() {
                     <Route path="/home" component={Home} />
                     <Route path="/campaings" exact component={NovaCampanha} />
                     <Route path="/campaings/:id" component={VerCampanha} />
+                    <Route path="/campaings-edit/:id" component={EditCampaing} />
                 </Switch>
             </BrowserRouter>
         </>

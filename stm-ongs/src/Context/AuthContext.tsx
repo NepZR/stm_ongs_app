@@ -1,4 +1,4 @@
-import React, {createContext, SetStateAction, useEffect, useState} from "react";
+import React, { createContext, SetStateAction, useEffect, useState } from "react";
 import { authUser } from "../auth/auth";
 import { Redirect } from "react-router";
 import history from './../history/history'
@@ -25,21 +25,21 @@ interface User {
 
 export const Context = createContext({} as ContexProps);
 
-export function AuthProvider({children}: any) {
+export function AuthProvider({ children }: any) {
 
-    const [user, setUser] = useState<User>({name: '',email: '', type:''})
-    
+    const [user, setUser] = useState<User>({ name: '', email: '', type: 'ONG' })
+
     //const authenticated = !!user;
     const [authenticated, setAuthenticated] = useState(false)
 
     useEffect(() => {
         const token = localStorage.getItem('stmongs-token')
 
-        if(token !== undefined && token !== '') {
+        if (token !== undefined && token !== '') {
             setAuthenticated(true)
             //api.defaults.headers. = `Bearer ${JSON.parse(token)}`
         }
-    },[])
+    }, [])
 
     function handleLogout() {
         localStorage.removeItem('stmongs-token')
@@ -52,13 +52,13 @@ export function AuthProvider({children}: any) {
             email,
             password
         })
-        console.log('Token: ',token)
-        console.log('Data User: ',user)
+        console.log('Token: ', token)
+        console.log('Data User: ', user)
         if (token !== undefined && token !== '' && token !== 'undefined') {
-            localStorage.setItem('stmongs-token',token)
+            localStorage.setItem('stmongs-token', token)
             setUser(user)
             setAuthenticated(true)
-        } 
+        }
     }
 
 
@@ -73,8 +73,8 @@ export function AuthProvider({children}: any) {
 
 
 /**
- * 
- * 
+ *
+ *
  *     async function handleLogin() {
         const user = {email: "octa.oca44@gmail.com",password: "octabebe",typeUser: 'ong'}
 
