@@ -1,24 +1,36 @@
 .password {
-
 }
 
 .label {
-    color: #5E65EB;
-    font-weight: bold;
+  color: #5e65eb;
+  font-weight: bold;
 }
 
-.input-login, .button-login {
-    width: 100%;
-    height: 4rem;
-    border-radius: 10px;
-    text-align: left;
-    padding-left: 2rem;
+.input-login {
+  border-width: 1px;
+  width: 100%;
+  height: 4rem;
+  border-radius: 10px;
+  text-align: left;
+  padding-left: 2rem;
+}
+
+.input-login:focus {
+  border-width: 2px;
+}
+
+.icon-but {
+  border-style: none;
+  background-color: var(--white);
+  padding: 0.5rem;
 }
 
 .input-login:hover {
-    box-shadow: #b3b5e2 0px 1px 5px; 
+  transition: 0.5s;
+  box-shadow: #b3b5e2 0px 1px 5px;
 }
 
 .icon:hover {
-    box-shadow: #b3b5e2 0px 1px 5px; 
+  transition: 0.5s;
+  box-shadow: #b3b5e2 0px 1px 5px;
 }

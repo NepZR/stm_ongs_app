@@ -59,7 +59,7 @@ export default function EditCampaing() {
                         </div>
 
 
-                        <Button>Cadastrar Campanha</Button>
+                        <Button>Salvar Alterações</Button>
 
                     </form>
                 </section>

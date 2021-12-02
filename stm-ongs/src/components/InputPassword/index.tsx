@@ -9,7 +9,7 @@ interface InputPasswordProps {
     label: string;
     placeholder: string;
     name: string;
-    id:string;
+    id: string;
 }
 
 export default function InputPassword(props: InputPasswordProps) {
@@ -18,7 +18,7 @@ export default function InputPassword(props: InputPasswordProps) {
 
     function hidePass(id: string) {
         let inputPassword = document.getElementById(id) as HTMLInputElement
-    
+
         if (inputPassword?.getAttribute('type') === 'password') {
             inputPassword?.setAttribute('type', 'text')
         } else {
@@ -26,8 +26,8 @@ export default function InputPassword(props: InputPasswordProps) {
         }
     }
 
-    function changeIcon(){
-        if(iconPassword === EyeCl) {
+    function changeIcon() {
+        if (iconPassword === EyeCl) {
             hidePass(props.id)
             setIconPassword(EyeOp)
         } else {
@@ -42,8 +42,8 @@ export default function InputPassword(props: InputPasswordProps) {
                 {props.label}
                 <div className="password">
                     <input placeholder={props.placeholder} className="input-login" type="password" name={props.name} id={props.id} required />
-                    <button className="icon" type="button" onClick={changeIcon} >
-                        <img className="icon-svg" alt="Icone senha" src={iconPassword}/>
+                    <button className="icon-but" type="button" onClick={changeIcon} >
+                        <img className="icon-svg" alt="Icone senha" src={iconPassword} />
                     </button>
                 </div>
             </label>
