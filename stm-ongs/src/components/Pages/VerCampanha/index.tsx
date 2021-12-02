@@ -63,7 +63,7 @@ export default function VerCampanha() {
     useEffect(() => {
         getInfoCamp(id)
 
-    }, [])
+    }, [getInfoCamp])
 
 
     return (
