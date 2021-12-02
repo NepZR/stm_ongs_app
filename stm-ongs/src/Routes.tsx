@@ -8,7 +8,7 @@ import PassRecovery from './components/Pages/PassRecovery';
 import Home from './components/Pages/Home';
 import NovaCampanha from './components/Pages/NovaCampanha';
 import VerCampanha from './components/Pages/VerCampanha';
-import EditCampaing from './components/Pages/EditCampaing';
+import EditCampaing from './components/Pages/EditCampaing'
 
 export default function Routes() {
     return (

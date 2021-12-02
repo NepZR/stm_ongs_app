@@ -6,7 +6,8 @@ interface InputProps {
     type: string,
     placeholder: string,
     name: string,
-    id:string
+    id: string,
+    value?: string | number
 }
 
 export default function Input(props: InputProps) {
@@ -15,13 +16,14 @@ export default function Input(props: InputProps) {
         <>
             <label htmlFor={props.name} className="label">
                 {props.label}
-                <input 
-                    placeholder={props.placeholder} 
-                    className="input" 
+                <input
+                    placeholder={props.placeholder}
+                    className="input"
                     type={props.type}
-                    id={props.id} 
-                    name={props.name} 
-                    required 
+                    id={props.id}
+                    value={props.value}
+                    name={props.name}
+                    required
                 />
             </label>
         </>
