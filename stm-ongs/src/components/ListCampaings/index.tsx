@@ -1,7 +1,7 @@
 // import { type } from 'os';
 // import React, { useState } from 'react'
 import Campaing from '../Campaign';
-import { CampaingItemHome } from '../../utils/types/types';
+import { CampaingItemHome } from '../../utils/types';
 import './styles.css';
 
 interface ListCampaingsProps {

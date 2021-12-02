@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
-import NavBar from "../../NavBar";
-import Menu from "../../Menu";
+import NavBar from "../../components/NavBar";
+import Menu from "../../components/Menu";
 import { useParams } from "react-router";
 import { useForm } from "react-hook-form";
-import Input from "../../Input";
-import Button from "../../Button";
-import api from "../../../auth/api";
+import Input from "../../components/Input";
+import Button from "../../components/Button";
+import api from "../../auth/api";
 
 interface ICampaing {
     id_campaing: number;

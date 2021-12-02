@@ -1,5 +1,5 @@
 import React from "react";
-import Girl from './../../images/girl-sitting.svg';
+import Girl from './../../assets/images/girl-sitting.svg';
 import './styles.css';
 
 export default function TitleGirl() {

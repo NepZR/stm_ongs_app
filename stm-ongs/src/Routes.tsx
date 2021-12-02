@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-import Wellcome from './components/Pages/Wellcome';
-import Login from './components/Pages/Login';
-import Cadastro from './components/Pages/Cadastro';
-import PassRecovery from './components/Pages/PassRecovery';
-import Home from './components/Pages/Home';
-import NovaCampanha from './components/Pages/NovaCampanha';
-import VerCampanha from './components/Pages/VerCampanha';
-import EditCampaing from './components/Pages/EditCampaing'
+import Wellcome from './pages/Wellcome';
+import Login from './pages/Login';
+import Cadastro from './pages/Cadastro';
+import PassRecovery from './pages/PassRecovery';
+import Home from './pages/Home';
+import NovaCampanha from './pages/NovaCampanha';
+import VerCampanha from './pages/VerCampanha';
+import EditCampaing from './pages/EditCampaing'
 
 export default function Routes() {
     return (

@@ -1,16 +1,16 @@
 import React from 'react';
 import Routes from './Routes';
-import './styles/global.css';
+import './globalStyles/global.css';
 
-import history from './history/history'
-import { AuthProvider } from './Context/AuthContext';
+import history from './utils/history/history'
+import { AuthProvider } from './AuthContext/AuthContext';
 import { Router } from 'react-router';
 
 function App() {
   return (
     <AuthProvider>
       <Router history={history}>
-        <Routes/>
+        <Routes />
       </Router>
     </AuthProvider>
   );

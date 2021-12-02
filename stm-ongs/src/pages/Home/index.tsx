@@ -1,10 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
-import Menu from "../../Menu";
-import NavBar from "../../NavBar";
-import ListCampaings from "../../ListCampaings";
-import { Context } from "./../../../Context/AuthContext";
+import Menu from "../../components/Menu";
+import NavBar from "../../components/NavBar";
+import ListCampaings from "../../components/ListCampaings";
+import { Context } from "../../AuthContext/AuthContext";
 import { Redirect } from "react-router-dom";
-import api from "../../../auth/api";
+import api from "../../auth/api";
 
 //import { campaingsHome } from "../../../dataTest/campaingsHome";
 

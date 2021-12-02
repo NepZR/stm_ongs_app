@@ -1,19 +1,19 @@
 import React, { useContext } from "react";
 import './styles.css';
 import { Link } from 'react-router-dom'
-import Card from "../../Card";
-import TitleGirl from "../../TiitleGirl";
-import Input from "../../Input";
-import Button from "../../Button";
-import InputPassword from "../../InputPassword";
-import { Context } from "../../../Context/AuthContext";
+import Card from "../../components/Card";
+import TitleGirl from "../../components/TiitleGirl";
+import Input from "../../components/Input";
+import Button from "../../components/Button";
+import InputPassword from "../../components/InputPassword";
+import { Context } from "../../AuthContext/AuthContext";
 import { Redirect } from 'react-router-dom'
 
 
 export default function Login() {
 
     const { handleLogin, authenticated } = useContext(Context)
-    
+
     interface IloginData { email: string; password: string; }
 
     async function submetLogin(data: any) {
@@ -24,16 +24,16 @@ export default function Login() {
         console.log('Dados submetidos')
         console.log()
         const formData = {
-            email: email.value, 
+            email: email.value,
             password: password.value
         }
 
         await handleLogin(formData)
     }
 
-    if(authenticated) {
+    if (authenticated) {
         return (
-            <Redirect to="/home"/>
+            <Redirect to="/home" />
         )
 
     } else {
@@ -44,8 +44,8 @@ export default function Login() {
                     <Card>
                         <h2 className="title-form">Sign-in</h2>
                         <form className="form-login" >
-                            <Input id="email" name="email" label="E-mail" type="email" placeholder="Insira o e-mail"   />
-                            <InputPassword id="password" name="password" label="Password" placeholder="Insira a senha"  />
+                            <Input id="email" name="email" label="E-mail" type="email" placeholder="Insira o e-mail" />
+                            <InputPassword id="password" name="password" label="Password" placeholder="Insira a senha" />
                             <Button onclick={submetLogin} >Entrar</Button>
                         </form>
                         <div className="links-container">
@@ -58,7 +58,7 @@ export default function Login() {
         )
     }
 
-    
+
 
 }
 

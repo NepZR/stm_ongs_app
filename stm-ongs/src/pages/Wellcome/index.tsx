@@ -1,17 +1,17 @@
 import React, { useContext } from "react";
-import GirlSitting from './../../../images/girl-sitting.svg';
-import ArrowLeft from './../../../images/arrow-left.svg'
-import './../../../styles/global.css';
+import GirlSitting from './../../assets/images/girl-sitting.svg';
+import ArrowLeft from './../../assets/images/arrow-left.svg'
+//import './../../../styles/global.css';
 import './styles.css';
 import { Link, Redirect } from 'react-router-dom';
 
-import { Context } from "../../../Context/AuthContext";
+import { Context } from "../../AuthContext/AuthContext";
 
 export default function Wellcome() {
 
     const { authenticated } = useContext(Context)
 
-    if(!authenticated) {
+    if (!authenticated) {
         return (
             <>
                 <div className="container">
@@ -28,10 +28,10 @@ export default function Wellcome() {
                 </div>
             </>
         );
-        
+
     } else {
         return (
-            <Redirect to= '/home'/>
+            <Redirect to='/home' />
         )
     }
 

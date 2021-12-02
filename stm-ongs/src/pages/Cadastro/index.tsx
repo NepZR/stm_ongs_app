@@ -1,7 +1,7 @@
 import React from "react";
-import SignUpForm from "../../SignUpForm";
+import SignUpForm from "../../components/SignUpForm";
 import './styles.css'
-import TitleGirl from "../../TiitleGirl";
+import TitleGirl from "../../components/TiitleGirl";
 
 export default function CadastroFisica() {
 

@@ -1,4 +1,4 @@
-import { CampaingItemHome } from "../utils/types/types";
+import { CampaingItemHome } from "../types";
 
 // Um array de item do tipo ItemList
 export const campaingsHome: CampaingItemHome[] = [

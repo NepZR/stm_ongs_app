@@ -1,9 +1,9 @@
 import React, { createContext, SetStateAction, useEffect, useState } from "react";
 import { authUser } from "../auth/auth";
 import { Redirect } from "react-router";
-import history from './../history/history'
+import history from '../utils/history/history'
 import api from "../auth/api";
-import { typeUser } from './../utils/types/types'
+import { typeUser } from '../utils/types'
 
 interface ContexProps {
     authenticated: boolean;
@@ -35,8 +35,8 @@ export function AuthProvider({ children }: any) {
     useEffect(() => {
         const token = localStorage.getItem('stmongs-token')
 
-        if (token !== undefined && token !== '') {
-            setAuthenticated(true)
+        if (token !== undefined && token !== '' && token !== 'undefined') {
+            //setAuthenticated(true)
             //api.defaults.headers. = `Bearer ${JSON.parse(token)}`
         }
     }, [])

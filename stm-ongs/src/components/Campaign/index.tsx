@@ -1,6 +1,6 @@
 import React from "react";
 import './styles.css'
-import Img from './../../images/campaing/cats.png'
+import Img from './../../assets/images/campaing/cats.png'
 import { Link } from "react-router-dom";
 
 interface CampaignProps {

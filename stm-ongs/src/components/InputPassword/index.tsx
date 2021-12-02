@@ -1,7 +1,7 @@
 import React from "react";
 import './styles.css'
-import EyeOp from './../../images/eye.svg'
-import EyeCl from './../../images/eye-closed.svg';
+import EyeOp from './../../assets/images/eye.svg'
+import EyeCl from './../../assets/images/eye-closed.svg';
 
 import { useState } from 'react';
 

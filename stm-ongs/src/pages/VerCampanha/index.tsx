@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "../../NavBar";
-import Menu from "../../Menu";
+import NavBar from "../../components/NavBar";
+import Menu from "../../components/Menu";
 import './styles.css'
 
-import Img from './../../../images/campaing/cats.png'
-import Button from "../../Button";
+import Img from './../../assets/images/campaing/cats.png'
+import Button from "../../components/Button";
 import { useParams } from "react-router";
-import { campaingDetails } from './../../../dataTest/campaingsHome'
-import { CampaingItemHome } from "../../../utils/types/types";
-import Campaing from "../../Campaign";
+import Campaing from "../../components/Campaign";
 import { FiShare } from 'react-icons/fi';
-import api from "../../../auth/api";
+import api from "../../auth/api";
 
 interface ICampaing {
     id_campaing: number,
