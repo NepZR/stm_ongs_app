@@ -5,14 +5,14 @@ import EyeCl from './../../assets/images/eye-closed.svg';
 
 import { useState } from 'react';
 
-interface InputPasswordProps {
-    label: string;
-    placeholder: string;
-    name: string;
-    id: string;
-}
+// interface InputPasswordProps {
+//     label: string;
+//     placeholder: string;
+//     name: string;
+//     id: string;
+// }
 
-export default function InputPassword(props: InputPasswordProps) {
+export default function InputPassword({ label, id, rest }: any) {
 
     const [iconPassword, setIconPassword] = useState(EyeCl)
 
@@ -28,20 +28,29 @@ export default function InputPassword(props: InputPasswordProps) {
 
     function changeIcon() {
         if (iconPassword === EyeCl) {
-            hidePass(props.id)
+            hidePass(id)
             setIconPassword(EyeOp)
         } else {
-            hidePass(props.id)
+            hidePass(id)
             setIconPassword(EyeCl)
         }
     }
 
     return (
         <>
-            <label className="label" htmlFor={props.id}>
-                {props.label}
+            <label className="label" htmlFor={id}>
+                {label}
                 <div className="password">
-                    <input placeholder={props.placeholder} className="input-login" type="password" name={props.name} id={props.id} required />
+                    <input
+                        id={id}
+                        className="input-login"
+                        type="password"
+                        required
+                        {...rest}
+                    //name={props.name}
+                    //placeholder={props.placeholder}
+                    />
+
                     <button className="icon-but" type="button" onClick={changeIcon} >
                         <img className="icon-svg" alt="Icone senha" src={iconPassword} />
                     </button>

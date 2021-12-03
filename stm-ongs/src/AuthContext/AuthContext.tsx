@@ -1,15 +1,20 @@
-import React, { createContext, SetStateAction, useEffect, useState } from "react";
+import React, {
+    createContext,
+    SetStateAction,
+    useEffect,
+    useState,
+} from "react";
 import { authUser } from "../auth/auth";
 import { Redirect } from "react-router";
-import history from '../utils/history/history'
+import history from "../utils/history/history";
 import api from "../auth/api";
-import { typeUser } from '../utils/types'
+import { typeUser } from "../utils/types";
 
 interface ContexProps {
     authenticated: boolean;
-    handleLogin: (data: LoginData) => Promise<void>
+    handleLogin: (data: LoginData) => Promise<void>;
     handleLogout: () => void;
-    user: User
+    user: User;
 }
 
 interface LoginData {
@@ -23,54 +28,48 @@ interface User {
     type: string;
 }
 
-export const Context = createContext({} as ContexProps);
+export const authContext = createContext({} as ContexProps);
 
 export function AuthProvider({ children }: any) {
-
-    const [user, setUser] = useState<User>({ name: '', email: '', type: 'ONG' })
-
-    //const authenticated = !!user;
-    const [authenticated, setAuthenticated] = useState(false)
+    const [user, setUser] = useState<User>({ name: "", email: "", type: "" });
+    const [authenticated, setAuthenticated] = useState(false);
 
     useEffect(() => {
-        const token = localStorage.getItem('stmongs-token')
+        const token = localStorage.getItem("stmongs-token");
 
-        if (token !== undefined && token !== '' && token !== 'undefined') {
-            //setAuthenticated(true)
+        if (token !== undefined && token !== "" && token !== null) {
+            setAuthenticated(true);
             //api.defaults.headers. = `Bearer ${JSON.parse(token)}`
         }
-    }, [])
+    }, []);
 
     function handleLogout() {
-        localStorage.removeItem('stmongs-token')
-        setAuthenticated(false)
+        localStorage.removeItem("stmongs-token");
+        setAuthenticated(false);
     }
 
     async function handleLogin({ email, password }: LoginData) {
-
         const { token, user }: any = await authUser({
             email,
-            password
-        })
-        console.log('Token: ', token)
-        console.log('Data User: ', user)
-        if (token !== undefined && token !== '' && token !== 'undefined') {
-            localStorage.setItem('stmongs-token', token)
-            setUser(user)
-            setAuthenticated(true)
+            password,
+        });
+        console.log("Token: ", token);
+        console.log("Data User: ", user);
+        if (token !== undefined && token !== "" && token !== "undefined") {
+            localStorage.setItem("stmongs-token", token);
+            setUser(user);
+            setAuthenticated(true);
         }
     }
 
-
     return (
-        <Context.Provider value={{ authenticated, handleLogin, handleLogout, user }}>
+        <authContext.Provider
+            value={{ authenticated, handleLogin, handleLogout, user }}
+        >
             {children}
-        </Context.Provider>
+        </authContext.Provider>
     );
 }
-
-
-
 
 /**
  *

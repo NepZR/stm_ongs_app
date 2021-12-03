@@ -1,28 +1,31 @@
 import React from "react";
 import './styles.css'
 
-interface InputProps {
-    label: string,
-    type: string,
-    placeholder: string,
-    name: string,
-    id: string,
-    value?: string | number
-}
+// interface InputProps {
+//     label: string,
+//     type: string,
+//     placeholder: string,
+//     name: string,
+//     id: string,
+//     value?: string | number
+// }
 
-export default function Input(props: InputProps) {
+export default function Input({ id, name, label, rest }: any) {
 
     return (
         <>
-            <label htmlFor={props.name} className="label">
-                {props.label}
+            <label htmlFor={name} className="label">
+                {label}
                 <input
-                    placeholder={props.placeholder}
+                    {...rest}
+                    //placeholder={props.placeholder}
                     className="input"
-                    type={props.type}
-                    id={props.id}
-                    value={props.value}
-                    name={props.name}
+                    name={name}
+                    //type={props.type}
+                    id={id}
+                    //value={props.value}
+                    //name={props.name}
+                    {...rest}
                     required
                 />
             </label>

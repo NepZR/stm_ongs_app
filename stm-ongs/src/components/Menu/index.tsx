@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import './styles.css'
 import { FiAlignLeft, FiHome, FiUser, FiEdit3, FiSearch } from 'react-icons/fi';
-import { Context } from "../../AuthContext/AuthContext";
+import { authContext } from "../../AuthContext/AuthContext";
 import { typeUser } from '../../utils/types'
 import { Link } from "react-router-dom";
 
 export default function Menu() {
     //Pega apenas o atributo type do objeto user
-    const { user: { type } } = useContext(Context)
+    const { user: { type } } = useContext(authContext)
 
     if (type === typeUser.ONG) {
 

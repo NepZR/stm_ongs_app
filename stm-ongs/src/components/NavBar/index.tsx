@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import './styles.css'
 import Logo from '../../assets/images/logo.png';
 
-import { Context } from '../../AuthContext/AuthContext'
+import { authContext } from '../../AuthContext/AuthContext'
 
 
 
 export default function NavBar() {
 
-    const { handleLogout } = useContext(Context)
+    const { handleLogout } = useContext(authContext)
 
 
     function logout() {

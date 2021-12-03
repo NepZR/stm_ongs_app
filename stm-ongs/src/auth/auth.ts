@@ -17,11 +17,9 @@ async function authUser(userData: IFormData){
     .then((data)=> {
 
         if(data.data.token !== undefined) {
-            console.log('Axios dentro: ',data.data.token)
             tk.token = data.data.token
             tk.user = data.data.user
         }
-
     })
     .catch(err => console.log(err))
 
