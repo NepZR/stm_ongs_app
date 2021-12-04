@@ -23,7 +23,7 @@
 .input:focus {
   transition: 0.5s;
   outline: none;
-  border: 2px solid #5e65eb;
+  border: 1px solid #5e65eb;
   box-shadow: #b3b5e2 0px 1px 5px;
 }
 
