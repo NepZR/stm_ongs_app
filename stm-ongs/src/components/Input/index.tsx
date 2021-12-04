@@ -10,13 +10,14 @@ import './styles.css'
 //     value?: string | number
 // }
 
-export default function Input({ id, type, name, label, rest, placeholder }: any) {
+export default function Input({ id, type, name, label, rest, placeholder, onChange }: any) {
 
     return (
         <>
             <label htmlFor={name} className="label">
                 {label}
                 <input
+                    //onChange={onChange}
                     {...rest}
                     //placeholder={props.placeholder}
                     className="input"
