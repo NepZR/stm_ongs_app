@@ -24,28 +24,14 @@ export default function SignUpForm() {
     const { register, handleSubmit, setValue } = useForm()
     //Apenas para fins de teste de deploy
     // const type = 'cpf'
-    function setFormType() {
-        if (type === form.FISIC) {
-            setType(form.ONG)
-            console.clear()
-            console.log(type)
-        } else {
-            setType(form.FISIC)
-            console.clear()
-            console.log(type)
-        }
-    }
+
 
     function setFisic() {
         setType(form.FISIC)
-        console.clear()
-        console.log(type)
     }
 
     function setOng() {
         setType(form.ONG)
-        console.clear()
-        console.log(type)
     }
 
     const handleSignIn = (data: ISigInData) => {
