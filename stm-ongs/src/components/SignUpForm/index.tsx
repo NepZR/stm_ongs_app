@@ -5,55 +5,138 @@ import Input from "../Input";
 import Button from "../Button";
 import Card from "../Card";
 import { useState } from 'react';
+import { useForm } from 'react-hook-form'
 
-const form = { FISIC: "cpf", JURIDIC: "cnpj" }
+const form = { FISIC: "cpf", ONG: "cnpj" }
+
+interface ISigInData {
+    type_user: string;
+    name: string;
+    reg_number: string;
+    email: string;
+    password: string;
+    conf_senha: string;
+}
 
 export default function SignUpForm() {
 
     const [type, setType] = useState(form.FISIC);
+    const { register, handleSubmit, setValue } = useForm()
     //Apenas para fins de teste de deploy
     // const type = 'cpf'
     function setFormType() {
         if (type === form.FISIC) {
-            setType(form.JURIDIC)
+            setType(form.ONG)
+            console.clear()
+            console.log(type)
         } else {
             setType(form.FISIC)
+            console.clear()
+            console.log(type)
         }
     }
 
+    function setFisic() {
+        setType(form.FISIC)
+        console.clear()
+        console.log(type)
+    }
+
+    function setOng() {
+        setType(form.ONG)
+        console.clear()
+        console.log(type)
+    }
+
+    const handleSignIn = (data: ISigInData) => {
+        console.log(data)
+
+    }
 
     return (
         <>
             <Card>
                 <h1 className="title-singup">Sign-up</h1>
-                {/* <section className="options-container">
-                    <label htmlFor="type-user-1">
-                        <input onChange={setFormType} className="input-radio" type="radio" name="type-user" id="cpf" defaultChecked />
-                        Doador
+
+                <div>
+                    <label className="option" htmlFor="cpf">
+                        <input
+                            className="input-radio"
+                            onClick={setFisic}
+                            type="radio"
+                            name="type-user"
+                            id="cpf"
+                            defaultChecked
+                        />
+                        Fisica
                     </label>
-                    <label htmlFor="type-user-2">
-                        <input style={{ backgroundColor: "black" }} onChange={setFormType} className="input-radio" type="radio" name="type-user" id="cnpj" />
+                    <label className="option" htmlFor="cnpj">
+                        <input
+                            className="input-radio"
+                            type="radio"
+                            name="type-user"
+                            id="cnpj"
+                            onClick={setOng}
+                        />
                         ONG
                     </label>
-                </section> */}
-                <div>
-                    <input onChange={setFormType} type="radio" name="type-user" id="cpf" defaultChecked />
-                    <input onChange={setFormType} type="radio" name="type-user" id="cnpj" />
                 </div>
-                <form className="form-singup">
-                    <input name="type_user" value={type} type='hidden' />
-                    <Input id="name" label="Nome" type="text" placeholder="Nome" name="name" />
-                    <Input id="reg_number" label={type.toUpperCase()} type="text" placeholder={type.toUpperCase()} name={type} />
-                    <Input id="email" label="E-mail" type="email" placeholder="E-mail" name="email" />
-                    <InputPassword label="Password" name="senha" placeholder="Senha" id="senha" />
-                    <InputPassword label="Password Confirm" name="conf_senha" placeholder="Confirmar" id="conf_senha" />
-                    <Button typeBtn="submit" children="Cadastrar" />
+
+                <form className="form-singup" onSubmit={handleSubmit(handleSignIn)}>
+
+                    <input
+                        {...register("type_user")}
+                        type='hidden'
+                        name="type_user"
+                        {...type === form.FISIC ? setValue("type_user", form.FISIC) : setValue("type_user", form.ONG)}
+
+                    />
+
+                    <Input
+                        rest={{ ...register("name") }}
+                        id="name"
+                        label="Nome"
+                        type="text"
+                        placeholder="Nome"
+                        name="name"
+                    />
+                    <Input
+                        rest={{ ...register("reg_number") }}
+                        id="reg_number"
+                        label={type.toUpperCase()}
+                        type="text"
+                        placeholder={type.toUpperCase()}
+                        name="reg_number"
+                    />
+                    <Input
+                        rest={{ ...register("email") }}
+                        id="email"
+                        label="E-mail"
+                        type="email"
+                        placeholder="E-mail"
+                        name="email"
+                    />
+                    <InputPassword
+                        rest={{ ...register("password") }}
+                        label="Password"
+                        name="password"
+                        placeholder="Senha"
+                        id="senha"
+                    />
+                    <InputPassword
+                        rest={{ ...register("conf_senha") }}
+                        label="Password Confirm"
+                        name="conf_senha"
+                        placeholder="Confirmar"
+                        id="conf_senha"
+                    />
+                    <Button
+                        type='submit'
+                        children="Cadastrar"
+                    />
                 </form>
-                <Link
-                    className="link"
-                    style={{ textAlign: "center", marginTop: '1rem' }}
-                    to="/sign-in"
-                >
+
+                <Link className="link" style={{ textAlign: "center", marginTop: '1rem' }} to="/sign-in" >
                     Já possuo cadastro?
                 </Link>
             </Card>
