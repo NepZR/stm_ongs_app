@@ -10,7 +10,7 @@ import './styles.css'
 //     value?: string | number
 // }
 
-export default function Input({ id, name, label, rest, placeholder }: any) {
+export default function Input({ id, type, name, label, rest, placeholder }: any) {
 
     return (
         <>
@@ -22,7 +22,7 @@ export default function Input({ id, name, label, rest, placeholder }: any) {
                     className="input"
                     name={name}
                     placeholder={placeholder}
-                    //type={props.type}
+                    type={type}
                     id={id}
                     //value={props.value}
                     //name={props.name}
