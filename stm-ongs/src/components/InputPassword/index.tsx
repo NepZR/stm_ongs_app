@@ -12,7 +12,7 @@ import { useState } from 'react';
 //     id: string;
 // }
 
-export default function InputPassword({ label, id, rest }: any) {
+export default function InputPassword({ placeholder, label, id, rest }: any) {
 
     const [iconPassword, setIconPassword] = useState(EyeCl)
 
@@ -47,8 +47,8 @@ export default function InputPassword({ label, id, rest }: any) {
                         type="password"
                         required
                         {...rest}
-                    //name={props.name}
-                    //placeholder={props.placeholder}
+                        //name={props.name}
+                        placeholder={placeholder}
                     />
 
                     <button className="icon-but" type="button" onClick={changeIcon} >

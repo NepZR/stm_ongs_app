@@ -1,18 +1,12 @@
-import InputPassword from "../InputPassword";
-import { Link } from "react-router-dom";
-import Input from "../Input";
 import './styles.css';
+import { Link } from "react-router-dom";
+import InputPassword from "../InputPassword";
+import Input from "../Input";
 import Button from "../Button";
-
-import { useState } from 'react';
 import Card from "../Card";
-// import CheckBox from "../Checkbox";
+import { useState } from 'react';
 
-
-const form = {
-    FISIC: "cpf",
-    JURIDIC: "cnpj"
-}
+const form = { FISIC: "cpf", JURIDIC: "cnpj" }
 
 export default function SignUpForm() {
 
@@ -20,9 +14,9 @@ export default function SignUpForm() {
     //Apenas para fins de teste de deploy
     // const type = 'cpf'
     function setFormType() {
-        if(type === form.FISIC) {
+        if (type === form.FISIC) {
             setType(form.JURIDIC)
-        } else { 
+        } else {
             setType(form.FISIC)
         }
     }
@@ -32,19 +26,24 @@ export default function SignUpForm() {
         <>
             <Card>
                 <h1 className="title-singup">Sign-up</h1>
-                <section className="options-container">
+                {/* <section className="options-container">
                     <label htmlFor="type-user-1">
-                        <input onChange={setFormType} className="input-radio" type="radio" name="type-user" id="cpf" defaultChecked/>
+                        <input onChange={setFormType} className="input-radio" type="radio" name="type-user" id="cpf" defaultChecked />
                         Doador
                     </label>
                     <label htmlFor="type-user-2">
-                        <input style={{backgroundColor: "black"}} onChange={setFormType} className="input-radio" type="radio" name="type-user" id="cnpj" />
+                        <input style={{ backgroundColor: "black" }} onChange={setFormType} className="input-radio" type="radio" name="type-user" id="cnpj" />
                         ONG
                     </label>
-                </section>
-                <form className="form-singup" action="" method="post">
+                </section> */}
+                <div>
+                    <input onChange={setFormType} type="radio" name="type-user" id="cpf" defaultChecked />
+                    <input onChange={setFormType} type="radio" name="type-user" id="cnpj" />
+                </div>
+                <form className="form-singup">
+                    <input name="type_user" value={type} type='hidden' />
                     <Input id="name" label="Nome" type="text" placeholder="Nome" name="name" />
-                    <Input id="type" label={type.toUpperCase()} type="text" placeholder={type.toUpperCase()} name={type} />
+                    <Input id="reg_number" label={type.toUpperCase()} type="text" placeholder={type.toUpperCase()} name={type} />
                     <Input id="email" label="E-mail" type="email" placeholder="E-mail" name="email" />
                     <InputPassword label="Password" name="senha" placeholder="Senha" id="senha" />
                     <InputPassword label="Password Confirm" name="conf_senha" placeholder="Confirmar" id="conf_senha" />
