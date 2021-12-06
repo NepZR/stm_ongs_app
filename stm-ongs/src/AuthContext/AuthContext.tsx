@@ -37,8 +37,23 @@ export function AuthProvider({ children }: any) {
     useEffect(() => {
         const token = localStorage.getItem("stmongs-token");
 
+        async function getInfos() {
+            const token = localStorage.getItem("stmongs-token");
+
+            const AuthStr = 'Bearer '.concat(token ? token : '')
+
+            await api.get('/token', { headers: { Authorization: AuthStr } }).then((response) => {
+                setUser(response.data)
+                console.log("Data User: ", response.data)
+                // setUser({ name: "octa", email: "deede", type: "FISIC" })
+                setAuthenticated(true);
+            })
+        }
+
         if (token !== undefined && token !== "" && token !== null) {
-            setAuthenticated(true);
+
+            getInfos()
+
             //api.defaults.headers. = `Bearer ${JSON.parse(token)}`
         }
     }, []);
@@ -58,6 +73,7 @@ export function AuthProvider({ children }: any) {
         if (token !== undefined && token !== "" && token !== "undefined") {
             localStorage.setItem("stmongs-token", token);
             setUser(user);
+
             setAuthenticated(true);
         }
     }
@@ -71,16 +87,3 @@ export function AuthProvider({ children }: any) {
     );
 }
 
-/**
- *
- *
- *     async function handleLogin() {
-        const user = {email: "octa.oca44@gmail.com",password: "octabebe",typeUser: 'ong'}
-
-        const { data: {token} } = authUser(user)
-        localStorage.setItem('token',JSON.stringify(token))
-        history.push('/home')
-    }
-
-
- */
