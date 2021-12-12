@@ -7,9 +7,9 @@ import { Link } from "react-router-dom";
 
 export default function Menu() {
     //Pega apenas o atributo type do objeto user
-    const { user: { type } } = useContext(authContext)
+    const { user: { user_type } } = useContext(authContext)
 
-    if (type === typeUser.ONG) {
+    if (user_type === 2) {
 
         return (
             <>

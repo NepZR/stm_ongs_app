@@ -6,7 +6,7 @@ import { useParams } from "react-router";
 import { useForm } from "react-hook-form";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import api from "../../auth/api";
+import api from "../../auth/authApi";
 
 interface ICampaing {
     id_campaing: number;
