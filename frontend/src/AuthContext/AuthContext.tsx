@@ -10,12 +10,15 @@ import history from "../utils/history/history";
 import authApi from "../auth/authApi";
 import { typeUser } from "../utils/types";
 import JWT from 'jsonwebtoken'
+import Loading from "../components/Loading";
 
 interface ContexProps {
     authenticated: boolean;
     handleLogin: (data: LoginData) => Promise<void>;
     handleLogout: () => void;
+    setStateLoading: (state: boolean) => void;
     user: User;
+    loading: boolean;
 }
 
 interface LoginData {
@@ -35,8 +38,10 @@ export const authContext = createContext({} as ContexProps);
 export function AuthProvider({ children }: any) {
     const [user, setUser] = useState<User>({ uuid: "", username: "", email: "", user_type: 0 });
     const [authenticated, setAuthenticated] = useState(false);
+    const [loading, setLoading] = useState<boolean>(false)
 
     async function getInfos() {
+        setLoading(true)
         const token = localStorage.getItem("stmongs-token");
 
         const AuthStr = 'Bearer '.concat(token ? token : '')
@@ -47,26 +52,33 @@ export function AuthProvider({ children }: any) {
             // setUser({ name: "octa", email: "deede", type: "FISIC" })
             setAuthenticated(true);
         })
+        setLoading(false)
     }
     useEffect(() => {
+        setLoading(true)
         const token = localStorage.getItem("stmongs-token");
 
-
         if (token !== undefined && token !== "" && token !== null) {
-
             getInfos()
-
             //api.defaults.headers. = `Bearer ${JSON.parse(token)}`
         }
+        setLoading(false)
     }, []);
 
     function handleLogout() {
+        setLoading(true)
         localStorage.removeItem("stmongs-token");
         setAuthenticated(false);
         setUser({ uuid: "", username: "", email: "", user_type: 0 })
+        setLoading(false)
+    }
+
+    function setStateLoading(state: boolean) {
+        setLoading(state)
     }
 
     async function handleLogin({ email, password }: LoginData) {
+        setLoading(true)
         const { token }: any = await authUser({
             email,
             password,
@@ -90,11 +102,13 @@ export function AuthProvider({ children }: any) {
             }
 
         }
+
+        setLoading(false)
     }
 
     return (
         <authContext.Provider
-            value={{ authenticated, handleLogin, handleLogout, user }}
+            value={{ authenticated, handleLogin, handleLogout, user, loading, setStateLoading }}
         >
             {children}
         </authContext.Provider>

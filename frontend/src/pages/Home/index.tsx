@@ -5,22 +5,29 @@ import ListCampaings from "../../components/ListCampaings";
 import { authContext } from "../../AuthContext/AuthContext";
 import { Redirect } from "react-router-dom";
 import api from "../../auth/api";
+import Loading from "../../components/Loading";
 
 //import { campaingsHome } from "../../../dataTest/campaingsHome";
 
 export default function Home() {
-    const { authenticated, user } = useContext(authContext);
+    const { authenticated, user, loading, setStateLoading} = useContext(authContext);
     const [campaingsHome, setCampaingsHome] = useState([])
 
     useEffect(() => {
+        setStateLoading(true)
         api.get('/campaings').then((response) => {
             setCampaingsHome(response.data)
+            setStateLoading(false)
         })
+        
     }, [])
 
-    console.log("Home: " + authenticated);
+    //console.log("Home: " + authenticated);
+    if(loading){
+        
+        return <Loading/>
 
-    if (authenticated) {
+    } else if (authenticated) {
         return (
             <>
                 <NavBar />
@@ -29,6 +36,6 @@ export default function Home() {
             </>
         );
     } else {
-        return <Redirect to="/sign-in" />;
-    }
+        return <Redirect to="/sign-in" />
+    } 
 }

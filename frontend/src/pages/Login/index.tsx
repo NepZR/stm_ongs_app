@@ -9,6 +9,7 @@ import InputPassword from "../../components/InputPassword";
 import { authContext } from "../../AuthContext/AuthContext";
 import { Redirect } from 'react-router-dom'
 import { useForm } from "react-hook-form";
+import Loading from "../../components/Loading";
 
 interface IloginData {
     email: string;
@@ -17,29 +18,17 @@ interface IloginData {
 
 export default function Login() {
 
-    const { handleLogin, authenticated } = useContext(authContext)
+    const { handleLogin, authenticated, loading } = useContext(authContext)
     const { handleSubmit, register } = useForm()
 
-
     async function submetLogin(data: IloginData) {
-
         console.log(data)
         await handleLogin(data)
-
-        //data.preventDefault();
-        // //const mockUser: IloginData = { email: "octa.oca44@gmail.com", password: "octabebe"}
-        // const email = document.getElementById('email') as HTMLInputElement
-        // const password = document.getElementById('password') as HTMLInputElement
-        // console.log('Dados submetidos')
-        // console.log()
-        // const formData: IloginData = {
-        //     email: email.value,
-        //     password: password.value
-        // }
-        // await handleLogin(formData)
     }
 
-    if (authenticated) {
+    if(loading){
+        return <Loading/>
+    } else if (authenticated) {
         return (
             <Redirect to="/home" />
         )
