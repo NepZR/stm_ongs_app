@@ -5,14 +5,16 @@ CREATE TABLE IF NOT EXISTS UserType (
 );
 
 CREATE TABLE IF NOT EXISTS Usuario (
-  id_user SERIAL NOT NULL,
-  username VARCHAR(45) NOT NULL,
-  email CHARACTER VARYING NOT NULL,
-  reg_number VARCHAR(14) NOT NULL,
-  passwrd CHARACTER VARYING NOT NULL,
-  user_type INT NOT NULL,
-  PRIMARY KEY (id_user),
-  FOREIGN KEY (user_type) REFERENCES UserType(type_id)
+	id_user SERIAL NOT NULL,
+	username VARCHAR(45) NOT NULL,
+	email CHARACTER VARYING NOT NULL,
+	reg_number VARCHAR(14) NOT NULL,
+	profile_pic BYTEA DEFAULT NULL,
+	profile_cover BYTEA DEFAULT NULL,
+	passwrd CHARACTER VARYING NOT NULL,
+	user_type INT NOT NULL,
+	PRIMARY KEY (id_user),
+	FOREIGN KEY (user_type) REFERENCES UserType(type_id)
 );
 
 CREATE TABLE IF NOT EXISTS CampaignType (
@@ -26,6 +28,7 @@ CREATE TABLE IF NOT EXISTS Campaign (
 	campaign_name CHARACTER VARYING NOT NULL,
 	description CHARACTER VARYING NOT NULL,
 	active BOOLEAN NOT NULL DEFAULT true,
+	campaign_cover BYTEA DEFAULT NULL,
 	creation_date DATE NOT NULL,
 	created_by INT NOT NULL,
 	campaign_type INT NOT NULL,
