@@ -4,6 +4,5 @@ const routes = require('./routes');
 const app = express();
 app.use(express.json());
 app.use(routes);
-app.listen(8000, (request, response) => {
-    console.log('Funcionou. http://localhost:8000/');
-})
+
+app.listen(3030, () => console.log('🔥 Server started at http://localhost:8080'))
