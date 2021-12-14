@@ -1,0 +1,10 @@
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    max-width: 50rem;
+    margin: 1rem;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #d8d7d7;
+}

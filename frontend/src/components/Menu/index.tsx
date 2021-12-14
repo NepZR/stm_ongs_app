@@ -27,10 +27,10 @@ export default function Menu() {
                             <FiSearch className="icon-menu" color="white" size={30} />
                             Busca
                         </li>
-                        <li className="menu-item">
+                        <Link to="/profile" className="menu-item">
                             <FiUser className="icon-menu" color="white" size={30} />
                             Perfil
-                        </li>
+                        </Link>
                     </ul>
                 </div>
             </>
@@ -50,10 +50,10 @@ export default function Menu() {
                             <FiHome className="icon-menu" color="white" size={30} />
                             Home
                         </Link>
-                        <li className="menu-item">
+                        <Link to="/profile" className="menu-item">
                             <FiUser className="icon-menu" color="white" size={30} />
                             Perfil
-                        </li>
+                        </Link>
                     </ul>
                 </div>
             </>

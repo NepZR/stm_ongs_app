@@ -1,0 +1,24 @@
+.profile-images-container {
+    /* position: relative; */
+    /* top:0px; 
+    left:0px; */
+    
+}
+.cover {
+    width: 100%;
+    height: 30vh;
+    border-radius: 15px;
+}
+
+.profile-image-container {
+    position: absolute; 
+    top: 45vh;
+    margin-left: 1rem;
+    /*left:600px; */
+}
+
+.profile {
+    width: 15vh;
+    border-radius: 100%;
+    border-style: solid;
+}
