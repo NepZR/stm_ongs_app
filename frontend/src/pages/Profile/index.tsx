@@ -11,7 +11,8 @@ import Card from "../../components/Card";
 import ProfileCard from "../../components/ProfileCard";
 import ProfileImages from "../../components/ProfileCard/ProfileImages";
 import styled from "styled-components";
-import Campaing from './../../components/Campaign'
+import Campaing from './../../components/Campaign';
+import { Redirect } from 'react-router'
 
 interface IProfile {
   uuid: string;
@@ -22,7 +23,7 @@ interface IProfile {
 
 export default function Profile() {
   const {
-    user: { uuid },
+    user: { uuid,profile_cover, profile_pic},
   } = useContext(authContext);
   const { authenticated, loading, setStateLoading } = useContext(authContext);
   const [userProfile, setUserProfile] = useState<IProfile | null>();
@@ -89,20 +90,23 @@ export default function Profile() {
         console.log(response.data);
         setStateLoading(false);
       });
-  }, [uuid]);
+  }, []);
 
-  if (!userProfile) {
-    return <Loading />;
+  if(!authenticated){
+    return <Redirect to="sign-in"/>
   } else {
     return (
       <>
         <NavBar />
         <Menu />
-
+  
         <div className="profile-container">
           <ProfileCard>
-            <ProfileImages />
-
+            <ProfileImages 
+              cover={profile_cover}
+              profile={profile_pic}
+            />
+  
             <Container>
               <Title>{`${userProfile?.username}`}</Title>
               <Contate>{`${userProfile?.email}`}</Contate>
@@ -120,11 +124,14 @@ export default function Profile() {
               junto aos demais que já estavam sob nossos cuidados. Agradecemos
               toda ajuda que puder oferecer.
             </Description>
-
+  
             
           </ProfileCard>
         </div>
       </>
     );
+
   }
+
+  
 }

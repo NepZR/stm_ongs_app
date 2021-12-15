@@ -7,6 +7,7 @@ import './styles.css'
 import { useForm } from 'react-hook-form';
 import { authContext } from './../../AuthContext/AuthContext'
 import { Redirect } from "react-router";
+import { uploadImage } from "../../services/uploadImages";
 
 
 interface ISubCampaing {
@@ -14,7 +15,7 @@ interface ISubCampaing {
     description: string;
     limit_date: string;
     value: string;
-    cover: string;
+    cover: any;
 }
 
 const form = { ONLINE: "online", PRES: "pres" }
@@ -25,8 +26,15 @@ export default function NovaCampanha() {
     const [type, setType] = useState(form.PRES);
     const { authenticated } = useContext(authContext)
 
-    const submitCampaing = (data: ISubCampaing) => {
+    const submitCampaing = async (data: ISubCampaing) => {
         console.log(data)
+        const image = data.cover
+
+        uploadImage(image).then( response => {
+            console.log('link',response)
+        })
+
+        
     }
 
     function setOn() {
