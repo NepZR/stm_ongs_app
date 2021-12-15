@@ -18,7 +18,7 @@ export default function Loading() {
 
     return (
     <>
-        <div className="loading-container">
+        {/* <div className="loading-container">
             
             <Lottie 
                 options={defaultOptions}
@@ -26,7 +26,15 @@ export default function Loading() {
                 width={100}
             />
             Carregando...
-        </div>
+        </div> */}
+
+            
+            <Lottie 
+                options={defaultOptions}
+                height={100}
+                width={100}
+            />
+            
     </>
   )
 }

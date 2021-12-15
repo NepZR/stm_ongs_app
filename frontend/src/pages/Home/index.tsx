@@ -22,17 +22,14 @@ export default function Home() {
         
     }, [])
 
-    //console.log("Home: " + authenticated);
-    if(loading){
-        
-        return <Loading/>
-
-    } else if (authenticated) {
+    if(authenticated) {
         return (
             <>
                 <NavBar />
                 <Menu />
-                <ListCampaings listCamp={campaingsHome} />
+
+                {campaingsHome? <ListCampaings listCamp={campaingsHome} />: <Loading/>}
+                {/* <ListCampaings listCamp={campaingsHome} /> */}
             </>
         );
     } else {
