@@ -14,27 +14,50 @@ interface ISubCampaing {
     title_campaing: string;
     description: string;
     limit_date: string;
-    value: string;
+    value: string|null;
     cover: any;
+    type_campaing: string;
 }
 
-const form = { ONLINE: "online", PRES: "pres" }
+interface ICampaingData {
+	campaign_name: string,
+	description: string,
+	campaign_cover: string,
+	creation_date: string,
+    value: string|null,
+	created_by: string,
+	campaign_type: string,
+}
+
+const form = { ONLINE: 1, PRES: 2 }
 
 export default function NovaCampanha() {
 
     const { handleSubmit, register, setValue } = useForm();
-    const [type, setType] = useState(form.PRES);
-    const { authenticated } = useContext(authContext)
+    const [type, setType] = useState(2);
+    const { authenticated, user } = useContext(authContext)
+    const [link, setLink] = useState('')
 
     const submitCampaing = async (data: ISubCampaing) => {
         console.log(data)
         const image = data.cover
 
-        uploadImage(image).then( response => {
+        await uploadImage(image).then( response => {
             console.log('link',response)
+            setLink(response)
         })
 
-        
+        const newCampaing: ICampaingData = {
+            campaign_name: data.title_campaing,
+            created_by: user.uuid,
+            description: data.description,
+            campaign_cover: link,
+            value: data.value,
+            campaign_type: data.type_campaing,
+            creation_date: data.limit_date
+        }
+        console.log(newCampaing)
+ 
     }
 
     function setOn() {
@@ -94,7 +117,7 @@ export default function NovaCampanha() {
                                 type='hidden'
                                 name="type_campaing"
                                 value={type}
-                                {...type === form.ONLINE ? setValue("type_campaing", form.ONLINE) : setValue("type_campaing", form.PRES)}
+                                {...type === form.ONLINE ? setValue("type_campaing", 1) : setValue("type_campaing", 2)}
                             />
 
                             <Input
