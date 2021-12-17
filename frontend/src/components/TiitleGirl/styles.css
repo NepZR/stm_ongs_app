@@ -1,0 +1,45 @@
+.title-girl-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* margin-top: 2rem; */
+    margin-left: 5vw;
+}
+
+.title-girl {
+    font-family: 'Nunito';
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--purple);
+    text-shadow: 2px 2px 5px #b3b5e2;
+    font-size: 7vh;
+}
+
+.girl-img {
+    max-width: 80vw;
+    max-height: 80vh;
+}
+
+
+@media screen and (max-width: 720px){
+    .title-girl {
+        font-size: 2rem;
+        margin-left: 0;
+        text-align: center;
+    }
+    .title-girl-container {
+        margin-top: 2rem;
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 1265px){
+    .title-girl {
+        margin-left: 0;
+        text-align: center;
+    }
+    .title-girl-container {
+        margin-top: 2rem;
+        margin-left: 0;
+    }
+}
