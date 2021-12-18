@@ -44,14 +44,34 @@
   justify-content: center;
   align-items: center;
   padding: 2rem 3rem;
-  border: dashed 2px var(--border-input);
+  
   border-radius: 10px;
   margin: 0.5rem;
 }
 
+.image-preview {
+  max-width: 100%;
+  padding: 1rem;
+  border: dashed 2px var(--border-input);
+  border-radius: 15px;
+  margin-top: 1rem;
+}
+
+.label-input-file {
+  color: var(--white);
+  cursor: pointer;
+  padding: .5rem;
+  margin-bottom: 2rem;
+  background-color: var(--purple);
+  border-radius: 5px;
+}
+
+.label-input-file:hover {
+
+}
+
 .input-file-container:hover {
   transition: 0.5s;
-  border: dashed 2px var(--purple);
 }
 
 .input-file-container label {

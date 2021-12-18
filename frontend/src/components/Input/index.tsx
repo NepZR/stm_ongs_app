@@ -10,7 +10,7 @@ import './styles.css'
 //     value?: string | number
 // }
 
-export default function Input({ id, type, name, value,label, placeholder }: any) {
+export default function Input({ id, type, name, value,label, placeholder,rest }: any) {
 
     const [valueInput, setValueInput] = useState(value)
     function setValue(e:any) {
@@ -22,8 +22,8 @@ export default function Input({ id, type, name, value,label, placeholder }: any)
             <label htmlFor={name} className="label">
                 {label}
                 <input
-                    onChange={(e)=> setValueInput(e.target.value)}
-                    
+                    onChange={(e)=> { setValue(e.target.value); console.log(e.target.value)}}
+                    {...rest}
                     //placeholder={props.placeholder}
                     className="input"
                     name={name}

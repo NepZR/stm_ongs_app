@@ -8,6 +8,7 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import api from "../../auth/api";
 import Loading from "../../components/Loading";
+import defaultImage from './default_image.png'
 
 interface ICampaing {
     id_campaing: number;
@@ -19,6 +20,7 @@ interface ICampaing {
     created_by: number;
     campaing_type: number;
     value: number;
+    cover?: string;
 }
 
 export default function EditCampaing() {
@@ -34,6 +36,8 @@ export default function EditCampaing() {
     const { register, handleSubmit } = useForm();
     const [loading, setLoading] = useState(true);
     const [campaing, setCampaing] = useState({} as ICampaing);
+    const [imgCover, setImgCover] = useState('https://i.ibb.co/hy0T2BB/fundo-quiz.jpg')
+
 
     async function getDataCampaing(id: string) {
         setLoading(true);
@@ -65,9 +69,6 @@ export default function EditCampaing() {
                             {" "}
                             Editar <br /> Campanha
                         </h1>
-
-                        {campaing.campaing_type}
-
 
                         <form className="form-campaing" onSubmit={handleSubmit(update)}>
                             <Input
@@ -116,8 +117,13 @@ export default function EditCampaing() {
                                 />
                             </div>
 
-                            <div className="input-file-container">
-                                <label htmlFor="cover">Carregar Arquivo</label>
+                            <div>
+                            <label className="label-input-file"  htmlFor="cover">Carregar Arquivo</label>
+                            </div>
+                            {imgCover && typeof imgCover === 'string' && <img className="image-preview" src={imgCover} alt="cover" />}
+
+                            {imgCover && typeof imgCover === 'object' && <img className="image-preview" src={URL.createObjectURL(imgCover)} alt="cover" />}
+
                                 <input
                                 {...register("cover")}
                                     className="input-file"
@@ -125,8 +131,9 @@ export default function EditCampaing() {
                                     placeholder="Compra de ração"
                                     type="file"
                                     name="cover"
+                                    onChange={(e:any)=> setImgCover(e.target.files[0])}
                                 />
-                            </div>
+                            
 
                             <Button type='submit'>Salvar Alterações</Button>
                         </form>
@@ -146,8 +153,6 @@ export default function EditCampaing() {
                             {" "}
                             Editar <br /> Campanha
                         </h1>
-
-                        {campaing.campaing_type}
 
                         <form className="form-campaing" onSubmit={handleSubmit(update)}>
                             <Input
