@@ -1,0 +1,23 @@
+.edit-icon {
+
+    margin: 0.5rem;
+}
+
+.links-campaing-container {
+    display: flex;
+    align-items: center;
+}
+
+.link-edit {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    text-decoration: none;
+}
+
+.link-ver {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    text-decoration: none;
+}

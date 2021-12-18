@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Img from '../../assets/images/campaing/cats.png';
 import './styles.css';
 import { v4 } from 'uuid';
-import { FiEdit } from 'react-icons/fi'
+import { FiEdit, FiInfo } from 'react-icons/fi'
 
 interface CampaignOngProps {
     id: number;
@@ -18,10 +18,22 @@ export default function CampaingOng({ id, img, value, ongName, title }: Campaign
     
     return (
         <div key={v4()} className="card-campaing">
-            <FiEdit size={30}/>
             <img className="img-campaing" src={Img} alt={ongName} />
             <section className="campaing-description">
-                <Link style={{ textDecoration: 'none', color: '#5A5757' }} to='#'>
+
+                <div className="links-campaing-container"> 
+                    <Link className="link-edit" to={`/campaings/${id}`}>
+                        <FiEdit className="edit-icon" size={20}/>
+                        Editar
+                    </Link>
+                    <Link className="link-ver" to={`/campaings/${id}`}>
+                        <FiInfo className="edit-icon" size={20}/>
+                        Ver
+                    </Link>
+                </div>
+
+            
+                <div style={{ textDecoration: 'none', color: '#5A5757' }} >
                     <header className="campaing-title">
                         {title}
                     </header>
@@ -33,7 +45,7 @@ export default function CampaingOng({ id, img, value, ongName, title }: Campaign
                             R$ {value}
                         </div>
                     </article>
-                </Link>
+                </div>
             </section>
         </div>
     )
