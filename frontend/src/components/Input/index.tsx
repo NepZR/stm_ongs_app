@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import './styles.css'
 
 // interface InputProps {
@@ -10,22 +10,27 @@ import './styles.css'
 //     value?: string | number
 // }
 
-export default function Input({ id, type, name, label, rest, placeholder, onChange }: any) {
+export default function Input({ id, type, name, value,label, placeholder }: any) {
+
+    const [valueInput, setValueInput] = useState(value)
+    function setValue(e:any) {
+        setValueInput(e)
+    }
 
     return (
         <>
             <label htmlFor={name} className="label">
                 {label}
                 <input
-                    //onChange={onChange}
-                    {...rest}
+                    onChange={(e)=> setValueInput(e.target.value)}
+                    
                     //placeholder={props.placeholder}
                     className="input"
                     name={name}
                     placeholder={placeholder}
                     type={type}
                     id={id}
-                    //value={props.value}
+                    value={valueInput}
                     //name={props.name}
                     required
                 />

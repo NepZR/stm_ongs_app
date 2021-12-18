@@ -22,7 +22,7 @@ export default function CampaingOng({ id, img, value, ongName, title }: Campaign
             <section className="campaing-description">
 
                 <div className="links-campaing-container"> 
-                    <Link className="link-edit" to={`/campaings/${id}`}>
+                    <Link className="link-edit" to={`/campaings-edit/${id}`}>
                         <FiEdit className="edit-icon" size={20}/>
                         Editar
                     </Link>

@@ -6,15 +6,16 @@ import { useParams } from "react-router";
 import { useForm } from "react-hook-form";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import api from "../../auth/authApi";
+import api from "../../auth/api";
+import Loading from "../../components/Loading";
 
 interface ICampaing {
     id_campaing: number;
-    name: "";
-    description: "";
+    name: string;
+    description: string;
     active: number;
-    creation_date: "";
-    end_date: "";
+    creation_date: string;
+    end_date: string;
     created_by: number;
     campaing_type: number;
     value: number;
@@ -32,21 +33,13 @@ export default function EditCampaing() {
     const { id }: any = useParams();
     const { register, handleSubmit } = useForm();
     const [loading, setLoading] = useState(true);
-    const [campaing, setCampaing] = useState<ICampaing>({
-        id_campaing: 1,
-        name: "",
-        description: "",
-        active: 1,
-        creation_date: "",
-        end_date: "",
-        created_by: 0,
-        campaing_type: 1,
-        value: 0,
-    });
+    const [campaing, setCampaing] = useState({} as ICampaing);
 
     async function getDataCampaing(id: string) {
+        setLoading(true);
         await api.get(`/campaings/${id}`).then((response) => {
             setCampaing(response.data);
+            console.log(response.data)
             setLoading(false);
         });
     }
@@ -57,21 +50,23 @@ export default function EditCampaing() {
 
     useEffect(() => {
         getDataCampaing(id);
-    }, [id]);
+    }, []);
 
-    if (loading === false && campaing.campaing_type === 1) {
+    if (campaing && campaing.campaing_type === 1) {
         return (
             <>
                 <NavBar />
                 <Menu />
                 {!loading ? console.log(campaing) : console.log("")}
-                {campaing.campaing_type}
                 <div className="edit-campaing-container">
                     <section className="card-edit-campaing-form">
                         <h1 className="title-form">
                             {" "}
                             Editar <br /> Campanha
                         </h1>
+
+                        {campaing.campaing_type}
+
 
                         <form className="form-campaing" onSubmit={handleSubmit(update)}>
                             <Input
@@ -133,18 +128,20 @@ export default function EditCampaing() {
                 </div>
             </>
         );
-    } else if (loading === false && campaing.campaing_type === 2) {
+    } else if (campaing && campaing.campaing_type === 2) {
         return (
             <>
                 <NavBar />
                 <Menu />
                 <div className="edit-campaing-container">
-                    {campaing.campaing_type}
+                    
                     <section className="card-edit-campaing-form">
                         <h1 className="title-form">
                             {" "}
                             Editar <br /> Campanha
                         </h1>
+
+                        {campaing.campaing_type}
 
                         <form className="form-campaing" onSubmit={handleSubmit(update)}>
                             <Input
@@ -207,6 +204,6 @@ export default function EditCampaing() {
             </>
         );
     } else {
-        return <h1>LOading</h1>;
+        return <Loading/>;
     }
 }
