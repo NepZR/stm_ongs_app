@@ -45,7 +45,8 @@ export default function EditCampaing() {
     }
 
     async function update(data: any) {
-        await api.put(`/campaings/${id}`, data);
+        //await api.put(`/campaings/${id}`, data);
+        console.log(data)
     }
 
     useEffect(() => {
@@ -70,6 +71,7 @@ export default function EditCampaing() {
 
                         <form className="form-campaing" onSubmit={handleSubmit(update)}>
                             <Input
+                                {...register("title-campaing")}
                                 value={campaing.name}
                                 id="title-campaing"
                                 label="Titulo da Campanha"
@@ -78,6 +80,7 @@ export default function EditCampaing() {
                                 name="title-campaing"
                             />
                             <Input
+                            {...register("description")}
                                 value={campaing.description}
                                 id="description"
                                 label="Descrição"
@@ -94,6 +97,7 @@ export default function EditCampaing() {
                                 }}
                             >
                                 <Input
+                                {...register("limit-date")}
                                     value="2021-12-26"
                                     id="limit-date"
                                     label="Data limite"
@@ -102,6 +106,7 @@ export default function EditCampaing() {
                                     name="limit-date"
                                 />
                                 <Input
+                                {...register("value")}
                                     value={campaing.value}
                                     id="value"
                                     label="Valor"
@@ -114,6 +119,7 @@ export default function EditCampaing() {
                             <div className="input-file-container">
                                 <label htmlFor="cover">Carregar Arquivo</label>
                                 <input
+                                {...register("cover")}
                                     className="input-file"
                                     id="cover"
                                     placeholder="Compra de ração"
@@ -122,7 +128,7 @@ export default function EditCampaing() {
                                 />
                             </div>
 
-                            <Button>Salvar Alterações</Button>
+                            <Button type='submit'>Salvar Alterações</Button>
                         </form>
                     </section>
                 </div>
@@ -145,6 +151,7 @@ export default function EditCampaing() {
 
                         <form className="form-campaing" onSubmit={handleSubmit(update)}>
                             <Input
+                            {...register("title-campaing")}
                                 value={campaing.name}
                                 id="title-campaing"
                                 label="Titulo da Campanha"
@@ -153,6 +160,7 @@ export default function EditCampaing() {
                                 name="title-campaing"
                             />
                             <Input
+                            {...register("description")}
                                 value={campaing.description}
                                 id="description"
                                 label="Descrição"
@@ -169,6 +177,7 @@ export default function EditCampaing() {
                                 }}
                             >
                                 <Input
+                                {...register("limit-date")}
                                     value={campaing.end_date}
                                     id="limit-date"
                                     label="Data limite"
@@ -177,6 +186,7 @@ export default function EditCampaing() {
                                     name="limit-date"
                                 />
                                 <Input
+                                {...register("value")}
                                     value={campaing.value}
                                     id="value"
                                     label="Local"
@@ -189,6 +199,7 @@ export default function EditCampaing() {
                             <div className="input-file-container">
                                 <label htmlFor="cover">Carregar Arquivo</label>
                                 <input
+                                {...register("cover")}
                                     className="input-file"
                                     id="cover"
                                     placeholder="Compra de ração"
@@ -197,7 +208,7 @@ export default function EditCampaing() {
                                 />
                             </div>
 
-                            <Button>Salvar Alterações</Button>
+                            <Button type='submit'>Salvar Alterações</Button>
                         </form>
                     </section>
                 </div>

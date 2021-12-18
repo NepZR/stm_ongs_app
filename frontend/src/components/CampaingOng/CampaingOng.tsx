@@ -42,7 +42,7 @@ export default function CampaingOng({ id, img, value, ongName, title }: Campaign
                             {ongName}
                         </p>
                         <div className="campaing-value">
-                            R$ {value}
+                            {typeof value === 'number'? "Online": "Presencial"}
                         </div>
                     </article>
                 </div>
