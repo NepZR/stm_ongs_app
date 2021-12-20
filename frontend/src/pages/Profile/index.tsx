@@ -110,7 +110,7 @@ export default function Profile() {
             <Container>
               <Title>{`${userProfile?.username}`}</Title>
               <Contate>{`${userProfile?.email}`}</Contate>
-              <EditProfile href="/#">
+              <EditProfile href={`/profile-edit/${uuid}`}>
                 Editar Perfil
               </EditProfile>
                 

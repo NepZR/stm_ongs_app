@@ -10,6 +10,7 @@ import NovaCampanha from './pages/NovaCampanha';
 import VerCampanha from './pages/VerCampanha';
 import EditCampaing from './pages/EditCampaing'
 import Profile from './pages/Profile';
+import EditProfile from './pages/EditProfile';
 
 export default function Routes() {
     return (
@@ -25,6 +26,7 @@ export default function Routes() {
                     <Route path="/campaings/:id" component={VerCampanha} />
                     <Route path="/campaings-edit/:id" component={EditCampaing} />
                     <Route path="/profile" component={Profile}/>
+                    <Route path="/profile-edit/:id" component={EditProfile}/>
                 </Switch>
             </BrowserRouter>
         </>
