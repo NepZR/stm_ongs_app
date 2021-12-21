@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS Usuario (
 	description_text VARCHAR(500) DEFAULT NULL,
 	passwrd CHARACTER VARYING NOT NULL,
 	user_type INT NOT NULL,
-	PRIMARY KEY (id_user),
+	PRIMARY KEY (id),
 	FOREIGN KEY (user_type) REFERENCES UserType(type_id)
 );
 
