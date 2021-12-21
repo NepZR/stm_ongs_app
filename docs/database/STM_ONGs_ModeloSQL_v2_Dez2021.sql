@@ -1,3 +1,6 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp" 
+CREATE EXTENSION IF NOT EXISTS "pgcrypto" 
+
 CREATE TABLE IF NOT EXISTS UserType (
 	type_id SERIAL NOT NULL,
 	type_name VARCHAR(30),
@@ -5,8 +8,8 @@ CREATE TABLE IF NOT EXISTS UserType (
 );
 
 CREATE TABLE IF NOT EXISTS Usuario (
-	id_user SERIAL NOT NULL,
-	username VARCHAR(45) NOT NULL,
+	id uuid DEFAULT uuid_generate_v4(),
+	name VARCHAR(45) NOT NULL,
 	email CHARACTER VARYING NOT NULL,
 	reg_number VARCHAR(14) NOT NULL,
 	profile_pic VARCHAR(400) DEFAULT NULL,
