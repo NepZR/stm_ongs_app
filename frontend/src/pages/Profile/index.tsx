@@ -15,15 +15,18 @@ import Campaing from './../../components/Campaign';
 import { Redirect } from 'react-router'
 
 interface IProfile {
-  uuid: string;
-  username: string;
+  id: string;
+  name: string;
   email: string;
   user_type: number;
+  profile_pic: string;
+  profile_cover: string;
+  description_text: string;
 }
 
 export default function Profile() {
   const {
-    user: { uuid,profile_cover, profile_pic},
+    user: { id ,profile_cover, profile_pic},
   } = useContext(authContext);
   const { authenticated, loading, setStateLoading } = useContext(authContext);
   const [userProfile, setUserProfile] = useState<IProfile | null>();
@@ -84,7 +87,7 @@ export default function Profile() {
   useEffect(() => {
     setStateLoading(true);
     authApi
-      .get(`/users/${uuid}`, { headers: { Authorization: bearerToken } })
+      .get(`/users/${id}`, { headers: { Authorization: bearerToken } })
       .then((response) => {
         setUserProfile(response.data);
         console.log(response.data);
@@ -108,21 +111,16 @@ export default function Profile() {
             />
   
             <Container>
-              <Title>{`${userProfile?.username}`}</Title>
+              <Title>{`${userProfile?.name}`}</Title>
               <Contate>{`${userProfile?.email}`}</Contate>
-              <EditProfile href={`/profile-edit/${uuid}`}>
+              <EditProfile href={`/profile-edit/${id}`}>
                 Editar Perfil
               </EditProfile>
                 
             </Container>
             <Label>Sobre</Label>
             <Description>
-              Olá, somos a ONG União Animal, somos uma ONG que reune pessoas que
-              adotam a causa dos animais e buscam cuidá-los e ajudar a encontrar
-              um bom lar para eles. Recentemente resgatamos caezinhos ainda
-              filhotes, mas precisamos ter ração suficiente para alimentá-los,
-              junto aos demais que já estavam sob nossos cuidados. Agradecemos
-              toda ajuda que puder oferecer.
+            {`${userProfile?.description_text}`}
             </Description>
   
             

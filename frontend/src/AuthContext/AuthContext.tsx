@@ -27,18 +27,19 @@ interface LoginData {
 }
 
 interface User {
-    uuid: string;
-    username: string;
+    id: string;
+    name: string;
+    email: string;
     profile_pic: string;
     profile_cover: string;
-    email: string;
+    description_text: string;
     user_type: number;
 }
 
 export const authContext = createContext({} as ContexProps);
 
 export function AuthProvider({ children }: any) {
-    const [user, setUser] = useState<User>({ uuid: "", username: "", email: "", user_type: 0, profile_cover:'', profile_pic: '' });
+    const [user, setUser] = useState<User>({ id: "", name: "", email: "", user_type: 0,description_text: '', profile_cover:'', profile_pic: '' });
     const [authenticated, setAuthenticated] = useState(false);
     const [loading, setLoading] = useState<boolean>(false)
 
@@ -71,7 +72,7 @@ export function AuthProvider({ children }: any) {
         setLoading(true)
         localStorage.removeItem("stmongs-token");
         setAuthenticated(false);
-        setUser({ uuid: "", username: "", email: "", user_type: 0, profile_cover:'', profile_pic: '' })
+        setUser({ id: "", name: "", email: "", user_type: 0, profile_cover:'', profile_pic: '', description_text: ''})
         setLoading(false)
     }
 
@@ -93,11 +94,12 @@ export function AuthProvider({ children }: any) {
             if(typeof tokenPayload === 'object') {
                 console.log('payload',tokenPayload)
 
-                setUser({uuid: tokenPayload.uuid, 
+                setUser({id: tokenPayload.id, 
                         email: tokenPayload.email,
-                        username: tokenPayload.username,
+                        name: tokenPayload.name,
                         profile_pic:tokenPayload.profile_pic,
                         profile_cover: tokenPayload.profile_cover,
+                        description_text: token.description_text,
                         user_type: tokenPayload.user_type
                     })
                     console.log('state user',user)

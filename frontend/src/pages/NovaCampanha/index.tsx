@@ -49,7 +49,7 @@ export default function NovaCampanha() {
 
         const newCampaing: ICampaingData = {
             campaign_name: data.title_campaing,
-            created_by: user.uuid,
+            created_by: user.id,
             description: data.description,
             campaign_cover: link,
             value: data.value,
