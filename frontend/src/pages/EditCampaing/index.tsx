@@ -81,7 +81,7 @@ export default function EditCampaing() {
                                 name="title-campaing"
                             />
                             <Input
-                            {...register("description")}
+                                {...register("description")}
                                 value={campaing.description}
                                 id="description"
                                 label="Descrição"
@@ -98,7 +98,7 @@ export default function EditCampaing() {
                                 }}
                             >
                                 <Input
-                                {...register("limit-date")}
+                                    {...register("limit-date")}
                                     value="2021-12-26"
                                     id="limit-date"
                                     label="Data limite"
@@ -107,7 +107,7 @@ export default function EditCampaing() {
                                     name="limit-date"
                                 />
                                 <Input
-                                {...register("value")}
+                                    {...register("value")}
                                     value={campaing.value}
                                     id="value"
                                     label="Valor"
@@ -118,22 +118,22 @@ export default function EditCampaing() {
                             </div>
 
                             <div>
-                            <label className="label-input-file"  htmlFor="cover">Carregar Arquivo</label>
+                                <label className="label-input-file" htmlFor="cover">Carregar Arquivo</label>
                             </div>
                             {imgCover && typeof imgCover === 'string' && <img className="image-preview" src={imgCover} alt="cover" />}
 
                             {imgCover && typeof imgCover === 'object' && <img className="image-preview" src={URL.createObjectURL(imgCover)} alt="cover" />}
 
-                                <input
+                            <input
                                 {...register("cover")}
-                                    className="input-file"
-                                    id="cover"
-                                    placeholder="Compra de ração"
-                                    type="file"
-                                    name="cover"
-                                    onChange={(e:any)=> setImgCover(e.target.files[0])}
-                                />
-                            
+                                className="input-file"
+                                id="cover"
+                                placeholder="Compra de ração"
+                                type="file"
+                                name="cover"
+                                onChange={(e: any) => setImgCover(e.target.files[0])}
+                            />
+
 
                             <Button type='submit'>Salvar Alterações</Button>
                         </form>
@@ -147,7 +147,7 @@ export default function EditCampaing() {
                 <NavBar />
                 <Menu />
                 <div className="edit-campaing-container">
-                    
+
                     <section className="card-edit-campaing-form">
                         <h1 className="title-form">
                             {" "}
@@ -156,7 +156,7 @@ export default function EditCampaing() {
 
                         <form className="form-campaing" onSubmit={handleSubmit(update)}>
                             <Input
-                            {...register("title-campaing")}
+                                {...register("title-campaing")}
                                 value={campaing.name}
                                 id="title-campaing"
                                 label="Titulo da Campanha"
@@ -165,7 +165,7 @@ export default function EditCampaing() {
                                 name="title-campaing"
                             />
                             <Input
-                            {...register("description")}
+                                {...register("description")}
                                 value={campaing.description}
                                 id="description"
                                 label="Descrição"
@@ -182,7 +182,7 @@ export default function EditCampaing() {
                                 }}
                             >
                                 <Input
-                                {...register("limit-date")}
+                                    {...register("limit-date")}
                                     value={campaing.end_date}
                                     id="limit-date"
                                     label="Data limite"
@@ -191,7 +191,7 @@ export default function EditCampaing() {
                                     name="limit-date"
                                 />
                                 <Input
-                                {...register("value")}
+                                    {...register("value")}
                                     value={campaing.value}
                                     id="value"
                                     label="Local"
@@ -204,7 +204,7 @@ export default function EditCampaing() {
                             <div className="input-file-container">
                                 <label htmlFor="cover">Carregar Arquivo</label>
                                 <input
-                                {...register("cover")}
+                                    {...register("cover")}
                                     className="input-file"
                                     id="cover"
                                     placeholder="Compra de ração"
@@ -220,6 +220,6 @@ export default function EditCampaing() {
             </>
         );
     } else {
-        return <Loading/>;
+        return <Loading />;
     }
 }
