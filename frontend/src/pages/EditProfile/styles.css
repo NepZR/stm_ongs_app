@@ -22,6 +22,7 @@
 }
 
 .image-cover {
+  max-width: 30rem;
   border: 2px dashed var(--purple);
   border-radius: 10px;
   margin-bottom: 1rem;

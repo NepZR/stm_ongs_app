@@ -8,9 +8,9 @@ export const Container = styled.div`
 `;
 
 export const CardEditProfile = styled.div`
-  width: 60rem;
-  padding: 1rem;
   max-width: 50rem;
+  width: 50rem;
+  padding: 1rem;
   border-radius: 20px;
   background-color: '#fff' ;
 `;
