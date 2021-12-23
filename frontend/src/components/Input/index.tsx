@@ -10,19 +10,20 @@ import './styles.css'
 //     value?: string | number
 // }
 
-export default function Input({ id, type, name, value,label, placeholder,rest }: any) {
+export default function Input({ id, type, name, value, label, placeholder, rest }: any) {
 
     const [valueInput, setValueInput] = useState(value)
-    function setValue(e:any) {
+    function setValue(e: string) {
         setValueInput(e)
     }
 
     return (
         <>
-            <label htmlFor={name} className="label">
+            <label htmlFor={id} className="label">
                 {label}
+                { }
                 <input
-                    onChange={(e)=> { setValue(e.target.value); console.log(e.target.value)}}
+                    onChange={(e) => { setValue(e.target.value) }}
                     {...rest}
                     //placeholder={props.placeholder}
                     className="input"
