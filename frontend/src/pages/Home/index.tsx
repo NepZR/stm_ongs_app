@@ -10,7 +10,7 @@ import Loading from "../../components/Loading";
 //import { campaingsHome } from "../../../dataTest/campaingsHome";
 
 export default function Home() {
-    const { authenticated, user, loading, setStateLoading} = useContext(authContext);
+    const { authenticated, user, loading, setStateLoading } = useContext(authContext);
     const [campaingsHome, setCampaingsHome] = useState([])
 
     useEffect(() => {
@@ -19,20 +19,19 @@ export default function Home() {
             setCampaingsHome(response.data)
             setStateLoading(false)
         })
-        
     }, [])
 
-    if(authenticated) {
+    if (authenticated) {
         return (
             <>
                 <NavBar />
                 <Menu />
 
-                {campaingsHome? <ListCampaings listCamp={campaingsHome} />: <Loading/>}
+                {campaingsHome ? <ListCampaings listCamp={campaingsHome} /> : <Loading />}
                 {/* <ListCampaings listCamp={campaingsHome} /> */}
             </>
         );
     } else {
         return <Redirect to="/sign-in" />
-    } 
+    }
 }

@@ -13,6 +13,7 @@ import ProfileImages from "../../components/ProfileCard/ProfileImages";
 import styled from "styled-components";
 import Campaing from './../../components/Campaign';
 import { Redirect } from 'react-router'
+import { getLocalToken } from "../../utils/getLocalToken/getLocalToken";
 
 interface IProfile {
   id: string;
@@ -26,12 +27,11 @@ interface IProfile {
 
 export default function Profile() {
   const {
-    user: { id ,profile_cover, profile_pic},
+    user: { id, profile_cover, profile_pic },
   } = useContext(authContext);
   const { authenticated, loading, setStateLoading } = useContext(authContext);
   const [userProfile, setUserProfile] = useState<IProfile | null>();
-  const token = localStorage.getItem("stmongs-token");
-  const bearerToken = `Bearer ${token}`;
+  const bearerToken = getLocalToken();
 
   const Description = styled.p`
     border-style: solid;
@@ -95,35 +95,35 @@ export default function Profile() {
       });
   }, []);
 
-  if(!authenticated){
-    return <Redirect to="sign-in"/>
+  if (!authenticated) {
+    return <Redirect to="sign-in" />
   } else {
     return (
       <>
         <NavBar />
         <Menu />
-  
+
         <div className="profile-container">
           <ProfileCard>
-            <ProfileImages 
+            <ProfileImages
               cover={profile_cover}
               profile={profile_pic}
             />
-  
+
             <Container>
               <Title>{`${userProfile?.name}`}</Title>
               <Contate>{`${userProfile?.email}`}</Contate>
               <EditProfile href={`/profile-edit/${id}`}>
                 Editar Perfil
               </EditProfile>
-                
+
             </Container>
             <Label>Sobre</Label>
             <Description>
-            {`${userProfile?.description_text}`}
+              {`${userProfile?.description_text}`}
             </Description>
-  
-            
+
+
           </ProfileCard>
         </div>
       </>
@@ -131,5 +131,5 @@ export default function Profile() {
 
   }
 
-  
+
 }

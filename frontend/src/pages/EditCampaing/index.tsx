@@ -55,7 +55,7 @@ export default function EditCampaing() {
 
     useEffect(() => {
         getDataCampaing(id);
-    }, []);
+    }, [id]);
 
     if (campaing && campaing.campaing_type === 1) {
         return (

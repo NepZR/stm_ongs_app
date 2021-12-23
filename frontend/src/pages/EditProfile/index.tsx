@@ -82,7 +82,7 @@ export default function EditProfile() {
 
   useEffect(() => {
     getProfile(id);
-  }, []);
+  }, [id]);
 
   interface IProfileData {
     name: string;
@@ -208,8 +208,8 @@ export default function EditProfile() {
                 onChange={(e: any) => { setUserProfileImg(e.target.files); setValue('profile_pic', e.target.files) }}
               />
 
-              {userProfileImg && typeof userProfileImg === 'string' && <img className="image-profile" src={userProfileImg} />}
-              {userProfileImg && typeof userProfileImg === 'object' && <img className="image-profile" src={URL.createObjectURL(userProfileImg[0])} />}
+              {userProfileImg && typeof userProfileImg === 'string' && <img className="image-profile" src={userProfileImg} alt="profile" />}
+              {userProfileImg && typeof userProfileImg === 'object' && <img className="image-profile" src={URL.createObjectURL(userProfileImg[0])} alt="profile" />}
 
               <label
                 className="label-edit-profile"
@@ -223,7 +223,7 @@ export default function EditProfile() {
                 hidden
               />
               {userProfileCover && typeof userProfileCover === 'string' && <div className="image-cover" style={profileCover}></div>}
-              {userProfileCover && typeof userProfileCover === 'object' && <img className="image-cover" src={URL.createObjectURL(userProfileCover[0])} />}
+              {userProfileCover && typeof userProfileCover === 'object' && <img className="image-cover" src={URL.createObjectURL(userProfileCover[0])} alt="cover" />}
 
               <Button type="submit">Salvar alterações</Button>
             </form>
