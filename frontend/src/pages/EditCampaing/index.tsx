@@ -15,6 +15,7 @@ interface ICampaing {
     name: string;
     description: string;
     active: number;
+    image_cover: string;
     creation_date: string;
     end_date: string;
     created_by: number;
@@ -36,13 +37,15 @@ export default function EditCampaing() {
     const { register, handleSubmit } = useForm();
     const [loading, setLoading] = useState(true);
     const [campaing, setCampaing] = useState({} as ICampaing);
-    const [imgCover, setImgCover] = useState('https://i.ibb.co/hy0T2BB/fundo-quiz.jpg')
+    const [imgCover, setImgCover] = useState('')
+    //const [imgCover, setImgCover] = useState('https://i.ibb.co/hy0T2BB/fundo-quiz.jpg')
 
 
     async function getDataCampaing(id: string) {
         setLoading(true);
         await api.get(`/campaings/${id}`).then((response) => {
             setCampaing(response.data);
+            setImgCover(response.data.image_cover);
             console.log(response.data)
             setLoading(false);
         });
