@@ -15,6 +15,7 @@ interface ICampaing {
     name: string,
     description: string,
     active: number,
+    image_cover: string,
     creation_date: string,
     end_date: string,
     created_by: number,
@@ -30,6 +31,7 @@ export default function VerCampanha() {
         name: '',
         description: '',
         active: 1,
+        image_cover: '',
         creation_date: '',
         end_date: '',
         created_by: 1,
@@ -71,15 +73,16 @@ export default function VerCampanha() {
 
             <div className="campaing-container">
                 <section className="card-campaing-details">
-                    <img className="campaing-photo" src={Img} alt="" />
+                    <img className="campaing-photo" src={campaing.image_cover} alt="" />
                     <div className="description-container">
-                        <p className="type-campaing">{campaing.campaing_type}</p>
+                        {campaing.campaing_type === 1 && <p className="type-campaing">Online</p>}
+                        {campaing.campaing_type === 2 && <p className="type-campaing">Presencial</p>}
                         <div className="title-share">
                             <h1 className="title-campaing">{campaing.name}</h1>
-                            <button><FiShare size={20} /></button>
+                            {/*<button><FiShare size={20} /></button>*/}
                         </div>
                         <div className="value-date">
-                            <p className="value-campaing">{campaing.value}</p>
+                            {campaing.value && <p className="value-campaing">R$ {campaing.value}</p>}
                             <p className="final-date">{campaing.end_date}</p>
                         </div>
                         <p className="description-campaing"> {campaing.description} </p>

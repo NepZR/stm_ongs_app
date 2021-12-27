@@ -14,10 +14,10 @@ interface CampaignProps {
 
 export default function Campaing({ id, img, value, key, ongName, title }: CampaignProps) {
 
-    if (value) {
+    if (typeof value === 'number') {
         return (
             <div key={key} className="card-campaing">
-                <img className="img-campaing" src={Img} alt="" />
+                <img className="img-campaing" src={img} alt="" />
                 <section className="campaing-description">
                     <Link style={{ textDecoration: 'none', color: '#5A5757' }} to={`campaings/${id}`}>
                         <header className="campaing-title">
@@ -38,7 +38,7 @@ export default function Campaing({ id, img, value, key, ongName, title }: Campai
     } else {
         return (
             <div key={key} className="card-campaing">
-                <img className="img-campaing" src={Img} alt="" />
+                <img className="img-campaing" src={img} alt="" />
                 <section className="campaing-description">
                     <Link style={{ textDecoration: 'none', color: '#5A5757' }} to={`campaings/${id}`}>
                         <header className="campaing-title">

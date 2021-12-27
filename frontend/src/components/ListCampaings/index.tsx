@@ -22,26 +22,40 @@ export default function ListCampaings({ listCamp }: ListCampaingsProps) {
      * de campanhas para ser listado com o map
      */
 
-    const  { user: { user_type }} = useContext(authContext)
+    const { user: { user_type } } = useContext(authContext)
 
-    if(user_type === typeUser.FISICA) {
+    if (user_type === typeUser.FISICA) {
         return (
             <>
                 <section className="list-campaing-container">
                     {listCamp.map((item, index) => {
-                        return <Campaing id={item.id} key={`key-${index}`} img={item.image} title={item.name} ongName={item.ong_name} value={item.value} />
+                        return <Campaing
+                            id={item.id}
+                            key={`key-${index}`}
+                            img={item.image}
+                            title={item.name}
+                            ongName={item.ong_name}
+                            value={item.value}
+                        />
                     })}
                 </section>
             </>
         )
 
-    }else if(user_type === typeUser.ONG) {
+    } else if (user_type === typeUser.ONG) {
 
         return (
             <>
                 <section className="list-campaing-container">
                     {listCamp.map((item, index) => {
-                        return <CampaingOng id={item.id} key={`key-${index}`} img={item.image} title={item.name} ongName={item.ong_name} value={item.value} />
+                        return <CampaingOng
+                            id={item.id}
+                            key={`key-${index}`}
+                            img={item.image}
+                            title={item.name}
+                            ongName={item.ong_name}
+                            value={item.value}
+                        />
                     })}
                 </section>
             </>
