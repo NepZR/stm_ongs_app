@@ -2,14 +2,15 @@ const CampaignRepository = require('../repositories/CampaignRepository');
 
 class CampaignController {
     async index(request, response) {
-        const campaign = await CampaignRepository.findAll();
+        const userId = request.userId;
+        const campaign = await CampaignRepository.findAll(userId);
         return response.json(campaign);
     }
 
     async store(request, response) {
         const { title, description, value, dateLimit, typeCamp } = request.body;
         const userId = request.userId;
-        //*verificar autenticação
+        
         const newCampaign = await CampaignRepository.create(
             title,
             description,
@@ -17,7 +18,7 @@ class CampaignController {
             dateLimit,
             typeCamp,
             userId
-    );
+            );
 
         return response.json(newCampaign);
     }

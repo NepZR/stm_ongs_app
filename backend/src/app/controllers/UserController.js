@@ -2,20 +2,23 @@ const UserRepository = require('../repositories/UserRepository');
 
 class UserController {
     async index(request, response) {
-        const ongs = await UserRepository.findAll();
-        response.json(ongs);
+        const users = await UserRepository.findAll();
+        response.json(users);
     }
 
     async store(request, response) {
         const {
-            typeUser,
+            type_user,
             name, 
-            registerNumber, 
+            reg_number, 
+            profile_pic,
+	        profile_cover,
+	        description,
             email, 
             password,
         } = request.body;
 
-        if(!registerNumber){
+        if(!type_user){
             return response.status(400).json({error: " Incomplete data"});
         }
 
@@ -25,41 +28,44 @@ class UserController {
             return response.status(400).json({error: 'This email is already by used'});
         }
 
-        const ong = await UserRepository.create(
-            typeUser,
+        const user = await UserRepository.create(
+            type_user,
             name,
-            registerNumber, 
+            reg_number,
+            profile_pic,
+	        profile_cover,
+	        description,
             email, 
             password
             );
-            response.json(ong)
+        response.json(user)
     }
 
     async update(request, response) {
-        const { id } = request.params;
-        const { name, registerNumber } = request.body;
-        const userExists = await UserRepository.findById(id);
+        const { userId } = request;
+        const { name, profile_pic, profile_cover, description } = request.body;
+
+        const userExists = await UserRepository.findById(userId);
 
         if(!userExists) {
             return response.status(400).json({error: 'User not found'});
         }
 
-        await UserRepository.update(id,{
-            typeUser,
+        await UserRepository.update(userId,{
             name, 
-            registerNumber,
-            email, 
-            password
+            profile_pic,
+	        profile_cover,
+	        description
         });
         return response.status(200).json({ok: 'Sucess'});
     }
 
     async delete(request, response) {
         const { id } = request.params;
-        const ong = await UserRepository.findById(id);
+        const user = await UserRepository.findById(id);
 
-        if(!ong) {
-            return response.status(400).json({error: 'ONG not found'});
+        if(!user) {
+            return response.status(400).json({error: 'user not found'});
         }
 
         await UserRepository.delete(id);
