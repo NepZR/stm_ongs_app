@@ -8,7 +8,6 @@ class UserController {
 
     async store(request, response) {
         const {
-            type_user,
             name, 
             reg_number, 
             profile_pic,
@@ -17,9 +16,15 @@ class UserController {
             email, 
             password,
         } = request.body;
+        let { type_user } =  request.body;
 
         if(!type_user){
-            return response.status(400).json({error: " Incomplete data"});
+            return response.status(400).json({error: "Incomplete data"});
+        }
+        if(type_user === 1) {
+            type_user = "comum"
+        }else{
+            type_user = "ong"
         }
 
         const emailExists = await UserRepository.findByEmail(email);

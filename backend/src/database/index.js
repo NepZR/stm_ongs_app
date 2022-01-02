@@ -1,7 +1,11 @@
 const Sequelize = require('sequelize');
 const config = require('../config/database.json')
 
-const database = new Sequelize(config.database, config.username, config.password, config);
+const database = new Sequelize('stmongs', 'root', 'root', {
+  host: 'localhost',
+  dialect: 'postgres',
+  port: 5432
+});
 
 database
   .authenticate()

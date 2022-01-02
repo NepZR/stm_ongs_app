@@ -5,13 +5,12 @@ const userType = database.define('user_types', {
   id: {
     primaryKey: true,
     unique: true,
-    type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4,
+    type: DataTypes.INTEGER,
     allowNull: false
   },
-  type: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
     }
 },{
   underscored: true

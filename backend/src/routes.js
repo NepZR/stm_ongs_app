@@ -4,10 +4,10 @@ const UserController = require('./app/controllers/UserController');
 const CampaignController = require('./app/controllers/CampaignController');
 const AuthController = require('./app/controllers/AuthController');
 const authMiddleware = require('./app/middlewares/authMiddleware');
-//const TesteController = require('./app/controllers/TesteController')
+const TesteController = require('./app/controllers/TesteController')
 
 const routes = Router();
-//routes.post('/type',TesteController.store)
+//routes.get('/test',TesteController.store)
 routes.post('/auth', AuthController.authenticate);
 
 routes.post('/user', UserController.store);

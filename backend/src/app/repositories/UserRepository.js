@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
-const User = require('../modelDb/user');
-const UserType = require('../modelDb/typeUser');
+const User = require('../models/user');
+const UserType = require('../models/typeUser');
 
 class UserRepository {  
     async findById(id) {
@@ -17,7 +17,7 @@ class UserRepository {
     }
 
     async create(type_user, name, reg_number, profile_pic, profile_cover, description, email, password ) {
-        const typyUser = await UserType.findOne({where: {type : type_user}}) 
+        const typeUser = await UserType.findOne({where: {name : type_user}}) 
         const newUser = await User.create({
             name, 
             email, 
@@ -26,7 +26,7 @@ class UserRepository {
 	        profile_cover,
 	        description,
             password: bcrypt.hashSync(password, 8),
-            userTypeId: typyUser.id
+            userTypeId: typeUser.id
         });
         return newUser;
     }
