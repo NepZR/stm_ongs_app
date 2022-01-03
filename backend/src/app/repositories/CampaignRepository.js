@@ -21,9 +21,10 @@ let campaigns = [
 
 class CampaignRepository {
 
-    findAll(){
-        return new Promise((resolve) => resolve (campaigns)
-        );
+    findAll(userId){
+        return new Promise((resolve) => resolve (
+            campaigns.filter((campaigns) => campaigns.userId === userId)
+        ));
       }
     
     findById(id){

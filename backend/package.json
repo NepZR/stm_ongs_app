@@ -10,12 +10,15 @@
     "bcryptjs": "^2.4.3",
     "dotenv": "^10.0.0",
     "jsonwebtoken": "^8.5.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.12.0-beta.3",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "sequelize-cli": "^6.3.0"
   },
   "scripts": {
-    "dev": "nodemon src/index"
+    "dev": "nodemon src/server.js"
   }
 }
