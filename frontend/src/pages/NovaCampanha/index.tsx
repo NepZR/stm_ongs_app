@@ -192,7 +192,7 @@ export default function NovaCampanha() {
                                     type="file"
                                     id="cover"
                                     hidden
-                                    onChange={(e: any) => { setImgCover(e.target.files); setValue('cover', imgCover) }}
+                                    onChange={(e: any) => { setImgCover(e.target.files); console.log(e.target.files); setValue('cover', e.target.files) }}
                                 />
                             </div>
                             {imgCover && typeof imgCover === 'object' && <img src={URL.createObjectURL(imgCover[0])} className="image-cover" alt="imagem de capa da campanha" />}
