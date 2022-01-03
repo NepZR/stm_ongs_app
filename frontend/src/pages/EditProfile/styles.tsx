@@ -20,6 +20,7 @@ export const Title = styled.h1`
   font-weight: 900;
   text-align: left;
   margin-top: 3rem;
+  margin-bottom: 1rem;
   margin-right: 2rem;
   color: var(--purple);
 `;

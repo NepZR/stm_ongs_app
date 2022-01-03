@@ -170,6 +170,7 @@ export default function EditProfile() {
               className="form-edit-profile"
               onSubmit={handleSubmit(submitProfile)}
             >
+              <label htmlFor="">Nome</label>
               <input
                 {...register("name")}
                 type="text"
@@ -178,15 +179,7 @@ export default function EditProfile() {
                 onChange={(e) => setName(e.target.value)}
                 className="input-form-edit"
               />
-              <input
-                {...register("email")}
-                type="text"
-                name="email"
-                value={userEmail}
-                onChange={(e) => setUserEmail(e.target.value)}
-                className="input-form-edit"
-              />
-
+              <label htmlFor="">Descrição</label>
               <textarea
                 {...register("description_text")}
                 rows={4}
