@@ -7,6 +7,7 @@ module.exports = {
     let data = []
     while(count--)  {
       data.push({
+        id: count+1,
         name: types[count],
         created_at: new Date(),
         updated_at: new Date()

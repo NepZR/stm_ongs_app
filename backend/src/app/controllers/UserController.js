@@ -22,7 +22,7 @@ class UserController {
             return response.status(400).json({error: "Incomplete data"});
         }
         if(type_user === 1) {
-            type_user = "comum"
+            type_user = "pessoa"
         }else{
             type_user = "ong"
         }

@@ -6,16 +6,19 @@ import Button from "../Button";
 import Card from "../Card";
 import { useState } from 'react';
 import { useForm } from 'react-hook-form'
+import axios from 'axios';
+import { BASE_URL_API_LOCAL } from '../../utils/requests';
+import { setLocalToken } from '../../utils/setLocalToken/setLocalToken';
 
 const form = { FISIC: "cpf", ONG: "cnpj" }
 
 interface ISigInData {
-    type_user: string;
+    type_user: number;
     name: string;
     reg_number: string;
     email: string;
     password: string;
-    conf_senha: string;
+    /*conf_senha: string;*/
 }
 
 export default function SignUpForm() {
@@ -34,9 +37,16 @@ export default function SignUpForm() {
         setType(form.ONG)
     }
 
-    const handleSignIn = (data: ISigInData) => {
-        console.log(data)
+    const handleSignIn = async (data: ISigInData) => {
+        console.log('Dados enviados', data)
+        const user = await axios.post(`${BASE_URL_API_LOCAL}/user`, data)
+        console.log(user.data)
 
+        const credentials = { email: user.data.email, password: data.password }
+        console.log(credentials)
+        const userData = await axios.post(`${BASE_URL_API_LOCAL}/auth`, credentials)
+        console.log('Auth', userData.data)
+        setLocalToken(userData.data.token)
     }
 
     return (
@@ -74,7 +84,7 @@ export default function SignUpForm() {
                         {...register("type_user")}
                         type='hidden'
                         name="type_user"
-                        {...type === form.FISIC ? setValue("type_user", form.FISIC) : setValue("type_user", form.ONG)}
+                        {...type === form.FISIC ? setValue("type_user", 1) : setValue("type_user", 2)}
 
                     />
 
