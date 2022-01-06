@@ -25,16 +25,22 @@ interface IProfile {
 }
 
 export default function EditProfile() {
-  const { id }: any = useParams();
+  const { user: {
+    id,
+    name,
+    email,
+    reg_number,
+    profile_pic,
+    profile_cover,
+    description }
+  } = useContext(authContext)
+  const { idUser }: any = useParams();
   const { loading, setStateLoading } = useContext(authContext)
   const { handleSubmit, register, setValue, getValues } = useForm();
   const [userProfile, setUserProfile] = useState({} as IProfile);
   const [userProfileImg, setUserProfileImg] = useState(userProfile.profile_pic);
   const [userProfileCover, setUserProfileCover] = useState(userProfile.profile_cover);
   const [userName, setName] = useState('');
-  const [userEmail, setUserEmail] = useState('');
-  // const [userProfPic, setProfPic] = useState();
-  // const [userCover, setProfCover] = useState();
   const [userDesc, setUserDesc] = useState('');
 
 
@@ -60,7 +66,9 @@ export default function EditProfile() {
     setStateLoading(true)
     await authApi.get(`/users/${id}`, { headers: { Authorization: bearerToken } })
       .then((response) => {
-        setUserProfile(response.data);
+
+        /**
+         setUserProfile(response.data);
         console.log("useffect", response.data);
         setName(response.data.name)
         setValue('name', response.data.name)
@@ -77,11 +85,30 @@ export default function EditProfile() {
         setUserProfileCover(response.data.profile_cover)
         setValue('profile_cover', response.data.profile_cover)
         setStateLoading(false)
+         */
       });
   };
 
   useEffect(() => {
-    getProfile(id);
+    //getProfile(id);
+
+    //setUserProfile(response.data);
+    //console.log("useffect", response.data);
+    setName(name)
+    setValue('name', name)
+
+    //setUserEmail(email)
+    //setValue('email', response.data.email)
+
+    setUserDesc(description)
+    setValue('description_text', description)
+
+    setUserProfileImg(profile_pic)
+    setValue('profile_pic', profile_pic)
+
+    setUserProfileCover(profile_cover)
+    setValue('profile_cover', profile_cover)
+    setStateLoading(false)
   }, []);
 
   interface IProfileData {

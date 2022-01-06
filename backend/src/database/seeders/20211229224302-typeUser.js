@@ -2,7 +2,7 @@
 const { DataTypes } = require('sequelize');
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    let types = ['ong','pessoa'];
+    let types = ['pessoa','ong'];
     let count = types.length;
     let data = []
     while(count--)  {

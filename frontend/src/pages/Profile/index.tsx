@@ -26,7 +26,13 @@ interface IProfile {
 
 export default function Profile() {
   const {
-    user: { id ,profile_cover, profile_pic},
+    user: {
+      id,
+      name,
+      email,
+      profile_cover,
+      profile_pic,
+      description },
   } = useContext(authContext);
   const { authenticated, loading, setStateLoading } = useContext(authContext);
   const [userProfile, setUserProfile] = useState<IProfile | null>();
@@ -95,35 +101,35 @@ export default function Profile() {
       });
   }, []);
 
-  if(!authenticated){
-    return <Redirect to="sign-in"/>
+  if (!authenticated) {
+    return <Redirect to="sign-in" />
   } else {
     return (
       <>
         <NavBar />
         <Menu />
-  
+
         <div className="profile-container">
           <ProfileCard>
-            <ProfileImages 
+            <ProfileImages
               cover={profile_cover}
               profile={profile_pic}
             />
-  
+
             <Container>
-              <Title>{`${userProfile?.name}`}</Title>
-              <Contate>{`${userProfile?.email}`}</Contate>
+              <Title>{`${name}`}</Title>
+              <Contate>{`${email}`}</Contate>
               <EditProfile href={`/profile-edit/${id}`}>
                 Editar Perfil
               </EditProfile>
-                
+
             </Container>
             <Label>Sobre</Label>
             <Description>
-            {`${userProfile?.description_text}`}
+              {`${description}`}
             </Description>
-  
-            
+
+
           </ProfileCard>
         </div>
       </>
@@ -131,5 +137,5 @@ export default function Profile() {
 
   }
 
-  
+
 }
