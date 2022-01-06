@@ -1,5 +1,6 @@
 'use strict';
 const { DataTypes } = require('sequelize');
+const { v4 } = require('uuid');
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     let types = ['pessoa','ong'];

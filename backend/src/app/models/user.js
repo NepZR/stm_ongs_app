@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const database = require('../../database');
+const Campaign = require('./campaign');
 const User_type = require('./typeUser');
 
 const User = database.define('users', {
@@ -42,5 +43,6 @@ const User = database.define('users', {
 );
 User.belongsTo(User_type);
 User_type.hasMany(User);
-
+User.hasMany(Campaign);
+Campaign.belongsTo(User);
 module.exports = User;

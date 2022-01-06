@@ -1,22 +1,32 @@
+const res = require('express/lib/response');
 const CampaignRepository = require('../repositories/CampaignRepository');
+const UserRepository = require('../repositories/UserRepository');
 
 class CampaignController {
     async index(request, response) {
-        const userId = request.userId;
-        const campaign = await CampaignRepository.findAll(userId);
+        const {userId} = request;
+        const user = await UserRepository.findById(userId);
+        if(!user) {
+            return res.status(401).json({Erro: 'User not found'});
+        }
+
         return response.json(campaign);
     }
 
     async store(request, response) {
-        const { title, description, value, dateLimit, typeCamp } = request.body;
-        const userId = request.userId;
-        
+        const { title, description, value, date_limit, type_camp } = request.body;
+        const {userId} = request;
+        const user = await UserRepository.findById(userId);
+        if(!user) {
+            return res.status(401).json({Erro: 'User not found'});
+        }
+
         const newCampaign = await CampaignRepository.create(
             title,
             description,
             value,
-            dateLimit,
-            typeCamp,
+            date_limit,
+            type_camp,
             userId
             );
 

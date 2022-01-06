@@ -16,7 +16,7 @@ class AuthController {
         if(!isValidPassword) {
             return response.sendStatus(401)
         }
-        const token = jwt.sign({id: user.id}, process.env.SECRET, {expiresIn: 300});
+        const token = jwt.sign({id: user.id}, process.env.SECRET, {expiresIn: '1d'});
 
         delete user.password
         return response.json({
