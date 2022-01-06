@@ -11,11 +11,11 @@ const routes = Router();
 routes.post('/auth', AuthController.authenticate);
 
 routes.post('/user', UserController.store);
-routes.get('/user', UserController.index);
-routes.delete('/user/:id', UserController.delete);
+routes.get('/user', authMiddleware, UserController.index);
+//routes.delete('/user/:id', UserController.delete);
 routes.put('/user/update', authMiddleware, UserController.update);
 
-routes.get('/campaign', authMiddleware, CampaignController.index);
+routes.get('/campaign/:id', authMiddleware, CampaignController.index);
 routes.post('/campaign',authMiddleware, CampaignController.store);
 routes.delete('/campaign/:id', authMiddleware, CampaignController.delete);
 routes.put('/campaign/:id', authMiddleware, CampaignController.update);

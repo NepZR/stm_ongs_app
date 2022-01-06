@@ -1,9 +1,17 @@
+const res = require('express/lib/response');
 const UserRepository = require('../repositories/UserRepository');
 
 class UserController {
     async index(request, response) {
-        const users = await UserRepository.findAll();
-        response.json(users);
+        const { userId } = request;
+        const {name, email, reg_number, description, profile_pic, profile_cover} = await UserRepository.findById(userId);
+        if(!email){
+            return res.status(401).json({Error: 'User not found'});
+        }
+        
+        return response.json({
+            name, email, reg_number, description, profile_pic, profile_cover
+        })
     }
 
     async store(request, response) {
@@ -22,7 +30,7 @@ class UserController {
             return response.status(400).json({error: "Incomplete data"});
         }
         if(type_user === 1) {
-            type_user = "comum"
+            type_user = "pessoa"
         }else{
             type_user = "ong"
         }

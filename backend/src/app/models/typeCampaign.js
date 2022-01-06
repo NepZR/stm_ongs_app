@@ -1,8 +1,7 @@
 const { DataTypes } = require('sequelize');
 const database = require('../../database');
-const Campaign = require('./campaign');
 
-const userType = database.define('user_types', {
+const campaignType = database.define('campaign_types', {
   id: {
     primaryKey: true,
     unique: true,
@@ -18,5 +17,4 @@ const userType = database.define('user_types', {
   underscored: true
 });
 
-Campaign.sync();
-module.exports = userType;
+module.exports =  campaignType;

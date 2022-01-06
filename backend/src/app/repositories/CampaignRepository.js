@@ -1,4 +1,6 @@
 const { v4 } = require('uuid');
+const Campaign = require('../models/campaign');
+const CampaignType = require('../models/typeCampaign');
 
 let campaigns = [
     {
@@ -33,21 +35,17 @@ class CampaignRepository {
           ));
       }
 
-    create(title, description, value, dateLimit, typeCamp, userId) {
-        console.log(userId)
-        return new Promise((resolve) => {
-            const newCampaign = {
-                id: v4(),
-                title,
-                description,
-                value,
-                dateLimit,
-                typeCamp,
-                userId
-            };
-            campaigns.push(newCampaign);
-            resolve(newCampaign);
+    async create(title, description, value, date_limit, type_camp, userId) {
+        const typeCampaign = await CampaignType.findOne({where: {name : type_camp}});
+        const newCampaign = await Campaign.create({
+            title,
+            description,
+            value,
+            date_limit,
+            campaignTypeId: typeCampaign.id,
+            userId
         });
+           
     }
 
     delete(id) {
