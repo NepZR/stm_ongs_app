@@ -17,7 +17,7 @@ const Campaign = database.define('campaign', {
     },
   value: {
     type: DataTypes.DOUBLE,
-    allowNull: false
+    allowNull: true
   },
   description:{
     type: DataTypes.STRING(500),

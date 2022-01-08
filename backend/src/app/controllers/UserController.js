@@ -4,13 +4,13 @@ const UserRepository = require('../repositories/UserRepository');
 class UserController {
     async index(request, response) {
         const { userId } = request;
-        const {name, email, reg_number, description, profile_pic, profile_cover} = await UserRepository.findById(userId);
+        const {name, email, reg_number, description, profile_pic, profile_cover, userTypeId} = await UserRepository.findById(userId);
         if(!email){
             return res.status(401).json({Error: 'User not found'});
         }
         
         return response.json({
-            name, email, reg_number, description, profile_pic, profile_cover
+            name, email, reg_number, description, profile_pic, profile_cover, userTypeId
         })
     }
 

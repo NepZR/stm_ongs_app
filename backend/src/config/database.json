@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "root",
-    "password": "root",
+    "username": "postgres",
+    "password": "852131293",
     "database": "stmongs",
     "host": "localhost",
     "dialect": "postgres",
