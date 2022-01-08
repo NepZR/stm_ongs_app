@@ -15,14 +15,19 @@ import { pathToFileURL } from "url";
 import Input from './../../components/Input'
 import { uploadImage } from "../../services/uploadImages";
 import api from "../../auth/api";
+import axios from "axios";
+import { BASE_URL_API_LOCAL } from "../../utils/requests";
 
 interface IProfile {
-  name: string;
-  email: string;
+  name?: string;
+  email?: string;
   profile_pic: string;
   profile_cover: string;
-  description_text: string;
+  description?: string;
 }
+
+const perfil = 'https://i.ibb.co/Jk3GHd7/git.jpg'
+const capa = 'https://i.ibb.co/hy0T2BB/fundo-quiz.jpg'
 
 export default function EditProfile() {
   const { user: {
@@ -32,89 +37,54 @@ export default function EditProfile() {
     reg_number,
     profile_pic,
     profile_cover,
-    description }
-  } = useContext(authContext)
-  const { idUser }: any = useParams();
+    description
+  }
+  } = useContext(authContext);
+
   const { loading, setStateLoading } = useContext(authContext)
   const { handleSubmit, register, setValue, getValues } = useForm();
   const [userProfile, setUserProfile] = useState({} as IProfile);
-  const [userProfileImg, setUserProfileImg] = useState(userProfile.profile_pic);
-  const [userProfileCover, setUserProfileCover] = useState(userProfile.profile_cover);
   const [userName, setName] = useState('');
   const [userDesc, setUserDesc] = useState('');
-
+  const [userProfileImg, setUserProfileImg] = useState(userProfile.profile_pic);
+  const [userProfileCover, setUserProfileCover] = useState(userProfile.profile_cover);
 
   const bearerToken = `${getLocalToken()}`;
 
-  const profileImage = {
-    height: '100px',
-    width: '100px',
-    backgroundImage: `url(${userProfile.profile_pic}`,
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-  };
-
-  const profileCover = {
-    height: '300px',
-    width: '100%',
-    backgroundImage: `url(${userProfile.profile_cover}`,
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-  };
-
-  async function getProfile(id: string) {
+  async function getProfile() {
     setStateLoading(true)
-    await authApi.get(`/users/${id}`, { headers: { Authorization: bearerToken } })
+    await axios.get(`${BASE_URL_API_LOCAL}/user`, { headers: { Authorization: bearerToken } })
       .then((response) => {
+        const {
+          name,
+          description,
+          profile_pic,
+          profile_cover
+        } = response.data;
 
-        /**
-         setUserProfile(response.data);
-        console.log("useffect", response.data);
-        setName(response.data.name)
-        setValue('name', response.data.name)
+        setValue("name", name)
+        setName(name);
 
-        setUserEmail(response.data.email)
-        setValue('email', response.data.email)
+        setValue("description", description)
+        setUserDesc(description);
 
-        setUserDesc(response.data.description_text)
-        setValue('description_text', response.data.description_text)
+        setValue("profile_pic", profile_pic)
+        setUserProfileImg(profile_pic)
 
-        setUserProfileImg(response.data.profile_pic)
-        setValue('profile_pic', response.data.profile_pic)
+        setValue("profile_cover", profile_cover)
+        setUserProfileCover(profile_cover)
 
-        setUserProfileCover(response.data.profile_cover)
-        setValue('profile_cover', response.data.profile_cover)
-        setStateLoading(false)
-         */
       });
   };
 
   useEffect(() => {
-    //getProfile(id);
+    getProfile();
 
-    //setUserProfile(response.data);
-    //console.log("useffect", response.data);
-    setName(name)
-    setValue('name', name)
-
-    //setUserEmail(email)
-    //setValue('email', response.data.email)
-
-    setUserDesc(description)
-    setValue('description_text', description)
-
-    setUserProfileImg(profile_pic)
-    setValue('profile_pic', profile_pic)
-
-    setUserProfileCover(profile_cover)
-    setValue('profile_cover', profile_cover)
-    setStateLoading(false)
   }, []);
 
   interface IProfileData {
     name: string;
-    email: string;
-    description_text: string;
+    description: string;
     profile_pic: FileList;
     profile_cover: FileList;
   }
@@ -123,11 +93,12 @@ export default function EditProfile() {
 
 
     if (typeof profileData.profile_pic === 'string' && typeof profileData.profile_cover === 'string') {
-      // api.put(`/user/${id}`, profileData)
-      //   .then((response) => {
-      //     console.log(response.data)
-      //   })
       console.log(profileData)
+      axios.put(`${BASE_URL_API_LOCAL}/user/update`, profileData, { headers: { Authorization: bearerToken } })
+        .then((response) => {
+          console.log(response.data)
+        })
+
     } else if (typeof profileData.profile_pic === 'object' && typeof profileData.profile_cover === 'string') {
 
       const profile_pic = await uploadImage(profileData.profile_pic)
@@ -135,12 +106,16 @@ export default function EditProfile() {
 
       const profile = {
         name: profileData.name,
-        email: profileData.email,
-        description_text: profileData.description_text,
+        description: profileData.description,
         profile_pic: profile_pic,
         profile_cover: profileData.profile_cover
       }
       console.log(profile)
+
+      axios.put(`${BASE_URL_API_LOCAL}/user/update`, profile, { headers: { Authorization: bearerToken } })
+        .then((response) => {
+          console.log(response.data)
+        })
 
       //console.log(profileData.profile_pic)
 
@@ -151,12 +126,16 @@ export default function EditProfile() {
 
       const profile = {
         name: profileData.name,
-        email: profileData.email,
-        description_text: profileData.description_text,
+        description: profileData.description,
         profile_pic: profileData.profile_pic,
         profile_cover: profile_cover
       }
       console.log(profile)
+
+      axios.put(`${BASE_URL_API_LOCAL}/user/update`, profile, { headers: { Authorization: bearerToken } })
+        .then((response) => {
+          console.log(response.data)
+        })
 
       //console.log(profileData.profile_cover)
 
@@ -171,17 +150,32 @@ export default function EditProfile() {
 
       const profile = {
         name: profileData.name,
-        email: profileData.email,
-        description_text: profileData.description_text,
+        description: profileData.description,
         profile_pic: profile_pic,
         profile_cover: profile_cover
       }
       console.log(profile)
-      // api.put(`/user/${id}`, profile)
-      //   .then((response) => {
-      //     console.log(response.data)
-      //   })
+      axios.put(`${BASE_URL_API_LOCAL}/user/update`, profile, { headers: { Authorization: bearerToken } })
+        .then((response) => {
+          console.log(response.data)
+        })
     }
+  };
+
+  const profileImage = {
+    height: '100px',
+    width: '100px',
+    backgroundImage: `url(${userProfileImg}`,
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+  };
+
+  const profileCover = {
+    height: '300px',
+    width: '100%',
+    backgroundImage: `url(${userProfileCover}`,
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
   };
 
   if (userProfile) {
@@ -203,17 +197,17 @@ export default function EditProfile() {
                 type="text"
                 name="name"
                 value={userName}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => { setName(e.target.value); setValue("name", e.target.value) }}
                 className="input-form-edit"
               />
               <label htmlFor="">Descrição</label>
               <textarea
-                {...register("description_text")}
+                {...register("description")}
                 rows={4}
                 cols={10}
-                name="description_text"
+                name="description"
                 value={userDesc}
-                onChange={(e) => setUserDesc(e.target.value)}
+                onChange={(e) => { setUserDesc(e.target.value); setValue("description", e.target.value) }}
                 className="input-form-edit-textarea"
               />
               <label
@@ -228,8 +222,9 @@ export default function EditProfile() {
                 onChange={(e: any) => { setUserProfileImg(e.target.files); setValue('profile_pic', e.target.files) }}
               />
 
-              {userProfileImg && typeof userProfileImg === 'string' && <img className="image-profile" src={userProfileImg} />}
+              {userProfileImg && typeof userProfileImg === 'string' && <div className="image-profile" style={profileImage}></div>}
               {userProfileImg && typeof userProfileImg === 'object' && <img className="image-profile" src={URL.createObjectURL(userProfileImg[0])} />}
+
 
               <label
                 className="label-edit-profile"
@@ -242,8 +237,9 @@ export default function EditProfile() {
                 onChange={(e: any) => { setUserProfileCover(e.target.files); setValue('profile_cover', e.target.files) }}
                 hidden
               />
-              {userProfileCover && typeof userProfileCover === 'string' && <div className="image-cover" style={profileCover}></div>}
+              {userProfileCover && typeof userProfileCover === 'string' && <img className="image-cover" style={profileCover}></img>}
               {userProfileCover && typeof userProfileCover === 'object' && <img className="image-cover" src={URL.createObjectURL(userProfileCover[0])} />}
+
 
               <Button type="submit">Salvar alterações</Button>
             </form>
