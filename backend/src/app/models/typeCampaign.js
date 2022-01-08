@@ -5,8 +5,7 @@ const campaignType = database.define('campaign_types', {
   id: {
     primaryKey: true,
     unique: true,
-    type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4,
+    type: DataTypes.INTEGER,
     allowNull: false
   },
   name: {

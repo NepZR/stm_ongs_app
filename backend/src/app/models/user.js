@@ -12,12 +12,12 @@ const User = database.define('users', {
     allowNull: false
   },
   name: {
-      type: DataTypes.STRING,
-      allowNull: false
+    type: DataTypes.STRING,
+    allowNull: false
     },
   email: {
-      type: DataTypes.STRING,
-      allowNull: false
+    type: DataTypes.STRING,
+    allowNull: false
     },
   reg_number: {
     type: DataTypes.STRING,

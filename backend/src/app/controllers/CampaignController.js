@@ -1,4 +1,3 @@
-const res = require('express/lib/response');
 const CampaignRepository = require('../repositories/CampaignRepository');
 const UserRepository = require('../repositories/UserRepository');
 
@@ -6,25 +5,46 @@ class CampaignController {
     async index(request, response) {
         const {userId} = request;
         const user = await UserRepository.findById(userId);
-        if(!user) {
-            return res.status(401).json({Erro: 'User not found'});
-        }
+        console.log(user.userTypeId);
 
-        return response.json(campaign);
+        if (user.userTypeId === 1){
+            const campaigns = await CampaignRepository.findAll();
+            return response.json(campaigns);
+        }
+        const campaigns = await CampaignRepository.findByUser(userId);
+        return response.json(campaigns);
+    }
+
+    async show(request, response) {
+        const {id} = request.params;
+
+        const campaignById = await CampaignRepository.findById(id);
+        if(!campaignById) {
+            return response.status(401).json({error: 'Campaign not exist'});
+        }
+        return response.json(campaignById);
     }
 
     async store(request, response) {
-        const { title, description, value, date_limit, type_camp } = request.body;
+        const { title, description, value, campaign_cover, date_limit } = request.body;
+        let { type_camp } =  request.body;
         const {userId} = request;
+        
         const user = await UserRepository.findById(userId);
         if(!user) {
             return res.status(401).json({Erro: 'User not found'});
+        }
+        if(type_camp === 1) {
+            type_camp = "online"
+        }else{
+            type_camp = "presencial"
         }
 
         const newCampaign = await CampaignRepository.create(
             title,
             description,
             value,
+            campaign_cover,
             date_limit,
             type_camp,
             userId

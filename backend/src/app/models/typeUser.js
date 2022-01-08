@@ -6,8 +6,7 @@ const userType = database.define('user_types', {
   id: {
     primaryKey: true,
     unique: true,
-    type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4,
+    type: DataTypes.INTEGER,
     allowNull: false
   },
   name: {
@@ -18,5 +17,4 @@ const userType = database.define('user_types', {
   underscored: true
 });
 
-Campaign.sync();
 module.exports = userType;

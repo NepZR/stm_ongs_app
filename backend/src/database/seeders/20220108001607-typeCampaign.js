@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    let types = ['pessoa','ong'];
+    let types = ['online', 'presencial'];
     let count = types.length;
     let data = []
     while(count--) {
@@ -13,10 +13,10 @@ module.exports = {
         updated_at: new Date()
       })
     }
-    await queryInterface.bulkInsert('user_types', data, {});
+    await queryInterface.bulkInsert('campaign_types', data, {});
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('user_types', null, {});
+    await queryInterface.bulkDelete('campaign_types', null, {});
   }
 };

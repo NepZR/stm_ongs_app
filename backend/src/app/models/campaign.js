@@ -15,6 +15,10 @@ const Campaign = database.define('campaign', {
       type: DataTypes.STRING,
       allowNull: false
     },
+  value: {
+    type: DataTypes.DOUBLE,
+    allowNull: false
+  },
   description:{
     type: DataTypes.STRING(500),
     allowNull: false
@@ -27,7 +31,7 @@ const Campaign = database.define('campaign', {
     defaultValue: true,
     allowNull: false
   },
-  creation_date: {
+  date_limit: {
     type: DataTypes.STRING,
     allowNull: false
   },
