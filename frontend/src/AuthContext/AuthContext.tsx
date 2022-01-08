@@ -14,6 +14,7 @@ import Loading from "../components/Loading";
 import axios from "axios";
 import { BASE_URL_API_LOCAL } from "../utils/requests";
 import { setLocalToken } from "../utils/setLocalToken/setLocalToken";
+import { getLocalToken } from "../utils/getLocalToken/getLocalToken";
 
 interface ContexProps {
     authenticated: boolean;
@@ -64,20 +65,27 @@ export function AuthProvider({ children }: any) {
     async function getInfos() {
         setLoading(true)
         const token = localStorage.getItem("stmongs-token");
+        const AuthStr = `${token}`
 
-        const AuthStr = 'Bearer '.concat(token ? token : '')
+        await axios.get(`${BASE_URL_API_LOCAL}/user`, { headers: { Authorization: AuthStr } }).then((response) => {
+            setUser({
+                id: response.data.id,
+                name: response.data.name,
+                email: response.data.email,
+                reg_number: response.data.reg_number,
+                description: response.data.description,
+                profile_pic: response.data.profile_pic,
+                profile_cover: response.data.profile_cover,
+                user_type: response.data.userTypeId,
+            })
 
-        await authApi.get('/user-profile', { headers: { Authorization: AuthStr } }).then((response) => {
-            setUser(response.data)
-            //console.log("getinfos Data User: ", response.data)
-            // setUser({ name: "octa", email: "deede", type: "FISIC" })
             setAuthenticated(true);
         })
         setLoading(false)
     }
     useEffect(() => {
         setLoading(true)
-        const token = localStorage.getItem("stmongs-token");
+        const token = `${getLocalToken()}`;
 
         if (token !== undefined && token !== "" && token !== null) {
             getInfos()
@@ -122,11 +130,11 @@ export function AuthProvider({ children }: any) {
                     description: response.data.user.description,
                     user_type: response.data.user.userTypeId,
                 })
-                console.log(user)
+                console.log(response.data.user, response.data.token)
                 setLocalToken(response.data.token)
                 setAuthenticated(true);
+                setLoading(false)
             })
-
 
 
         /*if (token !== undefined && token !== "" && token !== "undefined") {
@@ -152,7 +160,6 @@ export function AuthProvider({ children }: any) {
 
         }*/
 
-        setLoading(false)
     }
 
     /*async function handleLogin({ email, password }: LoginData) {

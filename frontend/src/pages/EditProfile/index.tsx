@@ -44,7 +44,7 @@ export default function EditProfile() {
   const [userDesc, setUserDesc] = useState('');
 
 
-  const bearerToken = getLocalToken();
+  const bearerToken = `${getLocalToken()}`;
 
   const profileImage = {
     height: '100px',

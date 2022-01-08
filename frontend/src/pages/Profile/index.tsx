@@ -13,6 +13,8 @@ import ProfileImages from "../../components/ProfileCard/ProfileImages";
 import styled from "styled-components";
 import Campaing from './../../components/Campaign';
 import { Redirect } from 'react-router'
+import axios from "axios";
+import { BASE_URL_API_LOCAL } from "../../utils/requests";
 
 interface IProfile {
   id: string;
@@ -25,19 +27,7 @@ interface IProfile {
 }
 
 export default function Profile() {
-  const {
-    user: {
-      id,
-      name,
-      email,
-      profile_cover,
-      profile_pic,
-      description },
-  } = useContext(authContext);
-  const { authenticated, loading, setStateLoading } = useContext(authContext);
-  const [userProfile, setUserProfile] = useState<IProfile | null>();
-  const token = localStorage.getItem("stmongs-token");
-  const bearerToken = `Bearer ${token}`;
+
 
   const Description = styled.p`
     border-style: solid;
@@ -90,18 +80,32 @@ export default function Profile() {
     justify-content: right;
   `;
 
+  const {
+    user: {
+      id,
+      name,
+      email,
+      profile_cover,
+      profile_pic,
+      description
+    },
+  } = useContext(authContext);
+
+  const { authenticated, loading, setStateLoading } = useContext(authContext);
+
   useEffect(() => {
+    const token = localStorage.getItem("stmongs-token");
+    const bearerToken = `${token}`;
     setStateLoading(true);
-    authApi
-      .get(`/users/${id}`, { headers: { Authorization: bearerToken } })
+    axios.get(`${BASE_URL_API_LOCAL}/user`, { headers: { Authorization: bearerToken } })
       .then((response) => {
-        setUserProfile(response.data);
         console.log(response.data);
         setStateLoading(false);
       });
   }, []);
 
   if (!authenticated) {
+    //return <Loading />
     return <Redirect to="sign-in" />
   } else {
     return (
@@ -128,8 +132,6 @@ export default function Profile() {
             <Description>
               {`${description}`}
             </Description>
-
-
           </ProfileCard>
         </div>
       </>
