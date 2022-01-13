@@ -15,7 +15,7 @@ module.exports = function authMidlleware(request, response, next) {
         const { id } = data;
         request.userId = id;
     } catch (error) {
-        return response.status(401).json({error: "User not authorization" });
+        return response.status(401).json({error: "User not authorization"});
     }
 
     next()

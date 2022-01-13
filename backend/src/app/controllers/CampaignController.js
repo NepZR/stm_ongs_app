@@ -3,9 +3,8 @@ const UserRepository = require('../repositories/UserRepository');
 
 class CampaignController {
     async index(request, response) {
-        const {userId} = request;
+        const { userId } = request;
         const user = await UserRepository.findById(userId);
-        console.log(user.userTypeId);
 
         if (user.userTypeId === 1){
             const campaigns = await CampaignRepository.findAll();
@@ -19,6 +18,7 @@ class CampaignController {
         const {id} = request.params;
 
         const campaignById = await CampaignRepository.findById(id);
+
         if(!campaignById) {
             return response.status(404).json({error: 'Campaign not exist'});
         }
@@ -50,7 +50,7 @@ class CampaignController {
             userId
             );
 
-        return response.status(201)
+        return response.status(200).send()
     }
 
     async delete(request, response) {
@@ -62,20 +62,27 @@ class CampaignController {
             return response.status(404).json({error: 'Campaign not found'});
         }
         await CampaignRepository.delete(id)
-        return response.status(200).json({ok: 'Sucess'});
+        return response.sendStatus(200);
     }
 
     async update(request, response) {
         const { id } = request.params;
-        const {title, description, value, campaign_cover, date_limit} = request.body;
+        const { userId } = request;
+        const { title, description, value, campaign_cover, date_limit } = request.body;
 
         const campaignExists = await CampaignRepository.findById(id);
+        const user = await UserRepository.findById(userId);
 
+
+        if(user.userTypeId === 1){
+            return response.status(401).json({error: "User not authorization"});
+        }
         if(!campaignExists) {
             return response.status(404).json({error: 'Campaign not found'});
         }
-        await CampaignRepository.update(id, title, description, value, campaign_cover, date_limit);
-        return response.sendStatu(200);
+
+        await CampaignRepository.update(id, { title, description, value, campaign_cover, date_limit });
+        return response.sendStatus(200);
     }
 }
 

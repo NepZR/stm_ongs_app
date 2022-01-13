@@ -13,10 +13,10 @@ routes.get('/user', authMiddleware, UserController.index);
 //routes.delete('/user/:id', UserController.delete);
 routes.put('/user/update', authMiddleware, UserController.update);
 
+routes.post('/campaign', authMiddleware, CampaignController.store);
 routes.get('/campaign', authMiddleware, CampaignController.index);
 routes.get('/campaign/:id', CampaignController.show);
-routes.post('/campaign', authMiddleware, CampaignController.store);
-routes.delete('/campaign/:id', authMiddleware, CampaignController.delete);
+//routes.delete('/campaign/:id', authMiddleware, CampaignController.delete);
 routes.put('/campaign/:id', authMiddleware, CampaignController.update);
 
 module.exports = routes;

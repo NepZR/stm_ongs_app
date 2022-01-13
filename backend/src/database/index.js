@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const config = require('../config/database.json')
 
-const database = new Sequelize('stmongs', 'postgres', '852131293', {
+const database = new Sequelize('stmongs', 'root', 'root', {
   host: 'localhost',
   dialect: 'postgres',
   port: 5432

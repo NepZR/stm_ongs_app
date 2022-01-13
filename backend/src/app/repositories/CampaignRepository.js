@@ -1,10 +1,15 @@
 const { v4 } = require('uuid');
 const Campaign = require('../models/campaign');
 const CampaignType = require('../models/typeCampaign');
+const User = require('../models/user');
 
 class CampaignRepository {
     async findAll(){
         const campaigns = await Campaign.findAll({
+            include: {
+                model: User,
+                attributes:['name']
+            },
             attributes: { exclude: ['userId'] },
             where:{
             active: true
@@ -15,14 +20,17 @@ class CampaignRepository {
     async findByUser(id){
         const campaigns = await Campaign.findAll({
             attributes: { exclude: ['userId'] },
-            where: {
-            userId: id}});
+            where: { userId: id }});
         return campaigns;
     }
 
 
     async findById(id){
-        const campaign = await Campaign.findByPk(id);
+        const campaign = await Campaign.findByPk(id, {
+            attributes: {
+               exclude: ['userId']
+            }
+        });
         return campaign;
     }
 
@@ -48,19 +56,15 @@ class CampaignRepository {
         });
     }
 
-    async update(id, title, description, value, campaign_cover, date_limit) {
-        const updateCampaign = { 
+    async update(id, { title, description, value, campaign_cover, date_limit }) {
+ 
+        await Campaign.update({
             title, 
             description,
             value,
             campaign_cover,
             date_limit
-        }; 
-        await Campaign.update({ updateCampaign }, {
-            where: {
-                id
-            }
-        }); 
+        }, { where: { id} }); 
 
     }
 }

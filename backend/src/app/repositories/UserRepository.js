@@ -28,14 +28,7 @@ class UserRepository {
         return newUser;
     }
 
-    delete(id) {
-        return new Promise((resolve) => {
-            users = users.filter((user) => user.id !== id )
-            resolve();
-        });
-    }
-
-    async update(id, { name, profile_pic, profile_cover, description}){
+    async update(id, { name, profile_pic, profile_cover, description }){
         await User.update({
             name, 
             profile_pic, 
