@@ -4,12 +4,9 @@ const UserType = require('../models/typeUser');
 
 class UserRepository {  
     async findById(id) {
-        const userExists = await User.findByPk(id)
-        return userExists
+        const user = await User.findByPk(id)
+        return user
     }
-    findAll() {
-        return new Promise((resolve) => resolve (users));
-      }
       
     async findByEmail(email) {
         const emailExists = await User.findOne({where: {email}});

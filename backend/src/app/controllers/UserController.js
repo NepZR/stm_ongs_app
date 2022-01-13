@@ -6,7 +6,7 @@ class UserController {
         const { userId } = request;
         const {id,name, email, reg_number, description, profile_pic, profile_cover, userTypeId} = await UserRepository.findById(userId);
         if(!email){
-            return res.status(401).json({Error: 'User not found'});
+            return res.status(404).json({Error: 'User not found'});
         }
         
         return response.json({
@@ -61,7 +61,7 @@ class UserController {
         const userExists = await UserRepository.findById(userId);
 
         if(!userExists) {
-            return response.status(400).json({error: 'User not found'});
+            return response.status(404).json({error: 'User not found'});
         }
 
         await UserRepository.update(userId,{
