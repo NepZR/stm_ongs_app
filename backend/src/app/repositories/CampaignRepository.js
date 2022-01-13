@@ -40,29 +40,27 @@ class CampaignRepository {
         return newCampaign;
     }
 
-    delete(id) {
-        return new Promise((resolve) => {
-            campaigns = campaigns.filter((campaign) => campaign.id !== id)
-            resolve()
+    async delete(id) {
+        await Campaign.destroy({
+            where: {
+                id
+            }
         });
     }
 
-    update(id,{title, description, dateLimit, value, typeCamp}) {
-        return new Promise((resolve) => {
-            const updateCampaign = {
-                id, 
-                title, 
-                description, 
-                dateLimit, 
-                value, 
-                typeCamp
-            }; 
-            
-            campaigns = campaigns.map((campaign) => (
-                campaign.id === id ? updateCampaign : campaign
-            ))
-            resolve(campaigns)
-        });
+    async update(id, title, description, value, campaign_cover, date_limit) {
+        const updateCampaign = { 
+            title, 
+            description,
+            value,
+            campaign_cover,
+            date_limit
+        }; 
+        await Campaign.update({ updateCampaign }, {
+            where: {
+                id
+            }
+        }); 
 
     }
 }
