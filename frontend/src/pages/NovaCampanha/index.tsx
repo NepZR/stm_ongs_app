@@ -41,24 +41,32 @@ export default function NovaCampanha() {
     const [imgCover, setImgCover] = useState(defaultCover);
 
     const submitCampaing = async (data: ISubCampaing) => {
-        console.log(data)
+        console.log('formulario', data)
         const image = data.cover
 
-        {/*await uploadImage(image).then(response => {
-            console.log('link', response)
-            setLink(response)
-        })
+        const cover = await uploadImage(data.cover)
+        console.log('link cover', cover)
 
         const newCampaing: ICampaingData = {
             campaign_name: data.title_campaing,
             created_by: user.id,
             description: data.description,
-            campaign_cover: link,
+            campaign_cover: cover,
             value: data.value,
             campaign_type: data.type_campaing,
             creation_date: data.limit_date
         }
-        console.log(newCampaing)*/}
+        console.log(newCampaing)
+
+        {/*
+
+            await uploadImage(image).then(response => {
+            console.log('link', response)
+            setLink(response)
+        })
+
+    
+    */}
 
     }
 
