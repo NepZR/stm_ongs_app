@@ -223,7 +223,7 @@ export default function EditProfile() {
               />
 
               {userProfileImg && typeof userProfileImg === 'string' && <div className="image-profile" style={profileImage}></div>}
-              {userProfileImg && typeof userProfileImg === 'object' && <img className="image-profile" src={URL.createObjectURL(userProfileImg[0])} />}
+              {userProfileImg && typeof userProfileImg === 'object' && <img alt="profile" className="image-profile" src={URL.createObjectURL(userProfileImg[0])} />}
 
 
               <label
@@ -237,7 +237,7 @@ export default function EditProfile() {
                 onChange={(e: any) => { setUserProfileCover(e.target.files); setValue('profile_cover', e.target.files) }}
                 hidden
               />
-              {userProfileCover && typeof userProfileCover === 'string' && <img className="image-cover" style={profileCover}></img>}
+              {userProfileCover && typeof userProfileCover === 'string' && <img alt="profile" className="image-cover" style={profileCover}></img>}
               {userProfileCover && typeof userProfileCover === 'object' && <img className="image-cover" src={URL.createObjectURL(userProfileCover[0])} />}
 
 

@@ -1,10 +1,13 @@
 export type CampaingItemHome = {
     id: number;
-    name: string;
-    campaing_type: number;
+    title: string;
     value?: number;
-    image: string;
-    ong_name: string
+    description: string;
+    campaign_cover:string;
+    active:boolean;
+    date_limit:string;
+    campaignTypeId: number;
+    ong_name?: string;
 }
 
 export type ReqLogin = {

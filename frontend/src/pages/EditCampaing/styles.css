@@ -32,6 +32,63 @@
   cursor: pointer;
 }
 
+.input-text {
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 3rem;
+  border-radius: 10px;
+  text-align: left;
+  padding-left: 2rem;
+
+  border: 1px solid #b9bcf4;
+  background-color: #f1f4f9;
+  font-family: Nunito;
+  font-weight: bold;
+  font-size: 15px;
+  color: #5e65eb;
+  transition: 0.5s;
+}
+
+.input-text:focus {
+  transition: 0.5s;
+  outline: none;
+  border: 1px solid #5e65eb;
+  box-shadow: #b3b5e2 0px 1px 5px;
+}
+
+.input-text:hover {
+  box-shadow: #b3b5e2 0px 1px 5px;
+}
+
+.input-text-area:hover {
+  box-shadow: #b3b5e2 0px 1px 5px;
+}
+
+.input-text-area {
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 9rem;
+  border-radius: 10px;
+  text-align: left;
+  padding-left: 2rem;
+  padding-top: 1rem;
+
+  border: 1px solid #b9bcf4;
+  background-color: #f1f4f9;
+  font-family: Nunito;
+  font-weight: bold;
+  font-size: 15px;
+  color: #5e65eb;
+  transition: 0.5s;
+}
+
+.input-text-area:focus {
+  transition: 0.5s;
+  outline: none;
+  border: 1px solid #5e65eb;
+  box-shadow: #b3b5e2 0px 1px 5px;
+}
+
 .date-value-container {
   flex-direction: "row";
   flex-wrap: wrap;
@@ -44,7 +101,7 @@
   justify-content: center;
   align-items: center;
   padding: 2rem 3rem;
-  
+
   border-radius: 10px;
   margin: 0.5rem;
 }
@@ -60,14 +117,10 @@
 .label-input-file {
   color: var(--white);
   cursor: pointer;
-  padding: .5rem;
+  padding: 0.5rem;
   margin-bottom: 2rem;
   background-color: var(--purple);
   border-radius: 5px;
-}
-
-.label-input-file:hover {
-
 }
 
 .input-file-container:hover {

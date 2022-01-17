@@ -6,33 +6,47 @@ import { authContext } from "../../AuthContext/AuthContext";
 import { Redirect } from "react-router-dom";
 import api from "../../auth/api";
 import Loading from "../../components/Loading";
+import axios from "axios";
+import { getLocalToken } from "../../utils/getLocalToken/getLocalToken";
+import { BASE_URL_API_LOCAL } from "../../utils/requests";
 
 //import { campaingsHome } from "../../../dataTest/campaingsHome";
 
 export default function Home() {
-    const { authenticated, user, loading, setStateLoading} = useContext(authContext);
+    const { authenticated, user, loading, setStateLoading } = useContext(authContext);
     const [campaingsHome, setCampaingsHome] = useState([])
 
-    useEffect(() => {
+    const bearerToken = `${getLocalToken()}`
+
+    /*useEffect(() => {
         setStateLoading(true)
         api.get('/campaings').then((response) => {
             setCampaingsHome(response.data)
             setStateLoading(false)
         })
         
+    }, [])*/
+
+    useEffect(() => {
+        setStateLoading(true)
+        axios.get(`${BASE_URL_API_LOCAL}/campaign`, { headers: { Authorization: bearerToken } }).then((response) => {
+            setCampaingsHome(response.data)
+            setStateLoading(false)
+        })
+
     }, [])
 
-    if(authenticated) {
+    if (authenticated) {
         return (
             <>
                 <NavBar />
                 <Menu />
 
-                {campaingsHome? <ListCampaings listCamp={campaingsHome} />: <Loading/>}
+                {campaingsHome ? <ListCampaings listCamp={campaingsHome} /> : <Loading />}
                 {/* <ListCampaings listCamp={campaingsHome} /> */}
             </>
         );
     } else {
         return <Redirect to="/sign-in" />
-    } 
+    }
 }

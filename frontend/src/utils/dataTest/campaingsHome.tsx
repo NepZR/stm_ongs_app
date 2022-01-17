@@ -4,42 +4,57 @@ import { CampaingItemHome } from "../types";
 export const campaingsHome: CampaingItemHome[] = [
     {
         id: 1,
-        name: "Arrecadação ração para gatos (filhote)",
-        campaing_type: 1,
+        title: "Arrecadação ração para gatos (filhote)",
         value: 250,
-        image: require('./../images/campaing/cats.png'),
+        description: 'dljeljdf',
+        active: true,
+        date_limit: '12-12-22',
+        campaignTypeId: 1,
+        campaign_cover: require('./../images/campaing/cats.png'),
         ong_name: 'União Animal'
     },
     {
         id: 2,
-        name: "Compra de ração para cães (filhote)",
-        campaing_type: 1,
+        title: "Compra de ração para cães (filhote)",
         value: 300,
-        image: require('./../images/campaing/cats.png'),
+        description: '',
+        active: true,
+        date_limit: '12-03-22',
+        campaignTypeId: 1,
+        campaign_cover: require('./../images/campaing/cats.png'),
         ong_name: 'União Animal'
     },
     {
         id: 3,
-        name: "Arrecadação de alimentos para montagem de cestas básicas",
-        campaing_type: 2,
+        title: "Arrecadação de alimentos para montagem de cestas básicas",
+        description: '',
+        active: true,
+        date_limit: '12-12-12',
+        campaignTypeId: 2,
         //value: undefined,
-        image: require('./../images/campaing/cats.png'),
+        campaign_cover: require('./../images/campaing/cats.png'),
         ong_name: 'Creche SEARA'
     },
     {
         id: 4,
-        name: "Arrecadação de alimentos para montagem de cestas básicas",
-        campaing_type: 2,
+        title: "Arrecadação de alimentos para montagem de cestas básicas",
+        description: 'dedadfafafaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae',
+        active: true,
+        date_limit: '12-12-12',
+        campaignTypeId: 2,
         //value: undefined,
-        image: require('./../images/campaing/cats.png'),
+        campaign_cover: require('./../images/campaing/cats.png'),
         ong_name: 'Creche SEARA'
     },
     {
         id: 5,
-        name: "Arrecadação de alimentos para montagem de cestas básicas",
-        campaing_type: 2,
+        title: "Arrecadação de alimentos para montagem de cestas básicas",
+        description: '',
+        active: true,
+        date_limit: '13-12-12',
+        campaignTypeId: 2,
         //value: undefined,
-        image: require('./../images/campaing/cats.png'),
+        campaign_cover: require('./../images/campaing/cats.png'),
         ong_name: 'Creche SEARA'
     }
 ];
