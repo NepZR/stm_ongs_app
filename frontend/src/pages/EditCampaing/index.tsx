@@ -12,19 +12,19 @@ import defaultImage from './default_image.png'
 import { BASE_URL_API_LOCAL } from "../../utils/requests";
 import axios from "axios";
 import { getLocalToken } from "../../utils/getLocalToken/getLocalToken";
+import { uploadImage } from "../../services/uploadImages";
 
 
 interface ICampaing {
-    id: number;
+    id?: number;
     title: string;
-    value?: number;
     description: string;
-    active: number;
-    campaign_cover: string;
-    date_limit: string;
-    userId: number;
-    campaignTypeId: number;
-    cover?: string;
+    campaign_cover: string | object;
+    dateLimit: string;
+    typeCamp: number
+    value?: number | null;
+    active?: number;
+    campaignTypeId?: number;
 }
 
 export default function EditCampaing() {
@@ -50,8 +50,8 @@ export default function EditCampaing() {
     const [imgCover, setImgCover] = useState('')
     //const [imgCover, setImgCover] = useState('https://i.ibb.co/hy0T2BB/fundo-quiz.jpg')
 
-    const token = `${getLocalToken()}`
 
+    const token = `${getLocalToken()}`
 
     async function getDataCampaing(id: string) {
         setLoading(true);
@@ -75,7 +75,7 @@ export default function EditCampaing() {
                 setValue('typeCamp', response.data.campaignTypeId)
 
                 setImgCover(response.data.campaign_cover);
-                setValue('cover', response.data.campaign_cover)
+                setValue('campaign_cover', response.data.campaign_cover)
 
                 //console.log(response.data)
                 setLoading(false);
@@ -94,8 +94,31 @@ export default function EditCampaing() {
 
     async function update(data: any) {
         console.log(data)
-        const res = await axios.put(`${BASE_URL_API_LOCAL}/campaign/${id}`, data, { headers: { Authorization: token } });
-        console.log('Formulario', res.data)
+        console.log(typeof data.campaign_cover)
+
+        if (typeof data.campaign_cover === 'string') {
+
+            const res = await axios.put(`${BASE_URL_API_LOCAL}/campaign/${id}`, data, { headers: { Authorization: token } });
+            console.log('Formulario', res.data)
+
+        } else {
+            const cover = await uploadImage(data.campaign_cover)
+
+
+            const dataCampaign: ICampaing = {
+                title: data.title,
+                description: data.description,
+                campaign_cover: cover,
+                dateLimit: data.dateLimit,
+                value: data.value,
+                typeCamp: data.typecamp
+            }
+            console.log(dataCampaign)
+
+            const res = await axios.put(`${BASE_URL_API_LOCAL}/campaign/${id}`, dataCampaign, { headers: { Authorization: token } });
+            console.log('Formulario', res.data)
+
+        }
     }
 
     useEffect(() => {
@@ -192,18 +215,19 @@ export default function EditCampaing() {
                             </div>
                             {imgCover && typeof imgCover === 'string' && <img className="image-preview" src={imgCover} alt="cover" />}
 
-                            {imgCover && typeof imgCover === 'object' && <img className="image-preview" src={URL.createObjectURL(imgCover)} alt="cover" />}
+                            {imgCover && typeof imgCover === 'object' && <img className="image-preview" src={URL.createObjectURL(imgCover[0])} alt="cover" />}
 
                             <input
-                                {...register("cover")}
+                                {...register("campaign_cover")}
                                 className="input-file"
                                 id="cover"
                                 placeholder="Compra de ração"
                                 type="file"
-                                name="cover"
+                                name="campaign_cover"
                                 onChange={(e: any) => {
                                     setImgCover(e.target.files);
-                                    setValue('cover', e.target.files)
+                                    console.log(e.target.file)
+                                    setValue('campaign_cover', e.target.files)
                                 }}
                             />
 
@@ -298,15 +322,16 @@ export default function EditCampaing() {
                             {imgCover && typeof imgCover === 'object' && <img className="image-preview" src={URL.createObjectURL(imgCover)} alt="cover" />}
 
                             <input
-                                {...register("cover")}
+                                {...register("campaign_cover")}
                                 className="input-file"
-                                id="cover"
+                                id="campaign_cover"
                                 placeholder="Compra de ração"
                                 type="file"
-                                name="cover"
+                                name="campaign_cover"
                                 onChange={(e: any) => {
                                     setImgCover(e.target.files);
-                                    setValue('cover', e.target.files)
+                                    console.log(e.target.files)
+                                    setValue('campaign_cover', e.target.files)
                                 }}
                             />
 
