@@ -9,6 +9,9 @@ import { authContext } from './../../AuthContext/AuthContext'
 import { Redirect } from "react-router";
 import { uploadImage } from "../../services/uploadImages";
 import defaultCover from '../../assets/profile/cover.png'
+import axios from "axios";
+import { BASE_URL_API_LOCAL } from "../../utils/requests";
+import { getLocalToken } from "../../utils/getLocalToken/getLocalToken";
 
 
 interface ISubCampaing {
@@ -21,13 +24,13 @@ interface ISubCampaing {
 }
 
 interface ICampaingData {
-    campaign_name: string,
+    title: string,
     description: string,
     campaign_cover: string,
-    creation_date: string,
+    date_limit: string,
     value: string | null,
     created_by: string,
-    campaign_type: string,
+    type_camp: string,
 }
 
 const form = { ONLINE: 1, PRES: 2 }
@@ -40,25 +43,32 @@ export default function NovaCampanha() {
     const [link, setLink] = useState('');
     const [imgCover, setImgCover] = useState(defaultCover);
 
+    const bearerToken = `${getLocalToken()}`;
+
     const submitCampaing = async (data: ISubCampaing) => {
-        console.log(data)
+        console.log('formulario', data)
         const image = data.cover
 
-        {/*await uploadImage(image).then(response => {
-            console.log('link', response)
-            setLink(response)
-        })
+        const cover = await uploadImage(data.cover)
+        console.log('link cover', cover)
 
         const newCampaing: ICampaingData = {
-            campaign_name: data.title_campaing,
-            created_by: user.id,
+            title: data.title_campaing,
             description: data.description,
-            campaign_cover: link,
             value: data.value,
-            campaign_type: data.type_campaing,
-            creation_date: data.limit_date
+            campaign_cover: cover,
+            date_limit: data.limit_date,
+            created_by: user.id,
+            type_camp: data.type_campaing,
         }
-        console.log(newCampaing)*/}
+        console.log(newCampaing)
+
+        const campaing = await axios.post(`${BASE_URL_API_LOCAL}/campaign`, newCampaing, { headers: { Authorization: bearerToken } })
+        console.log('campanha criada', campaing.data)
+
+        return <Redirect to='/home' />
+
+
 
     }
 
@@ -192,7 +202,7 @@ export default function NovaCampanha() {
                                     type="file"
                                     id="cover"
                                     hidden
-                                    onChange={(e: any) => { setImgCover(e.target.files); console.log(e.target.files); setValue('cover', e.target.files) }}
+                                    onChange={(e: any) => { setImgCover(e.target.files); setValue('cover', e.target.files) }}
                                 />
                             </div>
                             {imgCover && typeof imgCover === 'object' && <img src={URL.createObjectURL(imgCover[0])} className="image-cover" alt="imagem de capa da campanha" />}

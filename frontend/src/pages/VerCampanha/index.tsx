@@ -9,34 +9,37 @@ import { useParams } from "react-router";
 import Campaing from "../../components/Campaign";
 import { FiShare } from 'react-icons/fi';
 import api from "../../auth/api";
+import axios from "axios";
+import { BASE_URL_API_LOCAL } from "../../utils/requests";
+import { getLocalToken } from "../../utils/getLocalToken/getLocalToken";
 
 interface ICampaing {
-    id_campaing: number,
-    name: string,
+    id: string,
+    title: string,
+    value?: number,
     description: string,
+    campaign_cover: string,
     active: number,
-    image_cover: string,
-    creation_date: string,
-    end_date: string,
-    created_by: number,
-    campaing_type: number,
-    value: number
+    date_limit: string,
+    campaignTypeId: number,
+    userId: number,
 }
 
 export default function VerCampanha() {
 
+    const token = `${getLocalToken()}`
+
     const { id }: any = useParams()
     const [campaing, setCampaing] = useState<ICampaing>({
-        id_campaing: 12,
-        name: '',
+        id: '',
+        title: '',
+        value: 1,
         description: '',
+        campaign_cover: '',
         active: 1,
-        image_cover: '',
-        creation_date: '',
-        end_date: '',
-        created_by: 1,
-        campaing_type: 1,
-        value: 1
+        date_limit: '',
+        campaignTypeId: 1,
+        userId: 1,
     })
 
 
@@ -51,7 +54,7 @@ export default function VerCampanha() {
      * 
      */
     async function getInfoCamp(idCamp: any) {
-        await api.get(`/campaings/${idCamp}`)
+        await axios.get(`${BASE_URL_API_LOCAL}/campaign/${idCamp}`, { headers: { Authorization: token } })
             .then((response) => {
                 setCampaing(response.data)
             }).catch((err) => {
@@ -73,17 +76,17 @@ export default function VerCampanha() {
 
             <div className="campaing-container">
                 <section className="card-campaing-details">
-                    <img className="campaing-photo" src={campaing.image_cover} alt="" />
+                    <img className="campaing-photo" src={campaing.campaign_cover} alt="" />
                     <div className="description-container">
-                        {campaing.campaing_type === 1 && <p className="type-campaing">Online</p>}
-                        {campaing.campaing_type === 2 && <p className="type-campaing">Presencial</p>}
+                        {campaing.campaignTypeId === 1 && <p className="type-campaing">Online</p>}
+                        {campaing.campaignTypeId === 2 && <p className="type-campaing">Presencial</p>}
                         <div className="title-share">
-                            <h1 className="title-campaing">{campaing.name}</h1>
+                            <h1 className="title-campaing">{campaing.title}</h1>
                             {/*<button><FiShare size={20} /></button>*/}
                         </div>
                         <div className="value-date">
                             {campaing.value && <p className="value-campaing">R$ {campaing.value}</p>}
-                            <p className="final-date">{campaing.end_date}</p>
+                            <p className="final-date">{campaing.date_limit}</p>
                         </div>
                         <p className="description-campaing"> {campaing.description} </p>
                         <Button >Doar</Button>

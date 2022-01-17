@@ -6,6 +6,7 @@ import './styles.css';
 import { useContext } from 'react';
 import { authContext } from '../../AuthContext/AuthContext';
 import CampaingOng from '../CampaingOng/CampaingOng';
+import { v4 } from 'uuid'
 
 interface ListCampaingsProps {
     listCamp: Array<CampaingItemHome>
@@ -22,7 +23,7 @@ export default function ListCampaings({ listCamp }: ListCampaingsProps) {
      * de campanhas para ser listado com o map
      */
 
-    const { user: { user_type } } = useContext(authContext)
+    const { user: { user_type, name } } = useContext(authContext)
 
     if (user_type === typeUser.FISICA) {
         return (
@@ -31,10 +32,11 @@ export default function ListCampaings({ listCamp }: ListCampaingsProps) {
                     {listCamp.map((item, index) => {
                         return <Campaing
                             id={item.id}
-                            key={`key-${index}`}
-                            img={item.image}
-                            title={item.name}
-                            ongName={item.ong_name}
+                            key={`key-${v4()}`}
+                            img={item.campaign_cover}
+                            title={item.title}
+                            ongName='Nome da ONG'
+                            //ongName={item.ong_name}
                             value={item.value}
                         />
                     })}
@@ -51,9 +53,10 @@ export default function ListCampaings({ listCamp }: ListCampaingsProps) {
                         return <CampaingOng
                             id={item.id}
                             key={`key-${index}`}
-                            img={item.image}
-                            title={item.name}
-                            ongName={item.ong_name}
+                            img={item.campaign_cover}
+                            title={item.title}
+                            ongName={name}
+                            //ongName={item.ong_name}
                             value={item.value}
                         />
                     })}

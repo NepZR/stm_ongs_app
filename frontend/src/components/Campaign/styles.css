@@ -1,6 +1,7 @@
 .card-campaing {
   margin: 0.5rem;
   border-radius: 10px;
+  width: 25rem;
   max-width: 30rem;
   box-shadow: var(--shadow) 0px 8px 20px;
 }
