@@ -21,6 +21,7 @@ interface ContexProps {
     handleLogin: (data: LoginData) => Promise<void>;
     handleLogout: () => void;
     setStateLoading: (state: boolean) => void;
+    setUser: (state: any) => void;
     user: User;
     loading: boolean;
 }
@@ -197,7 +198,7 @@ export function AuthProvider({ children }: any) {
 
     return (
         <authContext.Provider
-            value={{ authenticated, handleLogin, handleLogout, user, loading, setStateLoading }}
+            value={{ authenticated, handleLogin, handleLogout, user, setUser, loading, setStateLoading }}
         >
             {children}
         </authContext.Provider>

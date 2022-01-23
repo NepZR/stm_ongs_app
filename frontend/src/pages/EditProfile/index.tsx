@@ -41,7 +41,7 @@ export default function EditProfile() {
   }
   } = useContext(authContext);
 
-  const { loading, setStateLoading } = useContext(authContext)
+  const { loading, setStateLoading, user, setUser } = useContext(authContext)
   const { handleSubmit, register, setValue, getValues } = useForm();
   const [userProfile, setUserProfile] = useState({} as IProfile);
   const [userName, setName] = useState('');
@@ -112,10 +112,22 @@ export default function EditProfile() {
       }
       console.log(profile)
 
-      axios.put(`${BASE_URL_API_LOCAL}/user/update`, profile, { headers: { Authorization: bearerToken } })
+      await axios.put(`${BASE_URL_API_LOCAL}/user/update`, profile, { headers: { Authorization: bearerToken } })
         .then((response) => {
           console.log(response.data)
         })
+      setUser({
+        id: user.id,
+        name: profile.name,
+        email: user.email,
+        reg_number: user.reg_number,
+        profile_pic: profile_pic,
+        profile_cover: user.profile_cover,
+        description: profile.description,
+        user_type: user.user_type,
+      })
+      console.log('estado user atualizado', user)
+
 
       //console.log(profileData.profile_pic)
 
@@ -136,6 +148,18 @@ export default function EditProfile() {
         .then((response) => {
           console.log(response.data)
         })
+
+      setUser({
+        id: user.id,
+        name: profile.name,
+        email: user.email,
+        reg_number: user.reg_number,
+        profile_pic: user.profile_pic,
+        profile_cover: profile_cover,
+        description: profile.description,
+        user_type: user.user_type,
+      })
+      console.log('estado user atualizado', user)
 
       //console.log(profileData.profile_cover)
 
@@ -159,6 +183,18 @@ export default function EditProfile() {
         .then((response) => {
           console.log(response.data)
         })
+
+      setUser({
+        id: user.id,
+        name: profile.name,
+        email: user.email,
+        reg_number: user.reg_number,
+        profile_pic: profile_pic,
+        profile_cover: profile_cover,
+        description: profile.description,
+        user_type: user.user_type,
+      })
+      console.log('estado user atualizado', user)
     }
   };
 
