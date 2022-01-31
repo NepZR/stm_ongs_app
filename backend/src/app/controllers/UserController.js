@@ -10,7 +10,7 @@ class UserController {
         }
         
         return response.json({
-            id,name, email, reg_number, description, profile_pic, profile_cover, userTypeId
+            id, name, email, reg_number, description, profile_pic, profile_cover, url_pix,userTypeId
         })
     }
 
@@ -20,6 +20,7 @@ class UserController {
             reg_number, 
             profile_pic,
 	        profile_cover,
+            url_pix,
 	        description,
             email, 
             password,
@@ -47,6 +48,7 @@ class UserController {
             reg_number,
             profile_pic,
 	        profile_cover,
+            url_pix,
 	        description,
             email, 
             password
@@ -56,7 +58,7 @@ class UserController {
 
     async update(request, response) {
         const { userId } = request;
-        const { name, profile_pic, profile_cover, description } = request.body;
+        const { name, profile_pic, profile_cover, url_pix, description } = request.body;
 
         const userExists = await UserRepository.findById(userId);
 
@@ -68,6 +70,7 @@ class UserController {
             name, 
             profile_pic,
 	        profile_cover,
+            url_pix,
 	        description
         });
         return response.status(200).json({ok: 'Sucess'});

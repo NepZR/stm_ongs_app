@@ -29,6 +29,9 @@ const User = database.define('users', {
   profile_cover: {
     type: DataTypes.STRING(400),
   },
+  url_pix: {
+    type: DataTypes.STRING(400),
+  },
   description:{
     type: DataTypes.STRING(500),
     allowNull: true
