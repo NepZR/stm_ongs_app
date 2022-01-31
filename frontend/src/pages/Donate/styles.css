@@ -1,0 +1,53 @@
+.card-container-donate {
+  padding-top: 20rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-donate {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 70rem;
+  max-width: 95%;
+  margin: 0.5rem;
+  border-width: 2px;
+  margin-top: 10rem;
+  border-radius: 10px;
+  box-shadow: #b3b5e2 0px 8px 20px;
+}
+
+.info-campanha {
+  margin: 1rem;
+}
+
+.camp-cover {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.brcode-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.brcode {
+  border-radius: 10px;
+  max-width: 30rem;
+  margin: 1rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .card-donate {
+    flex-direction: column;
+  }
+
+  .brcode {
+    width: 100%;
+  }
+}

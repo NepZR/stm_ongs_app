@@ -12,6 +12,7 @@ import api from "../../auth/api";
 import axios from "axios";
 import { BASE_URL_API_LOCAL } from "../../utils/requests";
 import { getLocalToken } from "../../utils/getLocalToken/getLocalToken";
+import { Link } from "react-router-dom";
 
 interface ICampaing {
     id: string,
@@ -68,6 +69,11 @@ export default function VerCampanha() {
         //console.log(campaing)
     }, [id])
 
+    const formatData = (data: string) => {
+        const listData = data.split('-')
+        return `${listData[2]}/${listData[1]}/${listData[0]}`
+    }
+
 
     return (
         <>
@@ -76,7 +82,7 @@ export default function VerCampanha() {
 
             <div className="campaing-container">
                 <section className="card-campaing-details">
-                    <img className="campaing-photo" src={campaing.campaign_cover} alt="" />
+                    <img className="campaing-photo" src={campaing.campaign_cover} alt="foto" />
                     <div className="description-container">
                         {campaing.campaignTypeId === 1 && <p className="type-campaing">Online</p>}
                         {campaing.campaignTypeId === 2 && <p className="type-campaing">Presencial</p>}
@@ -86,14 +92,17 @@ export default function VerCampanha() {
                         </div>
                         <div className="value-date">
                             {campaing.value && <p className="value-campaing">R$ {campaing.value}</p>}
-                            <p className="final-date">{campaing.date_limit}</p>
+                            <p className="final-date">{formatData(campaing.date_limit)}</p>
                         </div>
                         <p className="description-campaing"> {campaing.description} </p>
-                        <Button >Doar</Button>
+                        <Link to={`/${campaing.id}/donate`}>
+                            <Button>Doar</Button>
+                        </Link>
+
                     </div>
                 </section>
 
-            </div>
+            </div >
         </>
     )
 }

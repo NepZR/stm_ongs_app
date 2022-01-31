@@ -11,6 +11,7 @@ import VerCampanha from './pages/VerCampanha';
 import EditCampaing from './pages/EditCampaing'
 import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
+import Donate from './pages/Donate/Donate';
 
 export default function Routes() {
     return (
@@ -25,8 +26,9 @@ export default function Routes() {
                     <Route path="/campaings" exact component={NovaCampanha} />
                     <Route path="/campaings/:id" component={VerCampanha} />
                     <Route path="/campaings-edit/:id" component={EditCampaing} />
-                    <Route path="/profile" component={Profile}/>
-                    <Route path="/profile-edit/:id" component={EditProfile}/>
+                    <Route path="/profile" component={Profile} />
+                    <Route path="/profile-edit/:id" component={EditProfile} />
+                    <Route path="/:id/donate" component={Donate} />
                 </Switch>
             </BrowserRouter>
         </>
