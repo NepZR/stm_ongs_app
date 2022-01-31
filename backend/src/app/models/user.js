@@ -25,12 +25,15 @@ const User = database.define('users', {
   },
   profile_pic: {
     type: DataTypes.STRING(400),
+    allowNull: true
   },
   profile_cover: {
     type: DataTypes.STRING(400),
+    allowNull: true
   },
-  url_pix: {
+  url_picpay: {
     type: DataTypes.STRING(400),
+    allowNull: true
   },
   description:{
     type: DataTypes.STRING(500),

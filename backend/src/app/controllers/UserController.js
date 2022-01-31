@@ -4,13 +4,13 @@ const UserRepository = require('../repositories/UserRepository');
 class UserController {
     async index(request, response) {
         const { userId } = request;
-        const {id,name, email, reg_number, description, profile_pic, profile_cover, userTypeId} = await UserRepository.findById(userId);
+        const {id,name, email, reg_number, description, profile_pic, profile_cover, userTypeId, url_picpay} = await UserRepository.findById(userId);
         if(!email){
             return res.status(404).json({Error: 'User not found'});
         }
         
         return response.json({
-            id, name, email, reg_number, description, profile_pic, profile_cover, url_pix,userTypeId
+            id, name, email, reg_number, description, profile_pic, profile_cover, url_picpay, userTypeId
         })
     }
 
@@ -20,7 +20,6 @@ class UserController {
             reg_number, 
             profile_pic,
 	        profile_cover,
-            url_pix,
 	        description,
             email, 
             password,
@@ -58,7 +57,7 @@ class UserController {
 
     async update(request, response) {
         const { userId } = request;
-        const { name, profile_pic, profile_cover, url_pix, description } = request.body;
+        const { name, profile_pic, profile_cover, url_picpay, description } = request.body;
 
         const userExists = await UserRepository.findById(userId);
 
@@ -70,7 +69,7 @@ class UserController {
             name, 
             profile_pic,
 	        profile_cover,
-            url_pix,
+            url_picpay,
 	        description
         });
         return response.status(200).json({ok: 'Sucess'});
