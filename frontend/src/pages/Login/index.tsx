@@ -26,8 +26,8 @@ export default function Login() {
         await handleLogin(data)
     }
 
-    if(loading){
-        return <Loading/>
+    if (loading) {
+        return <Loading />
     } else if (authenticated) {
         return (
             <Redirect to="/home" />
@@ -68,7 +68,7 @@ export default function Login() {
                         </form> */}
 
                         <div className="links-container">
-                            <Link className="link" to="/password-recovery" >Esqueci a senha?</Link>
+                            {/*<Link className="link" to="/password-recovery" >Esqueci a senha?</Link>*/}
                             <Link className="link" to="/sign-up" >Não tenho cadastro?</Link>
                         </div>
                     </Card>

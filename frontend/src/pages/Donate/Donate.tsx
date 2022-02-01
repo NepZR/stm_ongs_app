@@ -90,7 +90,7 @@ export default function Donate() {
                     <div className="brcode-container">
                         <img
                             className="brcode"
-                            src={brCode}
+                            src={user.url_picpay}
                             alt="brcode"
                         />
 

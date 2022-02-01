@@ -40,6 +40,7 @@ interface User {
     profile_cover: string;
     description: string;
     user_type: number;
+    url_picpay?: string;
 }
 
 interface IAuthResponse {
@@ -59,6 +60,7 @@ export function AuthProvider({ children }: any) {
         profile_cover: '',
         description: "",
         user_type: 0,
+        url_picpay: ''
     });
     const [authenticated, setAuthenticated] = useState(false);
     const [loading, setLoading] = useState<boolean>(false)
@@ -78,6 +80,7 @@ export function AuthProvider({ children }: any) {
                 profile_pic: response.data.profile_pic,
                 profile_cover: response.data.profile_cover,
                 user_type: response.data.userTypeId,
+                url_picpay: response.data.url_picpay
             })
 
             setAuthenticated(true);
@@ -108,6 +111,7 @@ export function AuthProvider({ children }: any) {
             profile_cover: '',
             description: "",
             user_type: 0,
+            url_picpay: ''
         })
         setLoading(false)
     }
@@ -130,6 +134,7 @@ export function AuthProvider({ children }: any) {
                     profile_cover: response.data.user.profile_cover,
                     description: response.data.user.description,
                     user_type: response.data.user.userTypeId,
+                    url_picpay: response.data.user.url_picpay
                 })
                 console.log(response.data.user, response.data.token)
                 setLocalToken(response.data.token)

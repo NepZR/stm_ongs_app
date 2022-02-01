@@ -15,6 +15,7 @@ import Campaing from './../../components/Campaign';
 import { Redirect } from 'react-router'
 import axios from "axios";
 import { BASE_URL_API_LOCAL } from "../../utils/requests";
+import { userInfo } from "os";
 
 interface IProfile {
   id: string;
@@ -87,7 +88,9 @@ export default function Profile() {
       email,
       profile_cover,
       profile_pic,
-      description
+      description,
+      user_type,
+      url_picpay
     },
   } = useContext(authContext);
 

@@ -17,6 +17,8 @@ import { uploadImage } from "../../services/uploadImages";
 import api from "../../auth/api";
 import axios from "axios";
 import { BASE_URL_API_LOCAL } from "../../utils/requests";
+import qr from '../../assets/profile/lardoamorv2.png';
+import defaultQr from '../../assets/profile/qrdefault.png'
 
 interface IProfile {
   name?: string;
@@ -24,6 +26,7 @@ interface IProfile {
   profile_pic: string;
   profile_cover: string;
   description?: string;
+  url_picpay?: string;
 }
 
 const perfil = 'https://i.ibb.co/Jk3GHd7/git.jpg'
@@ -48,6 +51,7 @@ export default function EditProfile() {
   const [userDesc, setUserDesc] = useState('');
   const [userProfileImg, setUserProfileImg] = useState(userProfile.profile_pic);
   const [userProfileCover, setUserProfileCover] = useState(userProfile.profile_cover);
+  const [userQR, setUserQR] = useState(userProfile.url_picpay);
 
   const bearerToken = `${getLocalToken()}`;
 
@@ -59,7 +63,8 @@ export default function EditProfile() {
           name,
           description,
           profile_pic,
-          profile_cover
+          profile_cover,
+          url_picpay
         } = response.data;
 
         setValue("name", name)
@@ -74,6 +79,9 @@ export default function EditProfile() {
         setValue("profile_cover", profile_cover)
         setUserProfileCover(profile_cover)
 
+        setValue("url_picpay", url_picpay)
+        setUserQR(url_picpay)
+
       });
   };
 
@@ -87,17 +95,49 @@ export default function EditProfile() {
     description: string;
     profile_pic: FileList;
     profile_cover: FileList;
+    url_picpay: FileList;
   }
 
   const submitProfile = async (profileData: IProfileData) => {
 
 
-    if (typeof profileData.profile_pic === 'string' && typeof profileData.profile_cover === 'string') {
+    if (typeof profileData.profile_pic === 'string' && typeof profileData.profile_cover === 'string' && typeof profileData.url_picpay === 'string') {
       console.log(profileData)
       axios.put(`${BASE_URL_API_LOCAL}/user/update`, profileData, { headers: { Authorization: bearerToken } })
         .then((response) => {
           console.log(response.data)
         })
+
+    } else if (typeof profileData.profile_pic === 'string' && typeof profileData.profile_cover === 'string' && typeof profileData.url_picpay === 'object') {
+      console.log(profileData)
+
+      const url_picpay = await uploadImage(profileData.url_picpay)
+
+      const profile = {
+        name: profileData.name,
+        description: profileData.description,
+        profile_pic: profileData.profile_pic,
+        profile_cover: profileData.profile_cover,
+        url_picpay: url_picpay
+      }
+
+      axios.put(`${BASE_URL_API_LOCAL}/user/update`, profile, { headers: { Authorization: bearerToken } })
+        .then((response) => {
+          console.log(response.data)
+        })
+
+      setUser({
+        id: user.id,
+        name: profile.name,
+        email: user.email,
+        reg_number: user.reg_number,
+        profile_pic: user.profile_pic,
+        profile_cover: user.profile_cover,
+        description: profile.description,
+        user_type: user.user_type,
+        url_picpay: url_picpay
+      })
+      console.log('estado user atualizado', user)
 
     } else if (typeof profileData.profile_pic === 'object' && typeof profileData.profile_cover === 'string') {
 
@@ -125,6 +165,7 @@ export default function EditProfile() {
         profile_cover: user.profile_cover,
         description: profile.description,
         user_type: user.user_type,
+        url_picpay: user.url_picpay
       })
       console.log('estado user atualizado', user)
 
@@ -158,6 +199,7 @@ export default function EditProfile() {
         profile_cover: profile_cover,
         description: profile.description,
         user_type: user.user_type,
+        url_picpay: user.url_picpay
       })
       console.log('estado user atualizado', user)
 
@@ -172,11 +214,14 @@ export default function EditProfile() {
       const profile_cover = await uploadImage(profileData.profile_cover)
       // console.log('link profile_cover: ', profile_cover)
 
+      const url_picpay = await uploadImage(profileData.url_picpay)
+
       const profile = {
         name: profileData.name,
         description: profileData.description,
         profile_pic: profile_pic,
-        profile_cover: profile_cover
+        profile_cover: profile_cover,
+        url_picpay: url_picpay
       }
       console.log(profile)
       axios.put(`${BASE_URL_API_LOCAL}/user/update`, profile, { headers: { Authorization: bearerToken } })
@@ -193,6 +238,7 @@ export default function EditProfile() {
         profile_cover: profile_cover,
         description: profile.description,
         user_type: user.user_type,
+        url_picpay: url_picpay
       })
       console.log('estado user atualizado', user)
     }
@@ -275,6 +321,21 @@ export default function EditProfile() {
               />
               {userProfileCover && typeof userProfileCover === 'string' && <img alt="profile" className="image-cover" style={profileCover}></img>}
               {userProfileCover && typeof userProfileCover === 'object' && <img className="image-cover" src={URL.createObjectURL(userProfileCover[0])} />}
+
+              <label
+                className="label-edit-profile"
+                htmlFor="url_picpay">QR Code Picpay</label>
+              <input
+                {...register("url_picpay")}
+                type="file"
+                name="url_picpay"
+                id="url_picpay"
+                onChange={(e: any) => { setUserQR(e.target.files); setValue('url_picpay', e.target.files) }}
+                hidden
+              />
+              {userQR && typeof userQR === 'string' && <img alt="profile" className="image-cover" src={userQR}></img>}
+              {userQR === null && <img alt="profile" className="image-cover" src={defaultQr}></img>}
+              {userQR && typeof userQR === 'object' && <img className="image-cover" src={URL.createObjectURL(userQR[0])} />}
 
 
               <Button type="submit">Salvar alterações</Button>
