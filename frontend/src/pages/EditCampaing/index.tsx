@@ -254,6 +254,7 @@ export default function EditCampaing() {
                         <form className="form-campaing" onSubmit={handleSubmit(update)}>
                             <input
                                 {...register('title')}
+                                className="input-text"
                                 type="text"
                                 name="title"
                                 id="title"
@@ -267,6 +268,7 @@ export default function EditCampaing() {
 
                             <input
                                 {...register('description')}
+                                className="input-text"
                                 type="text"
                                 name="description"
                                 id="description"
@@ -287,6 +289,7 @@ export default function EditCampaing() {
                             >
                                 <input
                                     {...register("dateLimit")}
+                                    className="input-text"
                                     value="2021-12-26"
                                     id="dateLimit"
                                     placeholder="Data limite"
@@ -298,6 +301,7 @@ export default function EditCampaing() {
                                     value={values}
                                     id="value"
                                     placeholder="Local"
+                                    className="input-text"
                                     type="text"
                                     name="value"
                                     onChange={(e) => {

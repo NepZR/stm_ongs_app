@@ -4,10 +4,11 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { authContext } from "../../AuthContext/AuthContext";
 import Card from "../../components/Card";
+import Menu from "../../components/Menu";
 import NavBar from "../../components/NavBar";
 import { getLocalToken } from "../../utils/getLocalToken/getLocalToken";
 import { BASE_URL_API_LOCAL } from "../../utils/requests";
-import brCode from './../../assets/profile/uniaoanimalv2.png';
+import brCode from './../../assets/profile/lardoamorv2.png';
 import './styles.css'
 
 
@@ -23,8 +24,8 @@ interface ICamp {
     description: string;
     campaignTypeId: number;
     campaign_cover: string;
-    date_limit: "2022-01-22"
-    id: string
+    date_limit: string;
+    id: string;
     value: number | null | undefined | '';
 }
 
@@ -65,6 +66,7 @@ export default function Donate() {
     return (
         <>
             <NavBar />
+            <Menu />
 
             <div className="card-container-donate">
 
@@ -88,11 +90,18 @@ export default function Donate() {
 
                     </div>
                     <div className="brcode-container">
-                        <img
+                        {user.user_type === 2 && <img
                             className="brcode"
                             src={user.url_picpay}
                             alt="brcode"
-                        />
+                        />}
+
+                        {user.user_type === 1 && <img
+                            className="brcode"
+                            src={brCode}
+                            alt="brcode"
+                        />}
+
 
                     </div>
 

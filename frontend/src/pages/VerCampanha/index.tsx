@@ -95,9 +95,11 @@ export default function VerCampanha() {
                             <p className="final-date">{formatData(campaing.date_limit)}</p>
                         </div>
                         <p className="description-campaing"> {campaing.description} </p>
-                        <Link to={`/${campaing.id}/donate`}>
+
+                        {campaing.campaignTypeId === 1 && <Link to={`/${campaing.id}/donate`}>
                             <Button>Doar</Button>
-                        </Link>
+                        </Link>}
+
 
                     </div>
                 </section>
