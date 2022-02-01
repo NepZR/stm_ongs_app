@@ -123,7 +123,7 @@ export default function EditCampaing() {
 
     useEffect(() => {
         getDataCampaing(id);
-    }, []);
+    }, [id]);
 
     if (campaing && campaing.campaignTypeId === 1) {
         return (

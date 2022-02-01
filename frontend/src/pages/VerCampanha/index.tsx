@@ -54,17 +54,18 @@ export default function VerCampanha() {
      * exibir na tela
      * 
      */
-    async function getInfoCamp(idCamp: any) {
-        await axios.get(`${BASE_URL_API_LOCAL}/campaign/${idCamp}`, { headers: { Authorization: token } })
-            .then((response) => {
-                setCampaing(response.data)
-            }).catch((err) => {
-                console.log(err)
-            })
-    }
+
 
 
     useEffect(() => {
+        async function getInfoCamp(idCamp: any) {
+            await axios.get(`${BASE_URL_API_LOCAL}/campaign/${idCamp}`, { headers: { Authorization: token } })
+                .then((response) => {
+                    setCampaing(response.data)
+                }).catch((err) => {
+                    console.log(err)
+                })
+        }
         getInfoCamp(id)
         //console.log(campaing)
     }, [id])

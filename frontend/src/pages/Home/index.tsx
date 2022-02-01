@@ -18,14 +18,6 @@ export default function Home() {
 
     const bearerToken = `${getLocalToken()}`
 
-    /*useEffect(() => {
-        setStateLoading(true)
-        api.get('/campaings').then((response) => {
-            setCampaingsHome(response.data)
-            setStateLoading(false)
-        })
-        
-    }, [])*/
 
     useEffect(() => {
         setStateLoading(true)

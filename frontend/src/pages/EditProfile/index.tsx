@@ -88,7 +88,7 @@ export default function EditProfile() {
   useEffect(() => {
     getProfile();
 
-  }, []);
+  }, [id]);
 
   interface IProfileData {
     name: string;
@@ -320,7 +320,7 @@ export default function EditProfile() {
                 hidden
               />
               {userProfileCover && typeof userProfileCover === 'string' && <img alt="profile" className="image-cover" style={profileCover}></img>}
-              {userProfileCover && typeof userProfileCover === 'object' && <img className="image-cover" src={URL.createObjectURL(userProfileCover[0])} />}
+              {userProfileCover && typeof userProfileCover === 'object' && <img className="image-cover" alt="imagem do perfil" src={URL.createObjectURL(userProfileCover[0])} />}
 
               <label
                 className="label-edit-profile"
@@ -335,7 +335,7 @@ export default function EditProfile() {
               />
               {userQR && typeof userQR === 'string' && <img alt="profile" className="image-cover" src={userQR}></img>}
               {userQR === null && <img alt="profile" className="image-cover" src={defaultQr}></img>}
-              {userQR && typeof userQR === 'object' && <img className="image-cover" src={URL.createObjectURL(userQR[0])} />}
+              {userQR && typeof userQR === 'object' && <img className="image-cover" alt="qrcode" src={URL.createObjectURL(userQR[0])} />}
 
 
               <Button type="submit">Salvar alterações</Button>

@@ -105,7 +105,7 @@ export default function Profile() {
         console.log(response.data);
         setStateLoading(false);
       });
-  }, []);
+  }, [id]);
 
   if (!authenticated) {
     //return <Loading />
