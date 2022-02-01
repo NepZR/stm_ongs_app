@@ -55,37 +55,38 @@ export default function EditProfile() {
 
   const bearerToken = `${getLocalToken()}`;
 
-  async function getProfile() {
-    setStateLoading(true)
-    await axios.get(`${BASE_URL_API_LOCAL}/user`, { headers: { Authorization: bearerToken } })
-      .then((response) => {
-        const {
-          name,
-          description,
-          profile_pic,
-          profile_cover,
-          url_picpay
-        } = response.data;
 
-        setValue("name", name)
-        setName(name);
-
-        setValue("description", description)
-        setUserDesc(description);
-
-        setValue("profile_pic", profile_pic)
-        setUserProfileImg(profile_pic)
-
-        setValue("profile_cover", profile_cover)
-        setUserProfileCover(profile_cover)
-
-        setValue("url_picpay", url_picpay)
-        setUserQR(url_picpay)
-
-      });
-  };
 
   useEffect(() => {
+    async function getProfile() {
+      setStateLoading(true)
+      await axios.get(`${BASE_URL_API_LOCAL}/user`, { headers: { Authorization: bearerToken } })
+        .then((response) => {
+          const {
+            name,
+            description,
+            profile_pic,
+            profile_cover,
+            url_picpay
+          } = response.data;
+
+          setValue("name", name)
+          setName(name);
+
+          setValue("description", description)
+          setUserDesc(description);
+
+          setValue("profile_pic", profile_pic)
+          setUserProfileImg(profile_pic)
+
+          setValue("profile_cover", profile_cover)
+          setUserProfileCover(profile_cover)
+
+          setValue("url_picpay", url_picpay)
+          setUserQR(url_picpay)
+
+        });
+    };
     getProfile();
 
   }, [id]);

@@ -53,44 +53,7 @@ export default function EditCampaing() {
 
     const token = `${getLocalToken()}`
 
-    async function getDataCampaing(id: string) {
-        setLoading(true);
-        await axios.get(`${BASE_URL_API_LOCAL}/campaign/${id}`)
-            .then((response) => {
-                setCampaing(response.data);
 
-                setTitle(response.data.title)
-                setValue('title', response.data.title)
-
-                setDescription(response.data.description)
-                setValue('description', response.data.description)
-
-                setValues(response.data.value)
-                setValue('value', response.data.value)
-
-                setDate(response.data.date_limit)
-                setValue('dateLimit', response.data.date_limit)
-
-                setType(response.data.campaignTypeId)
-                setValue('typeCamp', response.data.campaignTypeId)
-
-                setImgCover(response.data.campaign_cover);
-                setValue('campaign_cover', response.data.campaign_cover)
-
-                //console.log(response.data)
-                setLoading(false);
-
-                /**Falta adicionar os valores no register com o setValue quando os dados chegarem do server (ok)
-                 * setar todos os valores no estado corespondente (data nao esta indo)
-                 * fazer o tratamento da imagem:
-                 *       se ela for um objeto -> retornar um objeto URL como antes e fazer upload
-                 *       se formuma url só enviar
-                 * ajustar o css dos inputs
-                 * console dos dados do formulario enviado
-                 * salvar alterações no banco de dados
-                 */
-            });
-    }
 
     async function update(data: any) {
         console.log(data)
@@ -122,6 +85,44 @@ export default function EditCampaing() {
     }
 
     useEffect(() => {
+        async function getDataCampaing(id: string) {
+            setLoading(true);
+            await axios.get(`${BASE_URL_API_LOCAL}/campaign/${id}`)
+                .then((response) => {
+                    setCampaing(response.data);
+
+                    setTitle(response.data.title)
+                    setValue('title', response.data.title)
+
+                    setDescription(response.data.description)
+                    setValue('description', response.data.description)
+
+                    setValues(response.data.value)
+                    setValue('value', response.data.value)
+
+                    setDate(response.data.date_limit)
+                    setValue('dateLimit', response.data.date_limit)
+
+                    setType(response.data.campaignTypeId)
+                    setValue('typeCamp', response.data.campaignTypeId)
+
+                    setImgCover(response.data.campaign_cover);
+                    setValue('campaign_cover', response.data.campaign_cover)
+
+                    //console.log(response.data)
+                    setLoading(false);
+
+                    /**Falta adicionar os valores no register com o setValue quando os dados chegarem do server (ok)
+                     * setar todos os valores no estado corespondente (data nao esta indo)
+                     * fazer o tratamento da imagem:
+                     *       se ela for um objeto -> retornar um objeto URL como antes e fazer upload
+                     *       se formuma url só enviar
+                     * ajustar o css dos inputs
+                     * console dos dados do formulario enviado
+                     * salvar alterações no banco de dados
+                     */
+                });
+        }
         getDataCampaing(id);
     }, [id]);
 
