@@ -40,14 +40,13 @@ class UserController {
         if(emailExists) {
             return response.status(400).json({error: 'This email is already by used'});
         }
-
+        console.log('password',password)
         const user = await UserRepository.create(
             type_user,
             name,
             reg_number,
             profile_pic,
 	        profile_cover,
-            url_pix,
 	        description,
             email, 
             password

@@ -42,12 +42,14 @@ export default function SignUpForm() {
     }
 
     const handleSignIn = async (data: ISigInData) => {
+        const { name, email, password, reg_number, type_user } = data;
+
         console.log('Dados enviados', data)
-        const user = await axios.post(`${BASE_URL_API_LOCAL}/user`, data)
-        console.log(user.data)
+        const user = await axios.post(`${BASE_URL_API_LOCAL}/user`, { name, email, password, reg_number, type_user })
+        console.log('Dados de retorno do cadastro', user.data)
 
         const credentials = { email: user.data.email, password: data.password }
-        console.log(credentials)
+        console.log('Credenciais', credentials)
 
         handleLogin(credentials)
         /*const userData = await axios.post(`${BASE_URL_API_LOCAL}/auth`, credentials)
