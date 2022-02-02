@@ -107,10 +107,7 @@ export default function Profile() {
       });
   }, [id]);
 
-  if (!authenticated) {
-    //return <Loading />
-    return <Redirect to="sign-in" />
-  } else {
+  if (authenticated) {
     return (
       <>
         <NavBar />
@@ -140,7 +137,54 @@ export default function Profile() {
       </>
     );
 
+  } else {
+    //return <Loading />
+    return (
+      <Redirect to="/sign-in" />
+    )
+
   }
+
+  /**
+  
+  
+    if (!authenticated) {
+      //return <Loading />
+      return <Redirect to="sign-in" />
+    } else {
+      return (
+        <>
+          <NavBar />
+          <Menu />
+  
+          <div className="profile-container">
+            <ProfileCard>
+              <ProfileImages
+                cover={profile_cover}
+                profile={profile_pic}
+              />
+  
+              <Container>
+                <Title>{`${name}`}</Title>
+                <Contate>{`${email}`}</Contate>
+                <EditProfile href={`/profile-edit/${id}`}>
+                  Editar Perfil
+                </EditProfile>
+  
+              </Container>
+              <Label>Sobre</Label>
+              <Description>
+                {`${description}`}
+              </Description>
+            </ProfileCard>
+          </div>
+        </>
+      );
+  
+    }
+  
+  
+   */
 
 
 }
