@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Redirect } from "react-router-dom";
 import Menu from "../../components/Menu";
 import NavBar from "../../components/NavBar";
 import Button from "../../components/Button";
@@ -52,6 +53,7 @@ export default function EditProfile() {
   const [userProfileImg, setUserProfileImg] = useState(userProfile.profile_pic);
   const [userProfileCover, setUserProfileCover] = useState(userProfile.profile_cover);
   const [userQR, setUserQR] = useState(userProfile.url_picpay);
+  const [edited, setEdited] = useState(false)
 
   const bearerToken = `${getLocalToken()}`;
 
@@ -108,6 +110,7 @@ export default function EditProfile() {
         .then((response) => {
           console.log(response.data)
         })
+      setEdited(true)
 
     } else if (typeof profileData.profile_pic === 'string' && typeof profileData.profile_cover === 'string' && typeof profileData.url_picpay === 'object') {
       console.log(profileData)
@@ -139,6 +142,7 @@ export default function EditProfile() {
         url_picpay: url_picpay
       })
       console.log('estado user atualizado', user)
+      setEdited(true)
 
     } else if (typeof profileData.profile_pic === 'object' && typeof profileData.profile_cover === 'string') {
 
@@ -169,6 +173,7 @@ export default function EditProfile() {
         url_picpay: user.url_picpay
       })
       console.log('estado user atualizado', user)
+      setEdited(true)
 
 
       //console.log(profileData.profile_pic)
@@ -203,6 +208,7 @@ export default function EditProfile() {
         url_picpay: user.url_picpay
       })
       console.log('estado user atualizado', user)
+      setEdited(true)
 
       //console.log(profileData.profile_cover)
 
@@ -242,6 +248,7 @@ export default function EditProfile() {
         url_picpay: url_picpay
       })
       console.log('estado user atualizado', user)
+      setEdited(true)
     }
   };
 
@@ -261,7 +268,11 @@ export default function EditProfile() {
     backgroundRepeat: 'no-repeat',
   };
 
-  if (userProfile) {
+  if (edited) {
+    return (
+      <Redirect to='/profile' />
+    )
+  } else if (userProfile) {
     return (
       <>
         <NavBar />
