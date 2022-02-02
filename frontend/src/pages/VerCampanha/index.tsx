@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { Redirect } from "react-router-dom";
 import NavBar from "../../components/NavBar";
 import Menu from "../../components/Menu";
 import './styles.css'
@@ -13,6 +14,7 @@ import axios from "axios";
 import { BASE_URL_API_LOCAL } from "../../utils/requests";
 import { getLocalToken } from "../../utils/getLocalToken/getLocalToken";
 import { Link } from "react-router-dom";
+import { authContext } from "../../AuthContext/AuthContext";
 
 interface ICampaing {
     id: string,
@@ -28,7 +30,8 @@ interface ICampaing {
 
 export default function VerCampanha() {
 
-    const token = `${getLocalToken()}`
+    const token = `${getLocalToken()}`;
+    const { authenticated } = useContext(authContext)
 
     const { id }: any = useParams()
     const [campaing, setCampaing] = useState<ICampaing>({
@@ -75,37 +78,46 @@ export default function VerCampanha() {
         return `${listData[2]}/${listData[1]}/${listData[0]}`
     }
 
+    if (authenticated) {
 
-    return (
-        <>
-            <NavBar />
-            <Menu />
+        return (
+            <>
+                <NavBar />
+                <Menu />
 
-            <div className="campaing-container">
-                <section className="card-campaing-details">
-                    <img className="campaing-photo" src={campaing.campaign_cover} alt="foto" />
-                    <div className="description-container">
-                        {campaing.campaignTypeId === 1 && <p className="type-campaing">Online</p>}
-                        {campaing.campaignTypeId === 2 && <p className="type-campaing">Presencial</p>}
-                        <div className="title-share">
-                            <h1 className="title-campaing">{campaing.title}</h1>
-                            {/*<button><FiShare size={20} /></button>*/}
+                <div className="campaing-container">
+                    <section className="card-campaing-details">
+                        <img className="campaing-photo" src={campaing.campaign_cover} alt="foto" />
+                        <div className="description-container">
+                            {campaing.campaignTypeId === 1 && <p className="type-campaing">Online</p>}
+                            {campaing.campaignTypeId === 2 && <p className="type-campaing">Presencial</p>}
+                            <div className="title-share">
+                                <h1 className="title-campaing">{campaing.title}</h1>
+                                {/*<button><FiShare size={20} /></button>*/}
+                            </div>
+                            <div className="value-date">
+                                {campaing.value && <p className="value-campaing">R$ {campaing.value}</p>}
+                                <p className="final-date">{formatData(campaing.date_limit)}</p>
+                            </div>
+                            <p className="description-campaing"> {campaing.description} </p>
+
+                            {campaing.campaignTypeId === 1 && <Link to={`/${campaing.id}/donate`}>
+                                <Button>Doar</Button>
+                            </Link>}
+
+
                         </div>
-                        <div className="value-date">
-                            {campaing.value && <p className="value-campaing">R$ {campaing.value}</p>}
-                            <p className="final-date">{formatData(campaing.date_limit)}</p>
-                        </div>
-                        <p className="description-campaing"> {campaing.description} </p>
+                    </section>
 
-                        {campaing.campaignTypeId === 1 && <Link to={`/${campaing.id}/donate`}>
-                            <Button>Doar</Button>
-                        </Link>}
+                </div >
+            </>
+        )
+
+    } else {
+        return (
+            <Redirect to="/sign-in" />
+        )
+    }
 
 
-                    </div>
-                </section>
-
-            </div >
-        </>
-    )
 }

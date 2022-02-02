@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Redirect } from "react-router-dom";
 import "./styles.css";
 import NavBar from "../../components/NavBar";
 import Menu from "../../components/Menu";
@@ -13,6 +14,7 @@ import { BASE_URL_API_LOCAL } from "../../utils/requests";
 import axios from "axios";
 import { getLocalToken } from "../../utils/getLocalToken/getLocalToken";
 import { uploadImage } from "../../services/uploadImages";
+import { authContext } from "../../AuthContext/AuthContext";
 
 
 interface ICampaing {
@@ -36,6 +38,7 @@ export default function EditCampaing() {
      * inserir os valores retornados nos respectivos campos (ok)
      */
 
+    const { authenticated } = useContext(authContext)
     const { id }: any = useParams();
     const { register, handleSubmit, setValue } = useForm();
     const [loading, setLoading] = useState(true);
@@ -126,7 +129,11 @@ export default function EditCampaing() {
         getDataCampaing(id);
     }, [id]);
 
-    if (campaing && campaing.campaignTypeId === 1) {
+    if (!authenticated) {
+        return (
+            <Redirect to="/sign-in" />
+        )
+    } else if (campaing && campaing.campaignTypeId === 1) {
         return (
             <>
                 <NavBar />

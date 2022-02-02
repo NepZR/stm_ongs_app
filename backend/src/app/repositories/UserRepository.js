@@ -13,7 +13,7 @@ class UserRepository {
         return emailExists
     }
 
-    async create(type_user, name, reg_number, profile_pic, profile_cover, url_picpay, description, email, password ) {
+    async create(type_user, name, reg_number, profile_pic, profile_cover, description, email, password ) {
         const typeUser = await UserType.findOne({where: {name : type_user}}) 
         const newUser = await User.create({
             name, 
@@ -21,7 +21,6 @@ class UserRepository {
             reg_number, 
             profile_pic,
 	        profile_cover,
-            url_picpay,
 	        description,
             password: bcrypt.hashSync(password, 8),
             userTypeId: typeUser.id

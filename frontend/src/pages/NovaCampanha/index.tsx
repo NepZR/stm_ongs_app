@@ -12,6 +12,7 @@ import defaultCover from '../../assets/profile/cover.png'
 import axios from "axios";
 import { BASE_URL_API_LOCAL } from "../../utils/requests";
 import { getLocalToken } from "../../utils/getLocalToken/getLocalToken";
+import Home from "../Home";
 
 
 interface ISubCampaing {
@@ -43,6 +44,8 @@ export default function NovaCampanha() {
     const [link, setLink] = useState('');
     const [imgCover, setImgCover] = useState(defaultCover);
 
+    const [created, setCreated] = useState(false)
+
     const bearerToken = `${getLocalToken()}`;
 
     const submitCampaing = async (data: ISubCampaing) => {
@@ -65,10 +68,7 @@ export default function NovaCampanha() {
 
         const campaing = await axios.post(`${BASE_URL_API_LOCAL}/campaign`, newCampaing, { headers: { Authorization: bearerToken } })
         console.log('campanha criada', campaing.data)
-
-        return <Redirect to='/home' />
-
-
+        setCreated(true)
 
     }
 
@@ -80,7 +80,11 @@ export default function NovaCampanha() {
         setType(form.PRES);
     }
 
-    if (authenticated) {
+    if (authenticated && created) {
+        return (
+            <Redirect to='/home' />
+        )
+    } else if (authenticated) {
 
         return (
             <>

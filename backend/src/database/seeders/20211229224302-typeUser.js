@@ -5,6 +5,24 @@ module.exports = {
     let types = ['pessoa','ong'];
     let count = types.length;
     let data = []
+
+    
+    if(count) {
+      data.push({
+        id: 1,
+        name: types[0],
+        created_at: new Date(),
+        updated_at: new Date()
+      })
+
+      data.push({
+        id: 2,
+        name: types[1],
+        created_at: new Date(),
+        updated_at: new Date()
+      })
+    }
+    /*
     while(count--) {
       data.push({
         id: count+1,
@@ -12,7 +30,7 @@ module.exports = {
         created_at: new Date(),
         updated_at: new Date()
       })
-    }
+    }*/
     await queryInterface.bulkInsert('user_types', data, {});
   },
 
